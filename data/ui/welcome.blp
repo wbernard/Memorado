@@ -21,15 +21,15 @@ template $Welcome : Adw.NavigationPage {
     }
 
     content: Adw.StatusPage status_page {
-      title: _("Flash Cards");
-      description: _("Get started with your first deck");
+      title: _("Kartarujo");
+      description: _("Bonvolu krei la unuan kartaron");
       hexpand: true;
       vexpand: true;
 
       styles ["icon-dropshadow"]
 
       Gtk.Button start_button {
-        label: _("Create Deck");
+        label: _("Krei Kartaron");
         halign: center;
 
         styles ["suggested-action", "pill"]
@@ -47,7 +47,7 @@ menu primary_menu {
     }
 
     item {
-      label: _("_About Flash Cards");
+      label: _("_Pri Kartarujo");
       action: "app.about";
     }
 

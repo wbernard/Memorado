@@ -3,8 +3,11 @@
 import os
 import json
 import uuid
+import sqlite3
+
 
 from gi.repository import Adw, Gtk, Gio, GObject
+from pathlib import Path
 
 from .welcome import Welcome
 from .list_view import ListView
@@ -47,6 +50,7 @@ class Deck(GObject.Object):
 
 
     def save(self):
+        '''
         shared.decks_dir.mkdir(parents=True, exist_ok=True)
 
         cards = []
@@ -71,10 +75,55 @@ class Deck(GObject.Object):
             indent=4,
             sort_keys=True,
         )
+        '''
+        ########## ab hier ist die Änderung ########
+        print('#### es geht los')
+        db_name = 'karteibox.db'
 
+        name = self.name
 
-    def delete(self):
-        os.remove(shared.decks_dir / f"{self.id}.json")
+        print('name', name)
+
+        data_dir = (
+        Path(os.getenv("XDG_DATA_HOME"))
+        if "XDG_DATA_HOME" in os.environ
+        else Path.home() / ".local" / "share"
+        )
+
+        self.decks_dir = data_dir / "flashcards" / "decks"
+
+        print('## decks directory ##', self.decks_dir)
+        print('##### self.id####', self.id)
+
+        if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
+            self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+            self.c = self.conn.cursor() # eine cursor instanz erstellen
+            self.c.execute("""SELECT COUNT(*) FROM karteibox WHERE deck_id = :deck_id""",{'deck_id': self.id})
+            liste = self.c.fetchall()
+            print('### liste##', liste[0])
+            if liste[0] == (0,):
+                self.c.execute("""INSERT INTO karteibox VALUES (
+                :deck_id, :deck, :card, :front, :back)""",
+                {'deck_id': self.id, 'deck': name, 'card': ' ', 'front': ' ',
+                'back': ' '})
+            else:
+                self.c.execute("""UPDATE karteibox SET deck = :deck
+                WHERE deck_id = :deck_id""",
+                {'deck_id': self.id, 'deck': name})
+
+        else:
+            self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+            self.c = self.conn.cursor() # eine cursor instanz erstellen
+            self.c.execute("""CREATE TABLE if not exists karteibox (
+            deck_id TEXT, deck TEXT, card TEXT, front TEXT, back TEXT)""") # befehl wird ausgeführt
+
+            self.c.execute("""INSERT INTO karteibox VALUES (
+                :deck_id, :deck, :card, :front, :back)""",
+                {'deck_id': self.id, 'deck': name, 'card': ' ', 'front': ' ',
+                'back': ' '})
+
+        self.conn.commit()
+        self.conn.close()   # Verbindung schließen
 
 
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
@@ -90,30 +139,34 @@ class Window(Adw.ApplicationWindow):
         if const.PROFILE == 'Devel':
             self.add_css_class('devel')
 
-        self.decks_model = Gio.ListStore.new(Deck)
+        self.decks_model = Gio.ListStore.new(Deck)  # da sind die Karteien drin
         self.current_deck = None
 
         self._load_decks()
 
         self.welcome_page = Welcome()
         self.list_view = ListView()
-        self.list_view.decks_list.bind_model(self.decks_model, self.__decks_list_create_row)
+        self.list_view.decks.bind_model(self.decks_model, self.__decks_create_row)
         self.deck_view = DeckView()
         self.card_view = CardView()
 
         self._setup_signals()
 
-        if self.decks_model.props.n_items < 1:
-            self.navigation_view.add(self.welcome_page)
+        if self.decks_model.props.n_items < 1:   # wenn es keine Karteien gibt
+            self.navigation_view.add(self.welcome_page)   # Willkommensseite wird angezeigt
 
-        self.navigation_view.add(self.list_view)
-        self.navigation_view.add(self.deck_view)
-        self.navigation_view.add(self.card_view)
+        self.navigation_view.add(self.list_view)     # Liste der Karteien
+        self.navigation_view.add(self.deck_view)     # Ansicht der Kartei mit Liste der Karten
+        self.navigation_view.add(self.card_view)     # Ansicht einer Karte
 
+    def db_nutzen(self, befehl):
+        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        self.c = self.conn.cursor() # eine cursor instanz erstellen
+        self.c.execute(befehl) # befehl wird ausgeführt
 
-    def __decks_list_create_row(self, deck):
-        if not self.list_view.decks_list.has_css_class('boxed-list'):
-            self.list_view.decks_list.add_css_class('boxed-list')
+    def __decks_create_row(self, deck):
+        if not self.list_view.decks.has_css_class('boxed-list'):
+            self.list_view.decks.add_css_class('boxed-list')
 
         row = DeckRow(deck)
         row.edit_button.connect('clicked', self.__on_edit_deck_button_clicked, deck)
@@ -160,7 +213,7 @@ class Window(Adw.ApplicationWindow):
     def __on_deck_activated(self, row, deck):
         self.current_deck = deck
 
-        if not self.list_view.decks_list.get_selection_mode() == Gtk.SelectionMode.NONE:
+        if not self.list_view.decks.get_selection_mode() == Gtk.SelectionMode.NONE:
             row.checkbox.set_active(not row.checkbox.get_active())
             return
 
@@ -182,10 +235,10 @@ class Window(Adw.ApplicationWindow):
 
     def __on_deck_checkbox_toggled(self, button, row):
         if button.get_active():
-            self.list_view.decks_list.select_row(row)
+            self.list_view.decks.select_row(row)
             return
 
-        self.list_view.decks_list.unselect_row(row)
+        self.list_view.decks.unselect_row(row)
 
 
     def __on_edit_card_button_clicked(self, _button, card):
@@ -270,7 +323,7 @@ class Window(Adw.ApplicationWindow):
 
 
     def __on_deck_selection_mode_button_clicked(self, button):
-        if self.list_view.decks_list.get_selection_mode() == Gtk.SelectionMode.NONE:
+        if self.list_view.decks.get_selection_mode() == Gtk.SelectionMode.NONE:
             self.list_view.set_selection_mode(True)
             return
 
@@ -278,7 +331,7 @@ class Window(Adw.ApplicationWindow):
 
 
     def __on_deck_delete_button_clicked(self, button):
-        for row in self.list_view.decks_list.get_selected_rows():
+        for row in self.list_view.decks.get_selected_rows():
             found, position = self.decks_model.find(row.deck)
             if found:
                 self.decks_model.remove(position)
@@ -319,7 +372,7 @@ class Window(Adw.ApplicationWindow):
 
 
     def _setup_signals(self):
-        self.decks_model.connect('items-changed', lambda *_: self.list_view.decks_list.bind_model(self.decks_model, self.__decks_list_create_row))
+        self.decks_model.connect('items-changed', lambda *_: self.list_view.decks.bind_model(self.decks_model, self.__decks_create_row))
 
         self.welcome_page.start_button.connect('clicked', self.__on_start_button_clicked)
 
@@ -338,26 +391,39 @@ class Window(Adw.ApplicationWindow):
 
 
     def _load_decks(self):
-        decks = []
+        db_name = 'karteibox.db'
 
-        if shared.decks_dir.is_dir():
-            for open_file in shared.decks_dir.iterdir():
-                data = json.load(open_file.open())
-                decks.append(data)
+        data_dir = (
+        Path(os.getenv("XDG_DATA_HOME"))
+        if "XDG_DATA_HOME" in os.environ
+        else Path.home() / ".local" / "share")
 
-        for d in decks:
-            deck = Deck(d['name'])
-            deck.id = d['id']
-            deck.icon = d['icon']
+        self.decks_dir = data_dir / "flashcards" / "decks"
 
-            for c in d['cards']:
-                card = Card()
-                card.front = c['front']
-                card.back = c['back']
+        self.decks = []
 
-                deck.cards_model.append(card)
+        if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
+            self.db_nutzen("SELECT rowid, deck FROM karteibox")
+            liste = self.c.fetchall()
 
-            self.decks_model.append(deck)
+            print ('### liste in karteibox ###', liste)
+            for zeile in liste:
+                self.decks.append(list(zeile)[1])
+
+            print ('decks in load_decks', self.decks)
+
+            for d in self.decks:
+                deck = Deck(d)
+                #deck.id = d['id']
+                #deck.icon = d['icon']
+
+                self.decks_model.append(deck)
+
+            self.conn.close()   # Verbindung schließen
+
+        # else:
+        #     self.db_nutzen("""CREATE TABLE if not exists karteibox (
+        #     deck TEXT, card TEXT, front TEXT, back TEXT)""")
 
 
     def _go_to_deck(self, is_new: bool):
@@ -410,5 +476,6 @@ class Window(Adw.ApplicationWindow):
         dialog.set_content(view)
 
         dialog.present()
+
 
 

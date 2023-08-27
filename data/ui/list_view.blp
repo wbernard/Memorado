@@ -9,7 +9,7 @@ template $ListView : Adw.NavigationPage {
     [top]
     Adw.HeaderBar {
       title-widget: Adw.WindowTitle {
-        title: _("Decks");
+        title: _("Kartaroj");
       };
 
       [end]
@@ -60,7 +60,7 @@ template $ListView : Adw.NavigationPage {
               maximum-size: 400;
               tightening-threshold: 300;
 
-              Gtk.ListBox decks_list {
+              Gtk.ListBox decks {
                 selection-mode: none;
               }
             }
@@ -80,7 +80,7 @@ template $ListView : Adw.NavigationPage {
           }
 
           Adw.ButtonContent {
-            label: _("Add Deck");
+            label: _("Aldoni Kartaron");
             icon-name: "list-add-symbolic";
           }
         }
