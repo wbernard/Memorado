@@ -18,6 +18,9 @@ class CardEditView(Gtk.Box):
         self.window = window
         self.card = card
 
+        #print(lencard))
+        print ('==== card in card_edit_view 22 ===', card)
+
         if len(card.front) < 1:
             self.front_placeholder.set_visible(True)
 
@@ -34,7 +37,9 @@ class CardEditView(Gtk.Box):
     def __on_front_side_changed(self, buffer):
         (start, end) = buffer.get_bounds()
         text = buffer.get_text(start, end, False)
-        self.card.front = text
+        self.card.front = text    # Frontseite der Karte
+
+        print ('## front text ##', self.card.front)
 
         self.front_placeholder.set_visible(len(text) < 1)
 
@@ -46,7 +51,9 @@ class CardEditView(Gtk.Box):
     def __on_back_side_changed(self, buffer):
         (start, end) = buffer.get_bounds()
         text = buffer.get_text(start, end, False)
-        self.card.back = text
+        self.card.back = text   # Rückseite der Karte
+
+        print ('## back text ##', self.card.back)
 
         self.back_placeholder.set_visible(len(text) < 1)
 
