@@ -92,8 +92,17 @@ class Deck(GObject.Object):
             }
             print ('## card in window 93 ##', crd)
             cards.append(crd)
+            print ('## cards in w 93 #', cards)
 
-        print('## name in windows 96 ##', name)
+        print('## name in windows 97 ##', name)
+
+        deck = {
+            'id': self.id,
+            'name': self.name,
+            'icon': self.icon,
+            'cards': cards
+        }
+
 
         data_dir = (
         Path(os.getenv("XDG_DATA_HOME"))
@@ -136,6 +145,7 @@ class Deck(GObject.Object):
         #         'back': ' '})
 
         for cd in self.cards_model:
+            print ('### cd in window 148 #', cd)
             self.c.execute("""INSERT INTO karteibox VALUES (
                 :deck_id, :deck, :front, :back)""",
                 {'deck_id': self.id, 'deck': name, 'front': cd.front ,
@@ -158,14 +168,15 @@ class Window(Adw.ApplicationWindow):
         if const.PROFILE == 'Devel':
             self.add_css_class('devel')
 
-        self.decks_model = Gio.ListStore.new(Deck)  # da sind die Karteien drin
+        self.decks_model = Gio.ListStore.new(Deck)  # da sind die Karteien samt Karten drin
+        self.decks_name_model = Gio.ListStore.new(Deck)  # nur die Namen der Karteien
         self.current_deck = None
 
         self._load_decks()
 
         self.welcome_page = Welcome()
         self.list_view = ListView()
-        self.list_view.decks.bind_model(self.decks_model, self.__decks_create_row)
+        self.list_view.decks.bind_model(self.decks_name_model, self.__decks_create_row)
         self.deck_view = DeckView()
         self.card_view = CardView()
 
@@ -199,6 +210,8 @@ class Window(Adw.ApplicationWindow):
 
 
     def cards_list_create_row(self, card):
+
+        print('### card in window 203 #', card)
         if not self.deck_view.cards_list.has_css_class('boxed-list'):
             self.deck_view.cards_list.add_css_class('boxed-list')
 
@@ -284,6 +297,10 @@ class Window(Adw.ApplicationWindow):
 
 
     def __on_create_card_button_clicked(self, button, dialog, card):
+        print ('## card window 287', card.front)
+        print ('## card.front in window 288', card.front)
+        print ('## card.back in window 288', card.back)
+
         if len(card.front) < 1 or len(card.back) < 1:
             return
 
@@ -419,22 +436,48 @@ class Window(Adw.ApplicationWindow):
         self.decks_dir = data_dir / "flashcards" / "decks"
 
         self.decks = []
+        self.deck_names = []
 
         if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
             self.db_nutzen("SELECT rowid, deck, front, back FROM karteibox")
             liste = self.c.fetchall()
 
-            print ('### in load_decks liste in karteibox ###', liste)
             for zeile in liste:
-                self.decks.append(list(zeile)[1])
+                print ('### in load_decks zeilen in karteibox ###', zeile)
+                if list(zeile) in self.decks:
+                    pass
+                else:
+                    self.decks.append(list(zeile))
 
-            print ('## decks in load_decks ##', self.decks)
+                if zeile[1] in self.deck_names:
+                    pass
+                else:
+                    self.deck_names.append((zeile)[1])
+            print ('## decks in load_decks 440 ##', self.deck_names)
+
+            for d in self.deck_names:
+                print ('## d in load_decks 460 ##', d)
+                deck_name = Deck(d)
+                #deck.id = d['id']
+                #deck.icon = d['icon']
+                self.decks_name_model.append(deck_name)
 
             for d in self.decks:
                 deck = Deck(d)
-                #deck.id = d['id']
-                #deck.icon = d['icon']
-                print ('## deck in load_decks ##', deck)
+                print ('## deck.cards_model in load_decks 467 ##', deck.cards_model)
+                for cd in deck.cards_model:
+                    print ('## cd in deck.cards_model ##', cd )
+                    card = Card()
+                    card.front = cd['front']
+                    card.back = cd['back']
+                    print ('## card in load_decks 471 ##', card, card.back)
+                    crd = {
+                        'front': cd.front,
+                        'back': cd.back,
+                    }
+                    print ('## card in window 453 ##', crd)
+                    cards.append(crd)
+                    deck.cards_model.append(card)
 
                 self.decks_model.append(deck)
 
@@ -459,6 +502,8 @@ class Window(Adw.ApplicationWindow):
 
         if self.current_deck.cards_model.props.n_items < 1:
             self.deck_view.cards_list.remove_css_class('boxed-list')
+
+        print("window 504 model",self.current_deck.cards_model)
 
         self.deck_view.cards_list.bind_model(self.current_deck.cards_model, self.cards_list_create_row)
 

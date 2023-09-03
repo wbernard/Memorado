@@ -39,7 +39,7 @@ class CardEditView(Gtk.Box):
         text = buffer.get_text(start, end, False)
         self.card.front = text    # Frontseite der Karte
 
-        print ('## front text ##', self.card.front)
+        print ('## front text in card edit 42 ##', self.card.front)
 
         self.front_placeholder.set_visible(len(text) < 1)
 

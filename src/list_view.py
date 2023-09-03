@@ -48,4 +48,5 @@ class ListView(Adw.NavigationPage):
 
 
         if active:
-            self.decks.get_first_child().checkbox.set_active(True)
+            self.decks_name.get_first_child().checkbox.set_active(True)
+
