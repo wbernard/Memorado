@@ -297,9 +297,8 @@ class Window(Adw.ApplicationWindow):
 
 
     def __on_create_card_button_clicked(self, button, dialog, card):
-        print ('## card window 287', card.front)
-        print ('## card.front in window 288', card.front)
-        print ('## card.back in window 288', card.back)
+        print ('## card window 300', card)
+        print ('## card.front in window 301', card.front)
 
         if len(card.front) < 1 or len(card.back) < 1:
             return
