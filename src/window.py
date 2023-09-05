@@ -80,76 +80,68 @@ class Deck(GObject.Object):
         print('## es geht los mit save 80 ##')
 
         name = self.name
-
         cards = []
+        print ('##  cards model in windows 84 ##', self.cards_model)
 
-        print ('##  cards model in windows 86 ##', self.cards_model)
-
-        for cd in self.cards_model:
-            crd = {
-                'front': cd.front,
-                'back': cd.back,
-            }
-            print ('## card in window 93 ##', crd)
-            cards.append(crd)
-            print ('## cards in w 93 #', cards)
-
-        print('## name in windows 97 ##', name)
-
-        deck = {
-            'id': self.id,
-            'name': self.name,
-            'icon': self.icon,
-            'cards': cards
-        }
-
-
-        data_dir = (
-        Path(os.getenv("XDG_DATA_HOME"))
-        if "XDG_DATA_HOME" in os.environ
-        else Path.home() / ".local" / "share"
-        )
-
-        self.decks_dir = data_dir / "flashcards" / "decks"
-
-        print('## self.id in windows ##', self.id)
-
-        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
-        self.c = self.conn.cursor() # eine cursor instanz erstellen
-
-        #if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
-        self.c.execute("""SELECT COUNT(*) FROM karteibox WHERE deck_id = :deck_id""",{'deck_id': self.id})
-        liste = self.c.fetchall()
-        print('### liste in save 114 ###', liste)
-        if liste[0] == (0,) and len(liste)  > 1:
-            self.c.execute("""INSERT INTO karteibox VALUES (
-            :deck_id, :deck, :front, :back)""",
-            {'deck_id': self.id, 'deck': name, 'front': cd.front,
-            'back': cd.front})
+        if name == 'New Deck':
+            pass
         else:
-            if len(liste) > 1:
-                self.c.execute("""UPDATE karteibox SET deck = :deck, front = :front, back = :back
-                WHERE deck_id = :deck_id""",
-                {'deck_id': self.id, 'deck': name, 'front': cd.front ,
-                'back': cd.back})
-            else:
-                pass
+            for cd in self.cards_model:
+                crd = {
+                    'front': cd.front,
+                    'back': cd.back,
+                }
+                print ('## card in window 93 ##', crd)
+                cards.append(crd)
+                print ('## cards in w 93 #', cards)
 
-        # else:
-        #     self.c.execute("""CREATE TABLE if not exists karteibox (
-        #     deck_id TEXT, deck TEXT, front TEXT, back TEXT)""") # befehl wird ausgeführt
+            print('## name in windows 97 ##', name)
 
-        #     self.c.execute("""INSERT INTO karteibox VALUES (
-        #         :deck_id, :deck, :front, :back)""",
-        #         {'deck_id': self.id, 'deck': name, 'front': ' ',
-        #         'back': ' '})
+            deck = {
+                'id': self.id,
+                'name': self.name,
+                'icon': self.icon,
+                'cards': cards
+            }
 
-        for cd in self.cards_model:
-            print ('### cd in window 148 #', cd)
-            self.c.execute("""INSERT INTO karteibox VALUES (
+
+            data_dir = (
+            Path(os.getenv("XDG_DATA_HOME"))
+            if "XDG_DATA_HOME" in os.environ
+            else Path.home() / ".local" / "share"
+            )
+
+            self.decks_dir = data_dir / "flashcards" / "decks"
+
+            print('## self.id in windows ##', self.id)
+
+            self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+            self.c = self.conn.cursor() # eine cursor instanz erstellen
+
+            #if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
+            self.c.execute("""SELECT COUNT(*) FROM karteibox WHERE deck_id = :deck_id""",{'deck_id': self.id})
+            liste = self.c.fetchall()
+            print('### liste in save 114 ###', liste)
+            if liste[0] == (0,) and len(liste)  > 1:
+                self.c.execute("""INSERT INTO karteibox VALUES (
                 :deck_id, :deck, :front, :back)""",
-                {'deck_id': self.id, 'deck': name, 'front': cd.front ,
-                'back': cd.back})
+                {'deck_id': self.id, 'deck': name, 'front': cd.front,
+                'back': cd.front})
+            else:
+                if len(liste) > 1:
+                    self.c.execute("""UPDATE karteibox SET deck = :deck, front = :front, back = :back
+                    WHERE deck_id = :deck_id""",
+                    {'deck_id': self.id, 'deck': name, 'front': cd.front ,
+                    'back': cd.back})
+                else:
+                    pass
+
+            for cd in self.cards_model:
+                print ('### cd in window 148 #', cd)
+                self.c.execute("""INSERT INTO karteibox VALUES (
+                    :deck_id, :deck, :front, :back)""",
+                    {'deck_id': self.id, 'deck': name, 'front': cd.front ,
+                    'back': cd.back})
 
         self.conn.commit()
         self.conn.close()   # Verbindung schließen
@@ -173,6 +165,7 @@ class Window(Adw.ApplicationWindow):
         self.current_deck = None
 
         self._load_decks()
+        self.tabel_erstel()
 
         self.welcome_page = Welcome()
         self.list_view = ListView()
@@ -189,7 +182,26 @@ class Window(Adw.ApplicationWindow):
         self.navigation_view.add(self.deck_view)     # Ansicht der Kartei mit Liste der Karten
         self.navigation_view.add(self.card_view)     # Ansicht einer Karte
 
+    def tabel_erstel(self):
+        # Pfad zur Datenbank
+        data_dir = (
+        Path(os.getenv("XDG_DATA_HOME"))
+        if "XDG_DATA_HOME" in os.environ
+        else Path.home() / ".local" / "share")
+
+        self.decks_dir = data_dir / "flashcards" / "decks"
+
+        # Tabellen erstellen
+        self.db_nutzen("""CREATE TABLE if not exists karteibox (
+                              deck_id TEXT, deck TEXT, front TEXT, back TEXT)""")
+        self.db_nutzen("""CREATE TABLE if not exists cards (
+                  deck TEXT,
+                  icon TEXT)""")
+
+        self.conn.commit()
+
     def db_nutzen(self, befehl):
+
         self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
         self.c = self.conn.cursor() # eine cursor instanz erstellen
         self.c.execute(befehl) # befehl wird ausgeführt
@@ -239,7 +251,10 @@ class Window(Adw.ApplicationWindow):
         deck = Deck()
         self.current_deck = deck
         self._go_to_deck(True)
-        self.decks_model.append(deck)
+        if self.current_deck.name == 'New Deck':
+            pass
+        else:
+            self.decks_model.append(deck)
 
 
     def __on_deck_activated(self, row, deck):
@@ -305,6 +320,7 @@ class Window(Adw.ApplicationWindow):
 
         self.current_deck.cards_model.append(card)
         self.current_deck.save()
+        self.decks_model.append(self.current_deck)
         self.decks_model.emit('items-changed', 0, 0, 0)
 
         dialog.close()
@@ -312,9 +328,12 @@ class Window(Adw.ApplicationWindow):
 
     def __on_deck_name_changed(self, entry):
         self.current_deck.name = entry.get_text()
-        self.current_deck.save()
-
-        self.decks_model.emit('items-changed', 0, 0, 0)
+        ## nur wenn ein neuer Karteiname eingegeben wird wird gespeichert
+        if self.current_deck.name == 'New Deck':
+            pass
+        else:
+            self.current_deck.save()
+            self.decks_model.emit('items-changed', 0, 0, 0)
 
 
     def __on_show_answer_button_clicked(self, button):
@@ -440,7 +459,7 @@ class Window(Adw.ApplicationWindow):
         if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
             self.db_nutzen("SELECT rowid, deck, front, back FROM karteibox")
             liste = self.c.fetchall()
-
+            print ('############# in load decks ############')
             for zeile in liste:
                 print ('### in load_decks zeilen in karteibox ###', zeile)
                 if list(zeile) in self.decks:
@@ -502,7 +521,7 @@ class Window(Adw.ApplicationWindow):
         if self.current_deck.cards_model.props.n_items < 1:
             self.deck_view.cards_list.remove_css_class('boxed-list')
 
-        print("window 504 model",self.current_deck.cards_model)
+        print("### in go_to_deck window 524 model ###",self.current_deck.cards_model)
 
         self.deck_view.cards_list.bind_model(self.current_deck.cards_model, self.cards_list_create_row)
 
