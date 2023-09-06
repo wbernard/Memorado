@@ -81,7 +81,7 @@ class Deck(GObject.Object):
 
         name = self.name
         cards = []
-        print ('##  cards model in windows 84 ##', self.cards_model)
+        print ('##  name in window 84 ##', name)
 
         if name == 'New Deck':
             pass
@@ -94,8 +94,6 @@ class Deck(GObject.Object):
                 print ('## card in window 93 ##', crd)
                 cards.append(crd)
                 print ('## cards in w 93 #', cards)
-
-            print('## name in windows 97 ##', name)
 
             deck = {
                 'id': self.id,
@@ -118,11 +116,11 @@ class Deck(GObject.Object):
             self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
             self.c = self.conn.cursor() # eine cursor instanz erstellen
 
-            #if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
             self.c.execute("""SELECT COUNT(*) FROM karteibox WHERE deck_id = :deck_id""",{'deck_id': self.id})
             liste = self.c.fetchall()
-            print('### liste in save 114 ###', liste)
+            print('### liste in save 124 ###', liste, len(liste))
             if liste[0] == (0,) and len(liste)  > 1:
+                print('## cd.front windows 123 ##', cd.front)
                 self.c.execute("""INSERT INTO karteibox VALUES (
                 :deck_id, :deck, :front, :back)""",
                 {'deck_id': self.id, 'deck': name, 'front': cd.front,
@@ -137,7 +135,7 @@ class Deck(GObject.Object):
                     pass
 
             for cd in self.cards_model:
-                print ('### cd in window 148 #', cd)
+                print ('### cd in window 138 #', cd)
                 self.c.execute("""INSERT INTO karteibox VALUES (
                     :deck_id, :deck, :front, :back)""",
                     {'deck_id': self.id, 'deck': name, 'front': cd.front ,
