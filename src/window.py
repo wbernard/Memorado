@@ -79,70 +79,113 @@ class Deck(GObject.Object):
         ########## ab hier ist die Änderung ########
         print('## es geht los mit save 80 ##')
 
-        name = self.name
-        cards = []
-        print ('##  name in window 84 ##', name)
+        data_dir = (
+        Path(os.getenv("XDG_DATA_HOME"))
+        if "XDG_DATA_HOME" in os.environ
+        else Path.home() / ".local" / "share"
+        )
 
-        if name == 'New Deck':
-            pass
-        else:
-            for cd in self.cards_model:
-                crd = {
-                    'front': cd.front,
-                    'back': cd.back,
-                }
-                print ('## card in window 93 ##', crd)
-                cards.append(crd)
-                print ('## cards in w 93 #', cards)
+        self.decks_dir = data_dir / "flashcards" / "decks"
 
-            deck = {
-                'id': self.id,
-                'name': self.name,
-                'icon': self.icon,
-                'cards': cards
-            }
+        print('## self.id in windows ##', self.id)
 
+        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        self.c = self.conn.cursor() # eine cursor instanz erstellen
 
-            data_dir = (
-            Path(os.getenv("XDG_DATA_HOME"))
-            if "XDG_DATA_HOME" in os.environ
-            else Path.home() / ".local" / "share"
-            )
+        ## Nachschauen ob deck.id in decks existiert
+        self.c.execute("""SELECT COUNT(*) FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
+        liste = self.c.fetchall()
+        deck_exist = len(liste) > 1    ## überprüfen!
 
-            self.decks_dir = data_dir / "flashcards" / "decks"
-
-            print('## self.id in windows ##', self.id)
-
-            self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
-            self.c = self.conn.cursor() # eine cursor instanz erstellen
-
-            self.c.execute("""SELECT COUNT(*) FROM karteibox WHERE deck_id = :deck_id""",{'deck_id': self.id})
-            liste = self.c.fetchall()
-            print('### liste in save 124 ###', liste, len(liste))
-            if liste[0] == (0,) and len(liste)  > 1:
-                print('## cd.front windows 123 ##', cd.front)
-                self.c.execute("""INSERT INTO karteibox VALUES (
-                :deck_id, :deck, :front, :back)""",
-                {'deck_id': self.id, 'deck': name, 'front': cd.front,
-                'back': cd.front})
-            else:
-                if len(liste) > 1:
-                    self.c.execute("""UPDATE karteibox SET deck = :deck, front = :front, back = :back
+        ## wenn ja Namen  und icon überschreiben
+        ## wenn nein, neuen Eintrag in decks erstellen mit Namen und icon
+        if deck_exist:
+            self.c.execute("""UPDATE decks SET name = :name, icon = :icon
                     WHERE deck_id = :deck_id""",
-                    {'deck_id': self.id, 'deck': name, 'front': cd.front ,
-                    'back': cd.back})
-                else:
-                    pass
+                    {'deck_id': self.id, 'name': self.name, 'icon': self.icon })
+        else:
+            self.c.execute("""INSERT INTO decks VALUES (
+                :deck_id, :name, :icon )""",
+                {'deck_id': self.id, 'name': self.name, 'icon': self.icon })
 
-            for cd in self.cards_model:
-                print ('### cd in window 138 #', cd)
-                self.c.execute("""INSERT INTO karteibox VALUES (
-                    :deck_id, :deck, :front, :back)""",
-                    {'deck_id': self.id, 'deck': name, 'front': cd.front ,
-                    'back': cd.back})
+        ## in cards alle Einträge mit deck.id löschen
+        self.c.execute("""DELETE FROM cards
+                    WHERE deck_id = :deck_id""",
+                    {'deck_id': self.id})
+
+        ## für jede karte in self.cards_model neuen eintrag in cards erstellen
+        for crd in self.cards_model:
+            self.c.execute("""INSERT INTO cards VALUES (
+                :deck_id, :front, :back )""",
+                {'deck_id': self.id, 'front': crd.front, 'back': crd.back })
 
         self.conn.commit()
         self.conn.close()   # Verbindung schließen
+
+        # name = self.name
+        # cards = []
+        # print ('##  name in window 84 ##', name)
+
+        # if name == 'New Deck':
+        #     pass
+        # else:
+        #     for cd in self.cards_model:
+        #         crd = {
+        #             'front': cd.front,
+        #             'back': cd.back,
+        #         }
+        #         print ('## card in window 93 ##', crd)
+        #         cards.append(crd)
+        #         print ('## cards in w 93 #', cards)
+
+        #     deck = {
+        #         'id': self.id,
+        #         'name': self.name,
+        #         'icon': self.icon,
+        #         'cards': cards
+        #     }
+
+
+        #     data_dir = (
+        #     Path(os.getenv("XDG_DATA_HOME"))
+        #     if "XDG_DATA_HOME" in os.environ
+        #     else Path.home() / ".local" / "share"
+        #     )
+
+        #     self.decks_dir = data_dir / "flashcards" / "decks"
+
+        #     print('## self.id in windows ##', self.id)
+
+        #     self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        #     self.c = self.conn.cursor() # eine cursor instanz erstellen
+
+        #     self.c.execute("""SELECT COUNT(*) FROM karteibox WHERE deck_id = :deck_id""",{'deck_id': self.id})
+        #     liste = self.c.fetchall()
+        #     print('### liste in save 124 ###', liste, len(liste))
+        #     if liste[0] == (0,) and len(liste)  > 1:
+        #         print('## cd.front windows 123 ##', cd.front)
+        #         self.c.execute("""INSERT INTO karteibox VALUES (
+        #         :deck_id, :deck, :front, :back)""",
+        #         {'deck_id': self.id, 'deck': name, 'front': cd.front,
+        #         'back': cd.front})
+        #     else:
+        #         if len(liste) > 1:
+        #             self.c.execute("""UPDATE karteibox SET deck = :deck, front = :front, back = :back
+        #             WHERE deck_id = :deck_id""",
+        #             {'deck_id': self.id, 'deck': name, 'front': cd.front ,
+        #             'back': cd.back})
+        #         else:
+        #             pass
+
+        #     for cd in self.cards_model:
+        #         print ('### cd in window 138 #', cd)
+        #         self.c.execute("""INSERT INTO karteibox VALUES (
+        #             :deck_id, :deck, :front, :back)""",
+        #             {'deck_id': self.id, 'deck': name, 'front': cd.front ,
+        #             'back': cd.back})
+
+        # self.conn.commit()
+        # self.conn.close()   # Verbindung schließen
 
 
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
@@ -190,10 +233,10 @@ class Window(Adw.ApplicationWindow):
         self.decks_dir = data_dir / "flashcards" / "decks"
 
         # Tabellen erstellen
-        self.db_nutzen("""CREATE TABLE if not exists karteibox (
-                              deck_id TEXT, deck TEXT, front TEXT, back TEXT)""")
         self.db_nutzen("""CREATE TABLE if not exists cards (
-                  deck TEXT,
+                              deck_id TEXT, front TEXT, back TEXT)""")
+        self.db_nutzen("""CREATE TABLE if not exists decks (
+                  name TEXT,
                   icon TEXT)""")
 
         self.conn.commit()
@@ -316,9 +359,9 @@ class Window(Adw.ApplicationWindow):
         if len(card.front) < 1 or len(card.back) < 1:
             return
 
-        self.current_deck.cards_model.append(card)
+        self.current_deck.cards_model.append(card) # enthält alle Karten der Kartei
         self.current_deck.save()
-        self.decks_model.append(self.current_deck)
+        self.decks_model.append(self.current_deck) # enthält die Karteien
         self.decks_model.emit('items-changed', 0, 0, 0)
 
         dialog.close()
