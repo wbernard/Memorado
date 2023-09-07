@@ -79,6 +79,8 @@ class Deck(GObject.Object):
         ########## ab hier ist die Änderung ########
         print('## es geht los mit save 80 ##')
 
+        cards = []
+
         data_dir = (
         Path(os.getenv("XDG_DATA_HOME"))
         if "XDG_DATA_HOME" in os.environ
@@ -120,6 +122,11 @@ class Deck(GObject.Object):
             self.c.execute("""INSERT INTO cards VALUES (
                 :deck_id, :front, :back )""",
                 {'deck_id': self.id, 'front': crd.front, 'back': crd.back })
+            card = {
+                'front': crd.front,
+                'back': crd.back,
+            }
+            cards.append(card)
 
         self.conn.commit()
         self.conn.close()   # Verbindung schließen
@@ -207,8 +214,8 @@ class Window(Adw.ApplicationWindow):
         self.decks_name_model = Gio.ListStore.new(Deck)  # nur die Namen der Karteien
         self.current_deck = None
 
-        self._load_decks()
         self.tabel_erstel()
+        self._load_decks()
 
         self.welcome_page = Welcome()
         self.list_view = ListView()
@@ -486,7 +493,6 @@ class Window(Adw.ApplicationWindow):
 
         self.deck_view.emoji_chooser.connect('emoji-picked', self.__on_emoji_picked)
 
-
     def _load_decks(self):
 
         data_dir = (
@@ -496,51 +502,94 @@ class Window(Adw.ApplicationWindow):
 
         self.decks_dir = data_dir / "flashcards" / "decks"
 
-        self.decks = []
+        #self.decks = []
+
+        ## alle Tabellen aus der Datenban auslesen
+        self.db_nutzen("SELECT * FROM sqlite_schema WHERE type='table';")
+        all_tables = self.c.fetchall()
+        print ('## all tables#', all_tables)
+
+        ## eine Liste der decks erstellen
+        self.db_nutzen("SELECT * FROM " + 'decks' + ";")
+        self.decks = self.c.fetchall()  # enthält id, Namen und icon der decks
+        print ('## decks #', self.decks)
+
+        ## eine Liste mit den Deck-Namen erstellen
         self.deck_names = []
+        for zeile in self.decks:
+            self.deck_names.append((zeile)[1])
+        print ('## deck_names #', self.deck_names)
 
-        if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
-            self.db_nutzen("SELECT rowid, deck, front, back FROM karteibox")
-            liste = self.c.fetchall()
-            print ('############# in load decks ############')
-            for zeile in liste:
-                print ('### in load_decks zeilen in karteibox ###', zeile)
-                if list(zeile) in self.decks:
-                    pass
-                else:
-                    self.decks.append(list(zeile))
+        for d in self.deck_names:
+            deck_name = Deck(d)
+            self.decks_name_model.append(deck_name)
 
-                if zeile[1] in self.deck_names:
-                    pass
-                else:
-                    self.deck_names.append((zeile)[1])
-            print ('## decks in load_decks 440 ##', self.deck_names)
+        ## eine Liste der cards erstellen
+        self.db_nutzen("SELECT * FROM " + 'cards' + ";")
+        self.all_cards = self.c.fetchall()  # enthält id, front und back aller karten
+        print ('## cards #', self.all_cards)
 
-            for d in self.deck_names:
-                print ('## d in load_decks 460 ##', d)
-                deck_name = Deck(d)
+        ## für jedes deck eine Kartenliste erstellen
+        for d in self.decks:
+            deck = Deck(d[1])
+            deck.id = d[0]
+            deck.icon = d[2]
+            print ('## name, id ##', deck, deck.id)
+            for crd in self.all_cards:
+                if crd[0] == deck.id:
+                    card = Card()
+                    card.front = crd[1]
+                    card.back = crd[2]
+                    print ('### card ###', card, card.front)
+                    deck.cards_model.append(card)
+                    print ('## deck.cards_model ##', deck.cards_model)
+
+            self.decks_model.append(deck)
+
+        self.conn.close()   # Verbindung schließen
+
+        # if os.path.isfile(self.decks_dir / 'karteibox.db'):  # wenn es eine Datenbank für die Karteibox gibt wird sie aufgerufen
+        #     self.db_nutzen("SELECT rowid, deck, front, back FROM karteibox")
+        #     liste = self.c.fetchall()
+        #     print ('############# in load decks ############')
+        #     for zeile in liste:
+        #         print ('### in load_decks zeilen in karteibox ###', zeile)
+        #         if list(zeile) in self.decks:
+        #             pass
+        #         else:
+        #             self.decks.append(list(zeile))
+
+        #         if zeile[1] in self.deck_names:
+        #             pass
+        #         else:
+        #             self.deck_names.append((zeile)[1])
+        #     print ('## decks in load_decks 440 ##', self.deck_names)
+
+        #     for d in self.deck_names:
+        #         print ('## d in load_decks 460 ##', d)
+        #         deck_name = Deck(d)
                 #deck.id = d['id']
                 #deck.icon = d['icon']
-                self.decks_name_model.append(deck_name)
+        #         self.decks_name_model.append(deck_name)
 
-            for d in self.decks:
-                deck = Deck(d)
-                print ('## deck.cards_model in load_decks 467 ##', deck.cards_model)
-                for cd in deck.cards_model:
-                    print ('## cd in deck.cards_model ##', cd )
-                    card = Card()
-                    card.front = cd['front']
-                    card.back = cd['back']
-                    print ('## card in load_decks 471 ##', card, card.back)
-                    crd = {
-                        'front': cd.front,
-                        'back': cd.back,
-                    }
-                    print ('## card in window 453 ##', crd)
-                    cards.append(crd)
-                    deck.cards_model.append(card)
+        #     for d in self.decks:
+        #         deck = Deck(d)
+        #         print ('## deck.cards_model in load_decks 467 ##', deck.cards_model)
+        #         for cd in deck.cards_model:
+        #             print ('## cd in deck.cards_model ##', cd )
+        #             card = Card()
+        #             card.front = cd['front']
+        #             card.back = cd['back']
+        #             print ('## card in load_decks 471 ##', card, card.back)
+        #             crd = {
+        #                 'front': cd.front,
+        #                 'back': cd.back,
+        #             }
+        #             print ('## card in window 453 ##', crd)
+        #             cards.append(crd)
+        #             deck.cards_model.append(card)
 
-                self.decks_model.append(deck)
+        #         self.decks_model.append(deck)
 
                 # for c in d['cards']:
                 #     card = Card()
@@ -551,11 +600,11 @@ class Window(Adw.ApplicationWindow):
 
                 # self.decks_model.append(deck)
 
-        else:
-            self.db_nutzen("""CREATE TABLE if not exists karteibox (
-            deck_id TEXT, deck TEXT, front TEXT, back TEXT)""")
+        # else:
+        #     self.db_nutzen("""CREATE TABLE if not exists karteibox (
+        #     deck_id TEXT, deck TEXT, front TEXT, back TEXT)""")
 
-        self.conn.close()   # Verbindung schließen
+        # self.conn.close()   # Verbindung schließen
 
     def _go_to_deck(self, is_new: bool):
         self.navigation_view.push_by_tag("deck_view")
