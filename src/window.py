@@ -93,11 +93,13 @@ class Deck(GObject.Object):
         self.c = self.conn.cursor() # eine cursor instanz erstellen
 
         ## Nachschauen ob deck.id in decks existiert
-        self.c.execute("""SELECT COUNT(*) FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
+        #self.c.execute("""SELECT COUNT(*) FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
+        self.c.execute("""SELECT * FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
         liste = self.c.fetchall()
-        deck_exist = len(liste) > 1    ## überprüfen!
+        print ('### len(liste) ###', len(liste))
+        deck_exist = len(liste) > 0    ## überprüfen!
 
-        ## wenn ja Namen  und icon überschreiben
+        ## wenn ja, Namen  und icon überschreiben
         ## wenn nein, neuen Eintrag in decks erstellen mit Namen und icon
         if deck_exist:
             self.c.execute("""UPDATE decks SET name = :name, icon = :icon
@@ -235,7 +237,7 @@ class Window(Adw.ApplicationWindow):
         # Tabellen erstellen
         self.db_nutzen("""CREATE TABLE if not exists cards (
                               deck_id TEXT, front TEXT, back TEXT)""")
-        self.db_nutzen("""CREATE TABLE if not exists decks (
+        self.db_nutzen("""CREATE TABLE if not exists decks (deck_id TEXT,
                   name TEXT,
                   icon TEXT)""")
 
@@ -353,8 +355,8 @@ class Window(Adw.ApplicationWindow):
 
 
     def __on_create_card_button_clicked(self, button, dialog, card):
-        print ('## card window 300', card)
-        print ('## card.front in window 301', card.front)
+        print ('## card in on create card window ', card)
+        print ('## card.front in on create card ', card.front)
 
         if len(card.front) < 1 or len(card.back) < 1:
             return
