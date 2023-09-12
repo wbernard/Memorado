@@ -13,9 +13,10 @@ from .welcome import Welcome
 from .list_view import ListView
 from .deck_view import DeckView
 from .card_view import CardView
-from .card_edit_view import CardEditView
+from .card_new_view import CardNewView
 from .deck_row import DeckRow
 from .card_row import CardRow
+from .card_edit import CardEdit
 
 import const
 
@@ -260,7 +261,11 @@ class Window(Adw.ApplicationWindow):
         card.front = ''
         card.back = ''
 
-        self._show_card_edit_dialog(card)
+        self._new_card_dialog(card)
+
+    def __on_save_card_button_clicked(self, button, dialog, card):
+        self.current_deck.save()
+        dialog.close()
 
 
     def __on_create_card_button_clicked(self, button, dialog, card):
@@ -461,6 +466,7 @@ class Window(Adw.ApplicationWindow):
 
 
     def _show_card_edit_dialog(self, card):
+        print ('## card ##', card)
         dialog = Adw.Window(transient_for=self,
                             modal=True)
         dialog.set_size_request(300, 300)
@@ -478,14 +484,41 @@ class Window(Adw.ApplicationWindow):
         top.set_title_widget(title)
         view.add_top_bar(top)
 
-        card_edit_view = CardEditView(self, card)  # in card_edit_view wird der Karteninhalt engelesen
-        view.set_content(card_edit_view)
+        card_edit = CardEdit(self, card)
+        view.set_content(card_edit)
 
-        card_edit_view.create_card_button.connect('clicked', self.__on_create_card_button_clicked, dialog, card)
+        card_edit.save_card_button.connect('clicked', self.__on_save_card_button_clicked, dialog, card)
 
         dialog.set_content(view)
 
         dialog.present()
 
+    def _new_card_dialog(self, card):
+
+        dialog = Adw.Window(transient_for=self,
+                            modal=True)
+        dialog.set_size_request(300, 300)
+        dialog.set_default_size(360, 480)
+
+        trigger = Gtk.ShortcutTrigger.parse_string("Escape");
+        close_action = Gtk.CallbackAction().new(lambda dialog, _: dialog.close())
+        shortcut = Gtk.Shortcut().new(trigger, close_action)
+        dialog.add_shortcut(shortcut)
+
+        view = Adw.ToolbarView()
+
+        top = Adw.HeaderBar()
+        title = Adw.WindowTitle()
+        top.set_title_widget(title)
+        view.add_top_bar(top)
+
+        card_new_view = CardNewView(self, card)  # in card_new_view wird der Karteninhalt engelesen
+        view.set_content(card_new_view)
+
+        card_new_view.create_card_button.connect('clicked', self.__on_create_card_button_clicked, dialog, card)
+
+        dialog.set_content(view)
+
+        dialog.present()
 
 

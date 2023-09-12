@@ -2,11 +2,13 @@ data/about_dialog.ui.in
 data/io.github.fkinoshita.FlashCards.desktop.in.in
 data/io.github.fkinoshita.FlashCards.metainfo.xml.in.in
 data/io.github.fkinoshita.FlashCards.gschema.xml.in
-data/ui/card_edit_view.blp
+data/ui/card_new_view.blp
 data/ui/card_row.blp
 data/ui/card_view.blp
 data/ui/deck_view.blp
 data/ui/list_view.blp
 data/ui/gtk/help-overlay.ui
 data/ui/welcome.blp
+data/ui/card_edit.blp
 src/window.py
+

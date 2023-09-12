@@ -43,9 +43,10 @@ flashcards_sources = [
   'list_view.py',
   'deck_view.py',
   'card_view.py',
-  'card_edit_view.py',
+  'card_new_view.py',
   'deck_row.py',
   'card_row.py',
+  'card_edit.py',
 ]
 
 install_data(flashcards_sources, install_dir: moduledir)
