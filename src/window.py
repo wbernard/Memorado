@@ -103,6 +103,28 @@ class Deck(GObject.Object):
         self.conn.commit()
         self.conn.close()   # Verbindung schließen
 
+    def delete_from_db(self):
+        data_dir = (
+        Path(os.getenv("XDG_DATA_HOME"))
+        if "XDG_DATA_HOME" in os.environ
+        else Path.home() / ".local" / "share"
+        )
+
+        self.decks_dir = data_dir / "flashcards" / "decks"
+
+        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        self.c = self.conn.cursor() # eine cursor instanz erstellen"
+        self.c.execute("""DELETE FROM cards
+                    WHERE deck_id = :deck_id""",
+                    {'deck_id': self.id})
+        self.c.execute("""DELETE FROM decks
+                    WHERE deck_id = :deck_id""",
+                    {'deck_id': self.id})
+        self.conn.commit()
+        self.conn.close()   # Verbindung schließen
+
+
+
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
 class Window(Adw.ApplicationWindow):
     __gtype_name__ = 'Window'
@@ -118,7 +140,7 @@ class Window(Adw.ApplicationWindow):
 
         self.decks_model = Gio.ListStore.new(Deck)  # da sind die Karteien samt Karten drin
         self.decks_name_model = Gio.ListStore.new(Deck)  # nur die Namen der Karteien
-        self.current_deck = None
+        self.es = None
 
         self.tabel_erstel()
         self._load_decks()
@@ -339,9 +361,8 @@ class Window(Adw.ApplicationWindow):
         for row in self.list_view.decks.get_selected_rows():
             found, position = self.decks_model.find(row.deck)
             if found:
+                self.decks_model[position].delete_from_db()
                 self.decks_model.remove(position)
-                if os.path.isfile(shared.decks_dir / f"{row.deck.id}.json"):
-                    row.deck.delete()
 
         self.list_view.set_selection_mode(False)
 
