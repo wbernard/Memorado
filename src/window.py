@@ -49,19 +49,18 @@ class Deck(GObject.Object):
         self.cards_model = Gio.ListStore.new(Card)
         self.current_index = 0
 
-
-    def save(self):
-        #####print('## es geht los mit save 53 ##')
-
-        cards = []
-
-        data_dir = (
+        self.data_dir = (
         Path(os.getenv("XDG_DATA_HOME"))
         if "XDG_DATA_HOME" in os.environ
         else Path.home() / ".local" / "share"
         )
 
-        self.decks_dir = data_dir / "flashcards" / "decks"
+        self.decks_dir = self.data_dir / "flashcards" / "decks"
+
+
+    def save(self):
+
+        cards = []
 
         self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
         self.c = self.conn.cursor() # eine cursor instanz erstellen
@@ -104,13 +103,6 @@ class Deck(GObject.Object):
         self.conn.close()   # Verbindung schließen
 
     def delete_from_db(self):
-        data_dir = (
-        Path(os.getenv("XDG_DATA_HOME"))
-        if "XDG_DATA_HOME" in os.environ
-        else Path.home() / ".local" / "share"
-        )
-
-        self.decks_dir = data_dir / "flashcards" / "decks"
 
         self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
         self.c = self.conn.cursor() # eine cursor instanz erstellen"
@@ -122,7 +114,6 @@ class Deck(GObject.Object):
                     {'deck_id': self.id})
         self.conn.commit()
         self.conn.close()   # Verbindung schließen
-
 
 
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
@@ -201,7 +192,6 @@ class Window(Adw.ApplicationWindow):
 
     def cards_list_create_row(self, card):
 
-        #####print('### card in window 203 #', card)
         if not self.deck_view.cards_list.has_css_class('boxed-list'):
             self.deck_view.cards_list.add_css_class('boxed-list')
 
@@ -294,7 +284,7 @@ class Window(Adw.ApplicationWindow):
 
         if len(card.front) < 1 or len(card.back) < 1:
             return
-        print ('==== current deck ===', self.current_deck.name)
+
         self.current_deck.cards_model.append(card) # enthält alle Karten der Kartei
         self.current_deck.save()
         #self.decks_model.append(self.current_deck) # enthält die Karteien
@@ -487,7 +477,7 @@ class Window(Adw.ApplicationWindow):
 
 
     def _show_card_edit_dialog(self, card):
-        print ('## card ##', card)
+        #### print ('## card ##', card)
         dialog = Adw.Window(transient_for=self,
                             modal=True)
         dialog.set_size_request(300, 300)

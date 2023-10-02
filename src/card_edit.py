@@ -18,8 +18,6 @@ class CardEdit(Gtk.Box):
         self.window = window
         self.card = card
 
-        print ('### card in card_edit ###', card)
-
         if len(card.front) < 1:
             self.front_placeholder.set_visible(True)
 
@@ -38,11 +36,7 @@ class CardEdit(Gtk.Box):
         text = buffer.get_text(start, end, False)
         self.card.front = text    # Frontseite der Karte
 
-        print ('## front text in card edit 42 ##', self.card.front)
-
         self.front_placeholder.set_visible(len(text) < 1)
-
-        # self.window.current_deck.save()
 
         self.window.deck_view.cards_list.bind_model(self.window.current_deck.cards_model, self.window.cards_list_create_row)
 
@@ -52,9 +46,6 @@ class CardEdit(Gtk.Box):
         text = buffer.get_text(start, end, False)
         self.card.back = text   # Rückseite der Karte
 
-        print ('## back text ##', self.card.back)
-
         self.back_placeholder.set_visible(len(text) < 1)
 
-        # self.window.current_deck.save()
 
