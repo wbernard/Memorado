@@ -22,14 +22,14 @@ template $Welcome : Adw.NavigationPage {
 
     content: Adw.StatusPage status_page {
       title: _("Kartarujo");
-      description: _("Bonvolu krei la unuan kartaron");
+      description: _("Add some decks and start memorizing");
       hexpand: true;
       vexpand: true;
 
       styles ["icon-dropshadow"]
 
       Gtk.Button start_button {
-        label: _("Krei Kartaron");
+        label: _("Add Deck");
         halign: center;
 
         styles ["suggested-action", "pill"]
@@ -47,8 +47,8 @@ menu primary_menu {
     }
 
     item {
-      label: _("_Pri Kartarujo");
-      action: "app.about";
+      label: _("_About Kartarujo");
+      action: "app. ";
     }
 
   }
