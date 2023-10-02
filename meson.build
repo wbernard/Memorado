@@ -17,6 +17,8 @@ issue_url = 'https://github.com/fkinoshita/FlashCards/issues/new'
 copyright = '© 2023 Felipe Kinoshita.'
 contributors = '\n'.join([
   'Felipe Kinoshita https://fkinoshita.gitlab.io',
+  'Walter Bernard https://walter.bernard.im',
+  'Valentin Bernard',
 ])
 designers = '\n'.join([
   'Tobias Bernard https://tobiasbernard.com',
