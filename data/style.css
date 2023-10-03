@@ -29,6 +29,10 @@
   font-size: 30pt;
 }
 
+.card-text-small {
+  font-weight: 700;
+  font-size: 20pt;
+}
 .emoji-icon {
   background-color: @card_shade_color;
   border-radius: 9999px;
