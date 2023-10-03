@@ -233,8 +233,25 @@ class Window(Adw.ApplicationWindow):
             self._go_to_deck(False)
             return
 
-        self.card_view.front_label.set_label(self.current_deck.cards_model[self.current_deck.current_index].front)
-        self.card_view.back_label.set_label(self.current_deck.cards_model[self.current_deck.current_index].back)
+        front_string = self.current_deck.cards_model[self.current_deck.current_index].front
+        back_string = self.current_deck.cards_model[self.current_deck.current_index].back
+
+        self.card_view.front_label.set_label(front_string)
+        self.card_view.back_label.set_label(back_string)
+
+        if len(front_string) > 30:
+            self.card_view.front_label.remove_css_class("card-text")
+            self.card_view.front_label.add_css_class("card-text-small")
+        else:
+            self.card_view.front_label.remove_css_class("card-text-small")
+            self.card_view.front_label.add_css_class("card-text")
+
+        if len(back_string) > 30:
+            self.card_view.back_label.remove_css_class("card-text")
+            self.card_view.back_label.add_css_class("card-text-small")
+        else:
+            self.card_view.back_label.remove_css_class("card-text-small")
+            self.card_view.back_label.add_css_class("card-text")
 
         self.navigation_view.push_by_tag("card_view")
         self.navigation_view.replace_with_tags(["list_view", "card_view"])
@@ -315,8 +332,27 @@ class Window(Adw.ApplicationWindow):
                 self.navigation_view.pop()
                 return
 
-            self.card_view.front_label.set_label(self.current_deck.cards_model[self.current_deck.current_index].front)
-            self.card_view.back_label.set_label(self.current_deck.cards_model[self.current_deck.current_index].back)
+            front_string = self.current_deck.cards_model[self.current_deck.current_index].front
+            back_string = self.current_deck.cards_model[self.current_deck.current_index].back
+
+            self.card_view.front_label.set_label(front_string)
+            self.card_view.back_label.set_label(back_string)
+
+            if len(front_string) > 30:
+                self.card_view.front_label.add_css_class("card-text-small")
+                self.card_view.front_label.remove_css_class("card-text")
+            else:
+                self.card_view.front_label.remove_css_class("card-text-small")
+                self.card_view.front_label.add_css_class("card-text")
+
+            if len(back_string) > 30:
+                self.card_view.back_label.add_css_class("card-text-small")
+                self.card_view.back_label.remove_css_class("card-text")
+            else:
+                self.card_view.back_label.remove_css_class("card-text-small")
+                self.card_view.back_label.add_css_class("card-text")
+
+
         else:
             for child in self.card_view.card_box.observe_children():
                 child.set_visible(True)
