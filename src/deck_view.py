@@ -9,7 +9,6 @@ class DeckView(Adw.NavigationPage):
     delete_button = Gtk.Template.Child()
     cancel_button = Gtk.Template.Child()
     selection_mode_button = Gtk.Template.Child()
-    menu_button = Gtk.Template.Child()
 
     deck_icon = Gtk.Template.Child()
     edit_icon_button = Gtk.Template.Child()
@@ -38,7 +37,6 @@ class DeckView(Adw.NavigationPage):
         self.delete_button.set_visible(active)
         self.new_card_button.set_visible(not active)
         self.selection_mode_button.set_visible(not active)
-        self.menu_button.set_visible(not active)
 
         for row in self.cards_list.observe_children():
             if row.get_name() == 'GtkBox':

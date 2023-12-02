@@ -11,13 +11,6 @@ template $CardView : Adw.NavigationPage {
         title: "";
       };
 
-      [end]
-      Gtk.MenuButton {
-        menu-model: primary_menu;
-        tooltip-text: _("Main Menu");
-        icon-name: "open-menu-symbolic";
-        primary: true;
-      }
     }
 
     content: Adw.Bin {
@@ -104,20 +97,4 @@ template $CardView : Adw.NavigationPage {
       };
     };
   };
-}
-
-menu primary_menu {
-  section {
-
-    item {
-      label: _("_Keyboard Shortcuts");
-      action: "win.show-help-overlay";
-    }
-
-    item {
-      label: _("_About Kartarujo");
-      action: "app.about";
-    }
-
-  }
 }
