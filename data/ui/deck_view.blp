@@ -27,14 +27,6 @@ template $DeckView : Adw.NavigationPage {
       }
 
       [end]
-      Gtk.MenuButton menu_button {
-        menu-model: primary_menu;
-        tooltip-text: _("Main Menu");
-        icon-name: "open-menu-symbolic";
-        primary: true;
-      }
-
-      [end]
       Gtk.Button selection_mode_button {
         visible: false;
         tooltip-text: _("Selection Mode");
@@ -148,20 +140,4 @@ template $DeckView : Adw.NavigationPage {
       };
     };
   };
-}
-
-menu primary_menu {
-  section {
-
-    item {
-      label: _("_Keyboard Shortcuts");
-      action: "win.show-help-overlay";
-    }
-
-    item {
-      label: _("_About Kartarujo");
-      action: "app.about";
-    }
-
-  }
 }
