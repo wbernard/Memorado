@@ -568,4 +568,36 @@ class Window(Adw.ApplicationWindow):
 
         dialog.present()
 
+    def on_export_clicked(self):
+        deckspath = self.decks_dir/"karteibox.db"
+        print('**exportieren', deckspath)
+        dialog = Gtk.FileChooserDialog(
+            title="Please choose a folder",
+            action=Gtk.FileChooserAction.SELECT_FOLDER,
+        )
+        dialog.add_buttons(
+            'Cancel',
+            Gtk.ResponseType.CANCEL,
+            'Open',
+            Gtk.ResponseType.OK)
+
+        response = dialog.present()
+
+        dialog.connect('response', self.on_export_dialog_response)
+
+    def on_export_dialog_response(self, dialog, response):
+        #print ('pronto', dialog.response(1))
+        if response == Gtk.ResponseType.OK:
+            vaari = dialog.get_name()  # filechooserdialog
+            print ('methoden',dir(vaari))
+            print("Select clicked", vaari)
+            print("Folder selected: " + dialog.get_name())
+        elif response == Gtk.ResponseType.CANCEL:
+            print("Cancel clicked")
+
+        dialog.close()
+
+
+
+
 

@@ -15,7 +15,7 @@ class Application(Adw.Application):
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('close', lambda *_: self.props.active_window.close(), ['<primary>w'])
         self.create_action('import', lambda *_: print("import!"), ['<primary>i'])
-        self.create_action('export', lambda *_: print("export!"), ['<primary>e'])
+        self.create_action('export', self.on_export_clicked, ['<primary>e'])
         self.create_action('about', self.on_about_action)
 
 
@@ -55,4 +55,9 @@ class Application(Adw.Application):
         self.add_action(action)
         if shortcuts:
             self.set_accels_for_action(f"app.{name}", shortcuts)
+
+    def on_export_clicked(self, widget, blb):
+        self.props.active_window.on_export_clicked()
+
+
 
