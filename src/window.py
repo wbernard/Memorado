@@ -6,7 +6,7 @@ import uuid
 import sqlite3
 
 
-from gi.repository import Adw, Gtk, Gio, GObject
+from gi.repository import Adw, Gtk, Gio, GObject, GLib
 from pathlib import Path
 
 from .welcome import Welcome
@@ -151,10 +151,7 @@ class Window(Adw.ApplicationWindow):
         self.navigation_view.add(self.deck_view)     # Ansicht der Kartei mit Liste der Karten
         self.navigation_view.add(self.card_view)     # Ansicht einer Karte
 
-        self.export_dialog = Gtk.FileChooserNative.new(title="Choose a file",
-                                parent=self, action=Gtk.FileChooserAction.SELECT_FOLDER)
-
-        self.export_dialog.connect("response", self.on_export_dialog_response)
+        self.export_dialog = Gtk.FileDialog(title="Export as file", initial_name="database.db")
 
     def tabel_erstel(self):
         # Pfad zur Datenbank
@@ -574,19 +571,27 @@ class Window(Adw.ApplicationWindow):
         dialog.present()
 
     def on_export_clicked(self):
-        deckspath = self.decks_dir/"karteibox.db"
-        print('**exportieren', deckspath)
-        self.export_dialog.show()
+        self.export_dialog.save(parent = self, callback = self.on_export_dialog_response, cancellable = None)
 
     def on_export_dialog_response(self, dialog, response):
         print ('response', response)
-        if response == Gtk.ResponseType.ACCEPT:
-            file = dialog.get_file()
-            filename = file.get_path()
-            print(filename)
-            print("Folder selected: " + filename)
-        elif response == Gtk.ResponseType.CANCEL:
-            print("Cancel clicked")
+        file = dialog.save_finish(response)
+        deckspath = self.decks_dir/"karteibox.db"
+        sourcefile = Gio.File.new_for_path(str(deckspath))
+        sourcefile.copy_async(
+            file,
+            Gio.FileCopyFlags.OVERWRITE,
+            GLib.PRIORITY_DEFAULT,
+            None,
+            None,
+            None,
+            self.on_replace_contents,
+            None
+            )
+
+    def on_replace_contents(self, file, result, unused):
+        file.copy_finish(result)
+        print(f"File {file.get_basename()} saved")
 
 
 
