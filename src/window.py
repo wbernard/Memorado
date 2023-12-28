@@ -151,7 +151,8 @@ class Window(Adw.ApplicationWindow):
         self.navigation_view.add(self.deck_view)     # Ansicht der Kartei mit Liste der Karten
         self.navigation_view.add(self.card_view)     # Ansicht einer Karte
 
-        self.export_dialog = Gtk.FileDialog(title="Export as file", initial_name="database.db")
+        self.export_dialog = Gtk.FileDialog(title="Export as File", initial_name="database.db")
+        self.import_dialog = Gtk.FileDialog(title="Import Database")
 
     def tabel_erstel(self):
         # Pfad zur Datenbank
@@ -574,7 +575,6 @@ class Window(Adw.ApplicationWindow):
         self.export_dialog.save(parent = self, callback = self.on_export_dialog_response, cancellable = None)
 
     def on_export_dialog_response(self, dialog, response):
-        print ('response', response)
         file = dialog.save_finish(response)
         deckspath = self.decks_dir/"karteibox.db"
         sourcefile = Gio.File.new_for_path(str(deckspath))
@@ -593,8 +593,14 @@ class Window(Adw.ApplicationWindow):
         file.copy_finish(result)
         print(f"File {file.get_basename()} saved")
 
+    def on_import_clicked(self):
+        self.import_dialog.open(parent = self, callback = self.on_import_dialog_response, cancellable = None)
 
-
+    def on_import_dialog_response(self, dialog, response):
+        print ('response', response)
+        file = dialog.save_finish(response)
+        print ('file', file)
+        # todo import logic
 
 
 

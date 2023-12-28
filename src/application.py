@@ -14,7 +14,7 @@ class Application(Adw.Application):
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('close', lambda *_: self.props.active_window.close(), ['<primary>w'])
-        self.create_action('import', lambda *_: print("import!"), ['<primary>i'])
+        self.create_action('import', self.on_import_clicked, ['<primary>i'])
         self.create_action('export', self.on_export_clicked, ['<primary>e'])
         self.create_action('about', self.on_about_action)
 
@@ -59,5 +59,7 @@ class Application(Adw.Application):
     def on_export_clicked(self, widget, blb):
         self.props.active_window.on_export_clicked()
 
+    def on_import_clicked(self, widget, blb):
+        self.props.active_window.on_import_clicked()
 
 
