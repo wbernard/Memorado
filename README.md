@@ -14,6 +14,19 @@
 
 Flash Cards is a simple flash cards app.
 
+## Database layout
+
+- cards
+    - deck_id   (TEXT)
+    - front     (TEXT)
+    - back      (TEXT)
+- decks
+    - deck_id   (TEXT)
+    - name      (TEXT)
+    - icon      (TEXT)
+
+deck_id: uuid created on initialisation
+
 ## CI Build (Not recommended)
 
 If you want to quickly test FlashCards you can grab the latest CI build [here](https://nightly.link/fkinoshita/FlashCards/workflows/flatpak/main).

@@ -62,35 +62,35 @@ class Deck(GObject.Object):
 
         cards = []
 
-        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
-        self.c = self.conn.cursor() # eine cursor instanz erstellen
+        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        c = conn.cursor() # eine cursor instanz erstellen
 
         ## Nachschauen ob deck.id in decks existiert
-        #self.c.execute("""SELECT COUNT(*) FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
-        self.c.execute("""SELECT * FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
-        liste = self.c.fetchall()
+        #c.execute("""SELECT COUNT(*) FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
+        c.execute("""SELECT * FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
+        liste = c.fetchall()
         #####print ('### len(liste) ###', len(liste))
         deck_exist = len(liste) > 0    ## überprüfen!
 
         ## wenn ja, Namen  und icon überschreiben
         ## wenn nein, neuen Eintrag in decks erstellen mit Namen und icon
         if deck_exist:
-            self.c.execute("""UPDATE decks SET name = :name, icon = :icon
+            c.execute("""UPDATE decks SET name = :name, icon = :icon
                     WHERE deck_id = :deck_id""",
                     {'deck_id': self.id, 'name': self.name, 'icon': self.icon })
         else:
-            self.c.execute("""INSERT INTO decks VALUES (
+            c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': self.id, 'name': self.name, 'icon': self.icon })
 
         ## in cards alle Einträge mit deck.id löschen
-        self.c.execute("""DELETE FROM cards
+        c.execute("""DELETE FROM cards
                     WHERE deck_id = :deck_id""",
                     {'deck_id': self.id})
 
         ## für jede karte in self.cards_model neuen eintrag in cards erstellen
         for crd in self.cards_model:
-            self.c.execute("""INSERT INTO cards VALUES (
+            c.execute("""INSERT INTO cards VALUES (
                 :deck_id, :front, :back )""",
                 {'deck_id': self.id, 'front': crd.front, 'back': crd.back })
             card = {
@@ -99,21 +99,21 @@ class Deck(GObject.Object):
             }
             cards.append(card)
 
-        self.conn.commit()
-        self.conn.close()   # Verbindung schließen
+        conn.commit()
+        conn.close()   # Verbindung schließen
 
     def delete_from_db(self):
 
-        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
-        self.c = self.conn.cursor() # eine cursor instanz erstellen"
-        self.c.execute("""DELETE FROM cards
+        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        c = conn.cursor() # eine cursor instanz erstellen"
+        c.execute("""DELETE FROM cards
                     WHERE deck_id = :deck_id""",
                     {'deck_id': self.id})
-        self.c.execute("""DELETE FROM decks
+        c.execute("""DELETE FROM decks
                     WHERE deck_id = :deck_id""",
                     {'deck_id': self.id})
-        self.conn.commit()
-        self.conn.close()   # Verbindung schließen
+        conn.commit()
+        conn.close()   # Verbindung schließen
 
 
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
@@ -170,13 +170,15 @@ class Window(Adw.ApplicationWindow):
                   name TEXT,
                   icon TEXT)""")
 
-        self.conn.commit()
-
     def db_nutzen(self, befehl):
 
-        self.conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
-        self.c = self.conn.cursor() # eine cursor instanz erstellen
-        self.c.execute(befehl) # befehl wird ausgeführt
+        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        c = conn.cursor() # eine cursor instanz erstellen
+        c.execute(befehl) # befehl wird ausgeführt
+        out = c.fetchall()
+        conn.commit()
+        conn.close()   # Verbindung schließen
+        return(out)
 
     def __decks_create_row(self, deck):
         if not self.list_view.decks.has_css_class('boxed-list'):
@@ -455,19 +457,17 @@ class Window(Adw.ApplicationWindow):
 
         #self.decks = []
 
-        ## alle Tabellen aus der Datenban auslesen
-        self.db_nutzen("SELECT * FROM sqlite_schema WHERE type='table';")
-        all_tables = self.c.fetchall()
+        ## alle Tabellen aus der Datenbank auslesen
+        # self.db_nutzen("SELECT * FROM sqlite_schema WHERE type='table';")
+        # all_tables = c.fetchall()
         #####print ('## all tables#', all_tables)
 
         ## eine Liste der decks erstellen
-        self.db_nutzen("SELECT * FROM " + 'decks' + ";")
-        self.decks = self.c.fetchall()  # enthält id, Namen und icon der decks
+        self.decks = self.db_nutzen("SELECT * FROM " + 'decks' + ";") # enthält id, name und icon aller decks
         #####print ('## decks #', self.decks)
 
         ## eine Liste der cards erstellen
-        self.db_nutzen("SELECT * FROM " + 'cards' + ";")
-        self.all_cards = self.c.fetchall()  # enthält id, front und back aller karten
+        self.all_cards = self.db_nutzen("SELECT * FROM " + 'cards' + ";") # enthält id, front und back aller karten
         #####print ('## cards #', self.all_cards)
 
         ## für jedes deck eine Kartenliste erstellen
@@ -486,8 +486,6 @@ class Window(Adw.ApplicationWindow):
                     #####print ('## deck.cards_model ##', deck.cards_model)
 
             self.decks_model.append(deck)
-
-        self.conn.close()   # Verbindung schließen
 
     def _go_to_deck(self, is_new: bool):
         self.navigation_view.push_by_tag("deck_view")
@@ -591,16 +589,50 @@ class Window(Adw.ApplicationWindow):
 
     def on_replace_contents(self, file, result, unused):
         file.copy_finish(result)
-        print(f"File {file.get_basename()} saved")
+        print(f"File {file.get_basename()} saved.")
 
     def on_import_clicked(self):
         self.import_dialog.open(parent = self, callback = self.on_import_dialog_response, cancellable = None)
 
     def on_import_dialog_response(self, dialog, response):
         print ('response', response)
-        file = dialog.save_finish(response)
-        print ('file', file)
-        # todo import logic
+        file = dialog.open_finish(response)
+        #print(f"File {info.get_name()} selected")
+        print(f"File {file.get_path()} selected")
+        # Lese gegebene datenbank mit der normalen databank lese logik
+
+
+        conn = sqlite3.connect(file.get_path())
+        c = conn.cursor() # eine cursor instanz erstellen
+
+        ## eine Liste der decks erstellen
+        befehl = "SELECT * FROM " + 'decks' + ";"
+        c.execute(befehl)
+        new_decks = c.fetchall()  # enthält id, Namen und icon der decks
+
+        befehl = "SELECT * FROM " + 'cards' + ";"
+        c.execute(befehl) # befehl wird ausgeführt
+        new_cards = c.fetchall()  # enthält id, Namen und icon der decks
+
+        print ('## new decks #', new_decks)
+
+        #Vereine die bestehende Datenbank mit der neuen
+        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        c = conn.cursor() # eine cursor instanz erstellen
+        for card in new_cards:
+            c.execute("""INSERT INTO cards VALUES (
+                :deck_id, :front, :back )""",
+                {'deck_id': card[0], 'front': card[1], 'back': card[2]})
+        for deck in new_decks:
+            c.execute("""INSERT INTO decks VALUES (
+                :deck_id, :name, :icon )""",
+                {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
+            # insert card in card original tablelle
+        conn.commit()
+        conn.close()   # Verbindung schließen
+
+        #TODO: Keine doppelten einträge
+        #TODO: Überprüfe datenbank struktur
 
 
 
