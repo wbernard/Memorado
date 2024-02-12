@@ -615,24 +615,50 @@ class Window(Adw.ApplicationWindow):
         new_cards = c.fetchall()  # enthält id, Namen und icon der decks
 
         print ('## new decks #', new_decks)
+        conn.close()   # Verbindung schließen
 
         #Vereine die bestehende Datenbank mit der neuen
         conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
         c = conn.cursor() # eine cursor instanz erstellen
-        for card in new_cards:
-            c.execute("""INSERT INTO cards VALUES (
-                :deck_id, :front, :back )""",
-                {'deck_id': card[0], 'front': card[1], 'back': card[2]})
+
+        ## eine Liste der existierenden decks erstellen
+        befehl = "SELECT * FROM " + 'decks' + ";"
+        c.execute(befehl)
+        ex_decks = c.fetchall()  # enthält id, Namen und icon der decks
+
+        befehl = "SELECT * FROM " + 'cards' + ";"
+        c.execute(befehl) # befehl wird ausgeführt
+        ex_cards = c.fetchall()  # enthält id, Namen und icon der decks
+
+        print ('## existing decks #', ex_decks)
+
+        # Nachschauen ob new_deck schon vorhanden ist und nur neue hizufügen
+        n = 0  # zählt die kontrollierten neuen decks
+        e = 0  # zählt die gefundenen existierenden decks
         for deck in new_decks:
-            c.execute("""INSERT INTO decks VALUES (
+            print ('new_deck', deck,' Nr.', n)
+            if deck in ex_decks:
+                print ('new_deck', deck,' ist schon da')
+                self.decks_model.remove(n-e)
+                e = e+1
+            else:
+                c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
-            # insert card in card original tablelle
+            n = n+1
+
+        for card in new_cards:
+            if card in ex_cards:
+                print ('new_card', card,' ist schon da')
+            else:
+                c.execute("""INSERT INTO cards VALUES (
+                :deck_id, :front, :back )""",
+                {'deck_id': card[0], 'front': card[1], 'back': card[2]})
+
         conn.commit()
         conn.close()   # Verbindung schließen
 
-        #TODO: Keine doppelten einträge
-        #TODO: Überprüfe datenbank struktur
+        self._load_decks()
 
-
-
+        ## TODO: wenn neue desk hinzugefügt wird muss db aktualisiert werden
+        ## sonst scheint sie zweimal auf
