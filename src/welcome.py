@@ -10,6 +10,7 @@ class Welcome(Adw.NavigationPage):
 
     status_page = Gtk.Template.Child()
     start_button = Gtk.Template.Child()
+    import_button = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
