@@ -470,6 +470,7 @@ class Window(Adw.ApplicationWindow):
         self.all_cards = self.db_nutzen("SELECT * FROM " + 'cards' + ";") # enthält id, front und back aller karten
         #####print ('## cards #', self.all_cards)
 
+        self.decks_model.remove_all()
         ## für jedes deck eine Kartenliste erstellen
         for d in self.decks:
             deck = Deck(d[1])
@@ -633,19 +634,14 @@ class Window(Adw.ApplicationWindow):
         print ('## existing decks #', ex_decks)
 
         # Nachschauen ob new_deck schon vorhanden ist und nur neue hizufügen
-        n = 0  # zählt die kontrollierten neuen decks
-        e = 0  # zählt die gefundenen existierenden decks
         for deck in new_decks:
-            print ('new_deck', deck,' Nr.', n)
+            print ('new_deck', deck)
             if deck in ex_decks:
                 print ('new_deck', deck,' ist schon da')
-                self.decks_model.remove(n-e)
-                e = e+1
             else:
                 c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
-            n = n+1
 
         for card in new_cards:
             if card in ex_cards:
@@ -659,6 +655,3 @@ class Window(Adw.ApplicationWindow):
         conn.close()   # Verbindung schließen
 
         self._load_decks()
-
-        ## TODO: wenn neue desk hinzugefügt wird muss db aktualisiert werden
-        ## sonst scheint sie zweimal auf
