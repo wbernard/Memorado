@@ -144,12 +144,15 @@ class Window(Adw.ApplicationWindow):
 
         self._setup_signals()
 
-        if self.decks_model.props.n_items < 1:   # wenn es keine Karteien gibt
-            self.navigation_view.add(self.welcome_page)   # Willkommensseite wird angezeigt
+        self.navigation_view.add(self.welcome_page)   # Willkommensseite wird angezeigt
 
         self.navigation_view.add(self.list_view)     # Liste der Karteien
         self.navigation_view.add(self.deck_view)     # Ansicht der Kartei mit Liste der Karten
         self.navigation_view.add(self.card_view)     # Ansicht einer Karte
+
+        if self.decks_model.props.n_items > 0:   # wenn es keine Karteien gibt
+            self.navigation_view.replace_with_tags(["list_view"])
+
 
         self.export_dialog = Gtk.FileDialog(title="Export as File", initial_name="database.db")
         self.import_dialog = Gtk.FileDialog(title="Import Database")
@@ -219,6 +222,10 @@ class Window(Adw.ApplicationWindow):
 
         return
 
+    def __on_import_button_clicked(self, button):
+        self.on_import_clicked()
+        print("import button clicked")
+        return
 
     def __on_new_deck_button_clicked(self, button):
         deck = Deck()
@@ -398,10 +405,7 @@ class Window(Adw.ApplicationWindow):
         self.list_view.set_selection_mode(False)
 
         if self.decks_model.props.n_items < 1:
-            deck = Deck()
-            self.current_deck = deck
-            self._go_to_deck(True)
-            self.decks_model.append(deck)
+            self.navigation_view.replace_with_tags(["welcome_page"])
 
 
     def __on_card_selection_mode_button_clicked(self, button):
@@ -432,6 +436,7 @@ class Window(Adw.ApplicationWindow):
         self.decks_model.connect('items-changed', lambda *_: self.list_view.decks.bind_model(self.decks_model, self.__decks_create_row))
 
         self.welcome_page.start_button.connect('clicked', self.__on_start_button_clicked)
+        self.welcome_page.import_button.connect('clicked', self.__on_import_button_clicked)
 
         self.list_view.new_deck_button.connect('clicked', self.__on_new_deck_button_clicked)
         self.list_view.selection_mode_button.connect('clicked', self.__on_deck_selection_mode_button_clicked)
@@ -470,6 +475,7 @@ class Window(Adw.ApplicationWindow):
         self.all_cards = self.db_nutzen("SELECT * FROM " + 'cards' + ";") # enthält id, front und back aller karten
         #####print ('## cards #', self.all_cards)
 
+        self.decks_model.remove_all()
         ## für jedes deck eine Kartenliste erstellen
         for d in self.decks:
             deck = Deck(d[1])
@@ -633,19 +639,14 @@ class Window(Adw.ApplicationWindow):
         print ('## existing decks #', ex_decks)
 
         # Nachschauen ob new_deck schon vorhanden ist und nur neue hizufügen
-        n = 0  # zählt die kontrollierten neuen decks
-        e = 0  # zählt die gefundenen existierenden decks
         for deck in new_decks:
-            print ('new_deck', deck,' Nr.', n)
+            print ('new_deck', deck)
             if deck in ex_decks:
                 print ('new_deck', deck,' ist schon da')
-                self.decks_model.remove(n-e)
-                e = e+1
             else:
                 c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
-            n = n+1
 
         for card in new_cards:
             if card in ex_cards:
@@ -659,6 +660,4 @@ class Window(Adw.ApplicationWindow):
         conn.close()   # Verbindung schließen
 
         self._load_decks()
-
-        ## TODO: wenn neue desk hinzugefügt wird muss db aktualisiert werden
-        ## sonst scheint sie zweimal auf
+        self.navigation_view.replace_with_tags(["list_view"])
