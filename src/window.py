@@ -40,7 +40,7 @@ class Deck(GObject.Object):
     cards_model = GObject.Property(type=Gio.ListStore)
     current_index = GObject.Property(type=int)
 
-    def __init__(self, name = _('New Deck'), **kargs):
+    def __init__(self, name = _('New Deck'), **kargs):  ## name wird in der Bearbeitungskare angezeigt und übernommen
         super().__init__(**kargs)
 
         self.id = str(uuid.uuid4().hex)
@@ -66,15 +66,15 @@ class Deck(GObject.Object):
         c = conn.cursor() # eine cursor instanz erstellen
 
         ## Nachschauen ob deck.id in decks existiert
-        #c.execute("""SELECT COUNT(*) FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
+
         c.execute("""SELECT * FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
-        liste = c.fetchall()
+        liste = c.fetchall()   ##Liste der bereits existierenden deck.id
         #####print ('### len(liste) ###', len(liste))
         deck_exist = len(liste) > 0    ## überprüfen!
 
         ## wenn ja, Namen  und icon überschreiben
         ## wenn nein, neuen Eintrag in decks erstellen mit Namen und icon
-        if deck_exist:
+        if deck_exist:  ## existierende decks werden upgedated
             c.execute("""UPDATE decks SET name = :name, icon = :icon
                     WHERE deck_id = :deck_id""",
                     {'deck_id': self.id, 'name': self.name, 'icon': self.icon })
@@ -230,7 +230,9 @@ class Window(Adw.ApplicationWindow):
     def __on_new_deck_button_clicked(self, button):
         deck = Deck()
         self.current_deck = deck
+        print ('neues deck')
         self._go_to_deck(True)
+        print ('## deck', deck)
         self.decks_model.append(deck)
 
 
@@ -497,7 +499,7 @@ class Window(Adw.ApplicationWindow):
         self.navigation_view.push_by_tag("deck_view")
         self.navigation_view.replace_with_tags(["list_view", "deck_view"])
 
-        if self.current_deck.cards_model.props.n_items < 1:
+        if self.current_deck.cards_model.props.n_items < 1:    ## wenn noch keine decks vorhanden sind
             self.deck_view.cards_list.remove_css_class('boxed-list')
 
         #####print("### in go_to_deck window 524 model ###",self.current_deck.cards_model)
@@ -505,18 +507,19 @@ class Window(Adw.ApplicationWindow):
         self.deck_view.cards_list.bind_model(self.current_deck.cards_model, self.cards_list_create_row)
 
         title = ''
-        if is_new:
+        if is_new:  ## wenn ein neues deck erstellt wird, wird der Name New Dek als Titel der Karte gesetzt
             title = _('New Deck')
         else:
             title = _('Edit Deck')
 
         self.deck_view.page_title.set_title(title);
-        self.deck_view.name_entry.set_text(self.current_deck.name)
+        self.deck_view.name_entry.set_text(self.current_deck.name)  ## bei neuem deck wird New Deck geschrieben
         self.deck_view.deck_icon.set_text(self.current_deck.icon)
         self.deck_view.name_entry.connect('changed', self.__on_deck_name_changed)
 
         if is_new:
             self.deck_view.name_entry.grab_focus()
+            print ('#### name')
 
 
     def _show_card_edit_dialog(self, card):
@@ -614,13 +617,13 @@ class Window(Adw.ApplicationWindow):
         ## eine Liste der decks erstellen
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
-        new_decks = c.fetchall()  # enthält id, Namen und icon der decks
+        imp_decks = c.fetchall()  # enthält id, Namen und icon der decks
 
         befehl = "SELECT * FROM " + 'cards' + ";"
         c.execute(befehl) # befehl wird ausgeführt
         new_cards = c.fetchall()  # enthält id, Namen und icon der decks
 
-        print ('## new decks #', new_decks)
+        print ('## new decks #', imp_decks)
         conn.close()   # Verbindung schließen
 
         #Vereine die bestehende Datenbank mit der neuen
@@ -638,11 +641,11 @@ class Window(Adw.ApplicationWindow):
 
         print ('## existing decks #', ex_decks)
 
-        # Nachschauen ob new_deck schon vorhanden ist und nur neue hizufügen
-        for deck in new_decks:
-            print ('new_deck', deck)
+        # Nachschauen ob imp_deck schon vorhanden ist und nur neue hizufügen
+        for deck in imp_decks:
+            print ('imp_deck', deck)
             if deck in ex_decks:
-                print ('new_deck', deck,' ist schon da')
+                print ('imp_deck', deck,' ist schon da')
             else:
                 c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
@@ -661,3 +664,5 @@ class Window(Adw.ApplicationWindow):
 
         self._load_decks()
         self.navigation_view.replace_with_tags(["list_view"])
+
+    ## PROBLEM: Man kann docks mit deselben Namen eingeben und New Dock wird akzeptiert
