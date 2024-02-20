@@ -400,15 +400,27 @@ class Window(Adw.ApplicationWindow):
 
     def __on_deck_delete_button_clicked(self, button):
         for row in self.list_view.decks.get_selected_rows():
-            found, position = self.decks_model.find(row.deck)
-            if found:
-                self.decks_model[position].delete_from_db()
-                self.decks_model.remove(position)
+            self.delete_deck(row.deck)
 
         self.list_view.set_selection_mode(False)
 
+
+    def delete_deck(self, deck):
+        found, position = self.decks_model.find(deck)
+        if found:
+            self.decks_model[position].delete_from_db()
+            self.decks_model.remove(position)
+
         if self.decks_model.props.n_items < 1:
             self.navigation_view.replace_with_tags(["welcome_page"])
+
+
+    def __on_deck_view_popped(self, navigation_view, view):
+        if isinstance(view, DeckView):
+            if (self.current_deck.name == "" and
+                self.current_deck.icon == "" and
+                self.current_deck.cards_model.props.n_items < 1):
+                self.delete_deck(self.current_deck)
 
 
     def __on_card_selection_mode_button_clicked(self, button):
@@ -448,6 +460,7 @@ class Window(Adw.ApplicationWindow):
         self.deck_view.new_card_button.connect('clicked', self.__on_new_card_button_clicked)
         self.deck_view.selection_mode_button.connect('clicked', self.__on_card_selection_mode_button_clicked)
         self.deck_view.delete_button.connect('clicked', self.__on_card_delete_button_clicked)
+        self.navigation_view.connect('popped', self.__on_deck_view_popped)
 
         self.card_view.show_answer_button.connect('clicked', self.__on_show_answer_button_clicked)
         self.card_view.edit_button.connect('clicked', self.__on_card_edit_button_changed)
