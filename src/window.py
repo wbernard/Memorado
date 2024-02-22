@@ -234,7 +234,10 @@ class Window(Adw.ApplicationWindow):
         print ('neues deck')
         self._go_to_deck(True)
         print ('## deck', deck)
-        self.decks_model.append(deck)
+        if self.current_deck.name == '':
+            return
+        else:
+            self.decks_model.append(deck)
 
 
     def __on_deck_activated(self, row, deck):
@@ -314,13 +317,14 @@ class Window(Adw.ApplicationWindow):
 
     def __on_create_card_button_clicked(self, button, dialog, card):
 
-        if len(card.front) < 1 or len(card.back) < 1:
+        if len(card.front) < 1 or len(card.back) < 1 or self.current_deck.name == '':
+            # wenn das Deck keinen Namen hat und auf den Karten nichts steht geht nix
             return
-
-        self.current_deck.cards_model.append(card) # enthält alle Karten der Kartei
-        self.current_deck.save()
-        #self.decks_model.append(self.current_deck) # enthält die Karteien
-        self.decks_model.emit('items-changed', 0, 0, 0)
+        else:
+            self.current_deck.cards_model.append(card) # enthält alle Karten der Kartei
+            self.current_deck.save()
+            self.decks_model.append(self.current_deck) # enthält die Karteien
+            self.decks_model.emit('items-changed', 0, 0, 0)
 
         dialog.close()
 
