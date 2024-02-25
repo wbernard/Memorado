@@ -419,6 +419,14 @@ class Window(Adw.ApplicationWindow):
                 self.delete_deck(self.current_deck)
 
 
+    def __on_window_closed(self, blub):
+        if hasattr(self, "current_deck"):
+            if (self.current_deck.name == "" and
+                self.current_deck.icon == "" and
+                self.current_deck.cards_model.props.n_items < 1):
+                self.delete_deck(self.current_deck)
+
+
     def __on_card_selection_mode_button_clicked(self, button):
         if self.deck_view.cards_list.get_selection_mode() == Gtk.SelectionMode.NONE:
             self.deck_view.set_selection_mode(True)
@@ -457,6 +465,8 @@ class Window(Adw.ApplicationWindow):
         self.deck_view.selection_mode_button.connect('clicked', self.__on_card_selection_mode_button_clicked)
         self.deck_view.delete_button.connect('clicked', self.__on_card_delete_button_clicked)
         self.navigation_view.connect('popped', self.__on_deck_view_popped)
+
+        self.connect('close-request', self.__on_window_closed)
 
         self.card_view.show_answer_button.connect('clicked', self.__on_show_answer_button_clicked)
         self.card_view.edit_button.connect('clicked', self.__on_card_edit_button_changed)
