@@ -16,9 +16,20 @@ template $CardRow : Adw.ActionRow {
         styles ["selection-mode"]
       }
     }
+    Gtk.Box {
+      orientation: vertical;
 
-    Gtk.Label title_label {
-      ellipsize: end;
+      Gtk.Label title_label {
+        halign: start;
+        single-line-mode: true;
+        ellipsize: end;
+      }
+      Gtk.Label subtitle_label {
+        halign: start;
+        single-line-mode: true;
+        ellipsize: end;
+        styles ["caption", "dim-label"]
+      }
     }
   }
 

@@ -9,6 +9,7 @@ class CardRow(Adw.ActionRow):
     revealer = Gtk.Template.Child()
     checkbox = Gtk.Template.Child()
     title_label = Gtk.Template.Child()
+    subtitle_label = Gtk.Template.Child()
     edit_button = Gtk.Template.Child()
 
     def __init__(self, card, **kwargs):
@@ -17,4 +18,5 @@ class CardRow(Adw.ActionRow):
         self.card = card
 
         self.title_label.set_label(card.front)
+        self.subtitle_label.set_label(card.back)
 
