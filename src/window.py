@@ -315,7 +315,6 @@ class Window(Adw.ApplicationWindow):
     def __on_create_card_button_clicked(self, button, dialog, card):
         self.current_deck.cards_model.append(card) # enthält alle Karten der Kartei
         self.current_deck.save()
-        self.decks_model.append(self.current_deck) # enthält die Karteien
         self.decks_model.emit('items-changed', 0, 0, 0)
 
         dialog.close()
