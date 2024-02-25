@@ -48,4 +48,5 @@ class CardEdit(Gtk.Box):
 
         self.back_placeholder.set_visible(len(text) < 1)
 
+        self.window.deck_view.cards_list.bind_model(self.window.current_deck.cards_model, self.window.cards_list_create_row)
 
