@@ -233,7 +233,8 @@ class Window(Adw.ApplicationWindow):
         self.current_deck = deck
         print ('neues deck')
         self._go_to_deck(True)
-        print ('## deck', deck)
+        print ('## deck', self.decks_model[0].name)
+        print ('## neudeck', self.current_deck.name)
         self.decks_model.append(deck)
 
 
@@ -322,9 +323,16 @@ class Window(Adw.ApplicationWindow):
 
     def __on_deck_name_changed(self, entry):
         self.current_deck.name = entry.get_text()
-        self.current_deck.save()
-        self.decks_model.emit('items-changed', 0, 0, 0)
-
+        print ('neudeckname', self.current_deck.name)
+        listlen = len(self.decks_model)  ## Länge der desks-Liste
+        print ('Länge der desk-Liste', listlen)
+        for n in range(listlen):
+            if not self.current_deck.name == self.decks_model[n].name \
+                    and self.current_deck.name != '':
+                self.current_deck.save()
+                self.decks_model.emit('items-changed', 0, 0, 0)
+            else:
+                return
 
     def __on_show_answer_button_clicked(self, button):
         if button.get_label() == _('Next') or button.get_label() == _('Done'):
@@ -538,7 +546,7 @@ class Window(Adw.ApplicationWindow):
 
         if is_new:
             self.deck_view.name_entry.grab_focus()
-            print ('#### name')
+            print ('#### name', self.deck_view.name_entry.grab_focus)
 
 
     def _show_card_edit_dialog(self, card):
@@ -685,3 +693,4 @@ class Window(Adw.ApplicationWindow):
         self.navigation_view.replace_with_tags(["list_view"])
 
     ## PROBLEM: Man kann docks mit deselben Namen eingeben und New Dock wird akzeptiert
+
