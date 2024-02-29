@@ -20,6 +20,13 @@ template $ListView : Adw.NavigationPage {
       }
 
       [end]
+      Gtk.Button verein {
+        visible: true;
+        tooltip-text: _("Vereine Decks");
+        icon-name: "user-trash-symbolic";
+      }
+
+      [end]
       Gtk.Button delete_button {
         visible: false;
         tooltip-text: _("Delete Selection");
