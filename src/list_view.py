@@ -12,6 +12,8 @@ class ListView(Adw.NavigationPage):
     menu_button = Gtk.Template.Child()
     decks = Gtk.Template.Child()
     new_deck_button = Gtk.Template.Child()
+    unite_button = Gtk.Template.Child()
+
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -22,13 +24,14 @@ class ListView(Adw.NavigationPage):
 
     def __decks_selected_rows_changed(self, list):
         self.delete_button.set_sensitive(not len(list.get_selected_rows()) <= 0)
-
+        self.unite_button.set_sensitive(not len(list.get_selected_rows()) <= 1)
 
     def set_selection_mode(self, active):
         self.decks.set_selection_mode(Gtk.SelectionMode.MULTIPLE if active else Gtk.SelectionMode.NONE)
 
         self.cancel_button.set_visible(active)
         self.delete_button.set_visible(active)
+        self.unite_button.set_visible(active)
         self.new_deck_button.set_visible(not active)
         self.selection_mode_button.set_visible(not active)
         self.menu_button.set_visible(not active)

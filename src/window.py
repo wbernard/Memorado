@@ -399,6 +399,13 @@ class Window(Adw.ApplicationWindow):
 
         self.list_view.set_selection_mode(False)
 
+    def __on_deck_unite_button_clicked(self, button):
+        print ('unite geklickt')
+        for row in self.list_view.decks.get_selected_rows():
+            self.unite_deck(row.deck)
+
+        self.list_view.set_selection_mode(False)
+
 
     def delete_deck(self, deck):
         found, position = self.decks_model.find(deck)
@@ -408,6 +415,12 @@ class Window(Adw.ApplicationWindow):
 
         if self.decks_model.props.n_items < 1:
             self.navigation_view.replace_with_tags(["welcome_page"])
+
+
+    def unite_deck(self, deck):
+        found, position = self.decks_model.find(deck)
+        if found:
+            print (self.decks_model[position].name)
 
 
     def __on_deck_view_popped(self, navigation_view, view):
@@ -459,6 +472,7 @@ class Window(Adw.ApplicationWindow):
         self.list_view.new_deck_button.connect('clicked', self.__on_new_deck_button_clicked)
         self.list_view.selection_mode_button.connect('clicked', self.__on_deck_selection_mode_button_clicked)
         self.list_view.delete_button.connect('clicked', self.__on_deck_delete_button_clicked)
+        self.list_view.unite_button.connect('clicked', self.__on_deck_unite_button_clicked)
 
         self.deck_view.new_card_button.connect('clicked', self.__on_new_card_button_clicked)
         self.deck_view.selection_mode_button.connect('clicked', self.__on_card_selection_mode_button_clicked)
@@ -685,3 +699,4 @@ class Window(Adw.ApplicationWindow):
         self.navigation_view.replace_with_tags(["list_view"])
 
     ## PROBLEM: Man kann docks mit deselben Namen eingeben und New Dock wird akzeptiert
+
