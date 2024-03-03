@@ -119,7 +119,6 @@ class Deck(GObject.Object):
     def shuffle(self):
         self.card_order = list(range(len(self.cards_model)))
         random.shuffle(self.card_order);
-        print(self.card_order)
 
 
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
