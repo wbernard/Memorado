@@ -4,6 +4,7 @@ import os
 import json
 import uuid
 import sqlite3
+import random
 
 
 from gi.repository import Adw, Gtk, Gio, GObject, GLib
@@ -39,7 +40,7 @@ class Deck(GObject.Object):
     icon = GObject.Property(type=str)
     cards_model = GObject.Property(type=Gio.ListStore)
     current_index = GObject.Property(type=int)
-
+    card_order = []
 
     def __init__(self, name = _(''), **kargs):
         super().__init__(**kargs)
@@ -114,6 +115,10 @@ class Deck(GObject.Object):
                     {'deck_id': self.id})
         conn.commit()
         conn.close()   # Verbindung schließen
+
+    def shuffle(self):
+        self.card_order = list(range(len(self.cards_model)))
+        random.shuffle(self.card_order);
 
 
 @Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
@@ -235,6 +240,7 @@ class Window(Adw.ApplicationWindow):
 
     def __on_deck_activated(self, row, deck):
         self.current_deck = deck
+        self.current_deck.shuffle()
 
         if not self.list_view.decks.get_selection_mode() == Gtk.SelectionMode.NONE:
             row.checkbox.set_active(not row.checkbox.get_active())
@@ -244,8 +250,9 @@ class Window(Adw.ApplicationWindow):
             self._go_to_deck(False)
             return
 
-        front_string = self.current_deck.cards_model[self.current_deck.current_index].front
-        back_string = self.current_deck.cards_model[self.current_deck.current_index].back
+        card_index = self.current_deck.card_order[0]
+        front_string = self.current_deck.cards_model[card_index].front
+        back_string = self.current_deck.cards_model[card_index].back
 
         self.card_view.front_label.set_label(front_string)
         self.card_view.back_label.set_label(back_string)
@@ -326,20 +333,16 @@ class Window(Adw.ApplicationWindow):
         if button.get_label() == _('Next') or button.get_label() == _('Done'):
             self.current_deck.current_index += 1
 
-            button.set_label(_('Show Answer'))
-
-            for child in self.card_view.card_box.observe_children():
-                child.set_visible(False)
-
-            self.card_view.front_label.set_visible(True)
+            self.card_view.hide_answer()
 
             if self.current_deck.current_index + 1 > self.current_deck.cards_model.props.n_items:
                 self.current_deck.current_index = 0
                 self.navigation_view.pop()
                 return
 
-            front_string = self.current_deck.cards_model[self.current_deck.current_index].front
-            back_string = self.current_deck.cards_model[self.current_deck.current_index].back
+            card_index = self.current_deck.card_order[self.current_deck.current_index]
+            front_string = self.current_deck.cards_model[card_index].front
+            back_string = self.current_deck.cards_model[card_index].back
 
             self.card_view.front_label.set_label(front_string)
             self.card_view.back_label.set_label(back_string)
@@ -358,15 +361,9 @@ class Window(Adw.ApplicationWindow):
                 self.card_view.back_label.remove_css_class("card-text-small")
                 self.card_view.back_label.add_css_class("card-text")
 
-
         else:
-            for child in self.card_view.card_box.observe_children():
-                child.set_visible(True)
-
-            button.set_label(_('Next'))
-
-            if self.current_deck.current_index + 1 == self.current_deck.cards_model.props.n_items:
-                button.set_label(_('Done'))
+            isDone = self.current_deck.current_index + 1 == self.current_deck.cards_model.props.n_items
+            self.card_view.show_answer(isDone)
 
 
     def __on_card_edit_button_changed(self, button):
@@ -412,6 +409,8 @@ class Window(Adw.ApplicationWindow):
                 self.current_deck.icon == "" and
                 self.current_deck.cards_model.props.n_items < 1):
                 self.delete_deck(self.current_deck)
+        elif isinstance(view, CardView):
+            self.card_view.hide_answer()
 
 
     def __on_window_closed(self, blub):

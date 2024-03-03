@@ -15,3 +15,20 @@ class CardView(Adw.NavigationPage):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+
+    def hide_answer(self):
+        for child in self.card_box.observe_children():
+            child.set_visible(False)
+
+        self.front_label.set_visible(True)
+        self.show_answer_button.set_label(_('Show Answer'))
+
+
+    def show_answer(self, isDone):
+        for child in self.card_box.observe_children():
+            child.set_visible(True)
+        if isDone:
+            self.show_answer_button.set_label(_('Done'))
+        else:
+            self.show_answer_button.set_label(_('Next'))
+
