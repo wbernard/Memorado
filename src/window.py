@@ -326,12 +326,7 @@ class Window(Adw.ApplicationWindow):
         if button.get_label() == _('Next') or button.get_label() == _('Done'):
             self.current_deck.current_index += 1
 
-            button.set_label(_('Show Answer'))
-
-            for child in self.card_view.card_box.observe_children():
-                child.set_visible(False)
-
-            self.card_view.front_label.set_visible(True)
+            self.card_view.hide_answer()
 
             if self.current_deck.current_index + 1 > self.current_deck.cards_model.props.n_items:
                 self.current_deck.current_index = 0
@@ -358,15 +353,9 @@ class Window(Adw.ApplicationWindow):
                 self.card_view.back_label.remove_css_class("card-text-small")
                 self.card_view.back_label.add_css_class("card-text")
 
-
         else:
-            for child in self.card_view.card_box.observe_children():
-                child.set_visible(True)
-
-            button.set_label(_('Next'))
-
-            if self.current_deck.current_index + 1 == self.current_deck.cards_model.props.n_items:
-                button.set_label(_('Done'))
+            isDone = self.current_deck.current_index + 1 == self.current_deck.cards_model.props.n_items
+            self.card_view.show_answer(isDone)
 
 
     def __on_card_edit_button_changed(self, button):
@@ -412,6 +401,8 @@ class Window(Adw.ApplicationWindow):
                 self.current_deck.icon == "" and
                 self.current_deck.cards_model.props.n_items < 1):
                 self.delete_deck(self.current_deck)
+        elif isinstance(view, CardView):
+            self.card_view.hide_answer()
 
 
     def __on_window_closed(self, blub):
