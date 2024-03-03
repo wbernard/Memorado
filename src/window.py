@@ -235,9 +235,10 @@ class Window(Adw.ApplicationWindow):
 
     def __on_deck_activated(self, row, deck):
         self.current_deck = deck
+        self.current_deck.current_index = 0
 
         if not self.list_view.decks.get_selection_mode() == Gtk.SelectionMode.NONE:
-            row.checkbox.set_active(not row.checkbox.get_active())
+            row.checkbox.set_actigoive(not row.checkbox.get_active())
             return
 
         if self.current_deck.cards_model.props.n_items == 0:
