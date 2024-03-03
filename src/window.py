@@ -70,7 +70,6 @@ class Deck(GObject.Object):
 
         c.execute("""SELECT * FROM decks WHERE deck_id = :deck_id""",{'deck_id': self.id})
         liste = c.fetchall()   ##Liste der bereits existierenden deck.id
-        #####print ('### len(liste) ###', len(liste))
         deck_exist = len(liste) > 0    ## überprüfen!
 
         ## wenn ja, Namen  und icon überschreiben
@@ -225,15 +224,12 @@ class Window(Adw.ApplicationWindow):
 
     def __on_import_button_clicked(self, button):
         self.on_import_clicked()
-        print("import button clicked")
         return
 
     def __on_new_deck_button_clicked(self, button):
         deck = Deck()
         self.current_deck = deck
-        print ('neues deck')
         self._go_to_deck(True)
-        print ('## deck', deck)
         self.decks_model.append(deck)
 
 
@@ -483,18 +479,11 @@ class Window(Adw.ApplicationWindow):
 
         #self.decks = []
 
-        ## alle Tabellen aus der Datenbank auslesen
-        # self.db_nutzen("SELECT * FROM sqlite_schema WHERE type='table';")
-        # all_tables = c.fetchall()
-        #####print ('## all tables#', all_tables)
-
         ## eine Liste der decks erstellen
         self.decks = self.db_nutzen("SELECT * FROM " + 'decks' + ";") # enthält id, name und icon aller decks
-        #####print ('## decks #', self.decks)
 
         ## eine Liste der cards erstellen
         self.all_cards = self.db_nutzen("SELECT * FROM " + 'cards' + ";") # enthält id, front und back aller karten
-        #####print ('## cards #', self.all_cards)
 
         self.decks_model.remove_all()
         ## für jedes deck eine Kartenliste erstellen
@@ -502,15 +491,12 @@ class Window(Adw.ApplicationWindow):
             deck = Deck(d[1])
             deck.id = d[0]
             deck.icon = d[2]
-            #####print ('## name, id ##', deck, deck.id)
             for crd in self.all_cards:
                 if crd[0] == deck.id:
                     card = Card()
                     card.front = crd[1]
                     card.back = crd[2]
-                    #####print ('### card ###', card, card.front)
                     deck.cards_model.append(card)
-                    #####print ('## deck.cards_model ##', deck.cards_model)
 
             self.decks_model.append(deck)
 
@@ -520,8 +506,6 @@ class Window(Adw.ApplicationWindow):
 
         if self.current_deck.cards_model.props.n_items < 1:    ## wenn noch keine decks vorhanden sind
             self.deck_view.cards_list.remove_css_class('boxed-list')
-
-        #####print("### in go_to_deck window 524 model ###",self.current_deck.cards_model)
 
         self.deck_view.cards_list.bind_model(self.current_deck.cards_model, self.cards_list_create_row)
 
@@ -538,11 +522,9 @@ class Window(Adw.ApplicationWindow):
 
         if is_new:
             self.deck_view.name_entry.grab_focus()
-            print ('#### name')
 
 
     def _show_card_edit_dialog(self, card):
-        #### print ('## card ##', card)
         dialog = Adw.Window(transient_for=self,
                             modal=True)
         dialog.set_size_request(300, 300)
@@ -617,63 +599,45 @@ class Window(Adw.ApplicationWindow):
 
     def on_replace_contents(self, file, result, unused):
         file.copy_finish(result)
-        print(f"File {file.get_basename()} saved.")
+
 
     def on_import_clicked(self):
         self.import_dialog.open(parent = self, callback = self.on_import_dialog_response, cancellable = None)
 
+
     def on_import_dialog_response(self, dialog, response):
-        print ('response', response)
         file = dialog.open_finish(response)
-        #print(f"File {info.get_name()} selected")
-        print(f"File {file.get_path()} selected")
+
         # Lese gegebene datenbank mit der normalen databank lese logik
-
-
         conn = sqlite3.connect(file.get_path())
-        c = conn.cursor() # eine cursor instanz erstellen
-
-        ## eine Liste der decks erstellen
+        c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
-        imp_decks = c.fetchall()  # enthält id, Namen und icon der decks
-
+        imp_decks = c.fetchall()
         befehl = "SELECT * FROM " + 'cards' + ";"
-        c.execute(befehl) # befehl wird ausgeführt
-        new_cards = c.fetchall()  # enthält id, Namen und icon der decks
+        c.execute(befehl)
+        new_cards = c.fetchall()
+        conn.close()
 
-        print ('## new decks #', imp_decks)
-        conn.close()   # Verbindung schließen
-
-        #Vereine die bestehende Datenbank mit der neuen
+        # Vereine die bestehende Datenbank mit der neuen
         conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
-        c = conn.cursor() # eine cursor instanz erstellen
-
-        ## eine Liste der existierenden decks erstellen
+        c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
-        ex_decks = c.fetchall()  # enthält id, Namen und icon der decks
-
+        ex_decks = c.fetchall()
         befehl = "SELECT * FROM " + 'cards' + ";"
         c.execute(befehl) # befehl wird ausgeführt
-        ex_cards = c.fetchall()  # enthält id, Namen und icon der decks
+        ex_cards = c.fetchall()
 
-        print ('## existing decks #', ex_decks)
-
-        # Nachschauen ob imp_deck schon vorhanden ist und nur neue hizufügen
+        # Nachschauen ob importiertes deck schon vorhanden ist und nur neue hinzufügen
         for deck in imp_decks:
-            print ('imp_deck', deck)
-            if deck in ex_decks:
-                print ('imp_deck', deck,' ist schon da')
-            else:
+            if not deck in ex_decks:
                 c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
 
         for card in new_cards:
-            if card in ex_cards:
-                print ('new_card', card,' ist schon da')
-            else:
+            if not card in ex_cards:
                 c.execute("""INSERT INTO cards VALUES (
                 :deck_id, :front, :back )""",
                 {'deck_id': card[0], 'front': card[1], 'back': card[2]})
@@ -683,5 +647,3 @@ class Window(Adw.ApplicationWindow):
 
         self._load_decks()
         self.navigation_view.replace_with_tags(["list_view"])
-
-    ## PROBLEM: Man kann docks mit deselben Namen eingeben und New Dock wird akzeptiert
