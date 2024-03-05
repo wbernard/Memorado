@@ -31,4 +31,16 @@
       </foaf:account>
     </foaf:Person>
   </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Walter Bernard</foaf:name>
+      <foaf:mbox rdf:resource="mailto:berwal50@gmail.com" />
+      <foaf:account>
+        <foaf:OnlineAccount>
+          <foaf:accountServiceHomepage rdf:resource="https://github.com"/>
+          <foaf:accountName>wbernard</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>"
+    </foaf:Person>
+  </maintainer>
 </Project>
