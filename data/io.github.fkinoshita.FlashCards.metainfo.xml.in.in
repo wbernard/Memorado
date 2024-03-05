@@ -12,8 +12,11 @@
   <translation type="gettext">@APPID@</translation>
 	<description>
 	  <p>
-	    Flash Cards is a simple flash cards app, it makes it easy to create decks
-	    for learning new languages, memorizing terms and definitions or anything you want to get better at.
+	    Learn using spaced repetition. Create cards with a question and answer, and practice with them.
+    </p>
+    <p>
+	    Great for learning new languages, memorizing terms and definitions, or anything else you want to get better at.
+	    Create or import decks, practice them, or export to share them with friends.
 	  </p>
 	</description>
   <requires>
@@ -29,22 +32,29 @@
   <url type="donation">https://ko-fi.com/fkinoshita</url>
   <screenshots>
     <screenshot type="default">
+      <caption>List of decks</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/preview.png
+        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/decks.png
       </image>
     </screenshot>
     <screenshot>
+      <caption>Edit cards in a deck</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/list.png
+        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/edit-deck.png
       </image>
     </screenshot>
     <screenshot>
+      <caption>Practice with cards</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/card.png
+        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/practice.png
       </image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1" />
+  <branding>
+    <color type="primary" scheme_preference="light">#fdbedb</color>
+    <color type="primary" scheme_preference="dark">#402ff4</color>
+  </branding>
   <kudos>
     <kudo>HiDpiIcon</kudo>
     <kudo>HighContrast</kudo>
