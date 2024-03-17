@@ -57,7 +57,7 @@ class Deck(GObject.Object):
         else Path.home() / ".local" / "share"
         )
 
-        self.decks_dir = self.data_dir / "memorado" / "decks"
+        self.decks_dir = self.data_dir
 
 
     def save(self):
@@ -169,7 +169,7 @@ class Window(Adw.ApplicationWindow):
         if "XDG_DATA_HOME" in os.environ
         else Path.home() / ".local" / "share")
 
-        self.decks_dir = data_dir / "memorado" / "decks"
+        self.decks_dir = data_dir
 
         # Tabellen erstellen
         self.db_nutzen("""CREATE TABLE if not exists cards (
@@ -474,7 +474,7 @@ class Window(Adw.ApplicationWindow):
         if "XDG_DATA_HOME" in os.environ
         else Path.home() / ".local" / "share")
 
-        self.decks_dir = data_dir / "memorado" / "decks"
+        self.decks_dir = data_dir
 
         #self.decks = []
 

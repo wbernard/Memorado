@@ -13,5 +13,5 @@ data_dir = (
     else Path.home() / ".local" / "share"
 )
 
-decks_dir = data_dir / "memorado" / "decks"
+decks_dir = data_dir
 
