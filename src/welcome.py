@@ -4,7 +4,7 @@ from gi.repository import Adw, Gtk
 
 import const
 
-@Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/welcome.ui')
+@Gtk.Template(resource_path='/im/bernard/Memorado/ui/welcome.ui')
 class Welcome(Adw.NavigationPage):
     __gtype_name__ = 'Welcome'
 

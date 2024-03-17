@@ -1,15 +1,15 @@
 [Desktop Entry]
-# Translators: Flash Cards is the app name, do not translate
-Name=Flash Cards
-Comment=A flash cards app for GNOME
+# Translators: Memorado is the app name, do not translate
+Name=Memorado
+Comment=Memorize anything
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=@ICON@
-Exec=flashcards
+Exec=memorado
 Terminal=false
 Type=Application
 Categories=Utility;GTK;GNOME;
 # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-Keywords=flashcards;flash;cards;learn;improve;
+Keywords=memorado;flash;cards;learn;improve;
 # Translators: Do NOT translate or transliterate this text (these are enum types)!
 X-Purism-FormFactor=Workstation;Mobile;
 # Translators: Do NOT translate

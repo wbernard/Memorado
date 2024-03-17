@@ -1,4 +1,4 @@
-moduledir = join_paths(DATA_DIR, 'flashcards')
+moduledir = join_paths(DATA_DIR, 'memorado')
 
 const = configuration_data()
 const.set('PYTHON', python.find_installation('python3').full_path())
@@ -25,15 +25,15 @@ conf.set('PYTHON', python.find_installation('python3').full_path())
 conf.set('DATA_DIR', DATA_DIR)
 
 configure_file(
-  input: 'flashcards.in',
-  output: 'flashcards',
+  input: 'memorado.in',
+  output: 'memorado',
   configuration: conf,
   install: true,
   install_dir: get_option('bindir'),
   install_mode: 'r-xr--r--'
 )
 
-flashcards_sources = [
+memorado_sources = [
   '__init__.py',
   'main.py',
   'shared.py',
@@ -49,4 +49,4 @@ flashcards_sources = [
   'card_edit.py',
 ]
 
-install_data(flashcards_sources, install_dir: moduledir)
+install_data(memorado_sources, install_dir: moduledir)

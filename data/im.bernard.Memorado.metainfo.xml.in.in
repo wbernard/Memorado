@@ -33,19 +33,19 @@
     <screenshot type="default">
       <caption>List of decks</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/decks.png
+        https://raw.githubusercontent.com/wbernard/Memorado/main/data/screenshots/decks.png
       </image>
     </screenshot>
     <screenshot>
       <caption>Edit cards in a deck</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/edit-deck.png
+        https://raw.githubusercontent.com/wbernard/Memorado/main/data/screenshots/edit-deck.png
       </image>
     </screenshot>
     <screenshot>
       <caption>Practice with cards</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/practice.png
+        https://raw.githubusercontent.com/wbernard/Memorado/main/data/screenshots/practice.png
       </image>
     </screenshot>
   </screenshots>

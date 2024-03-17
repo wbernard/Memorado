@@ -1,7 +1,7 @@
 <h1 align="center">
-  <img src="data/icons/hicolor/scalable/apps/io.github.fkinoshita.FlashCards.svg" alt="Flash Cards Icon" width="192" height="192"/>
+  <img src="data/icons/hicolor/scalable/apps/im.bernard.Memorado.svg" alt="Memorado app icon" width="192" height="192"/>
   <br>
-  Flash Cards
+  Memorado
 </h1>
 
 <p align="center"><strong>Memorize anything</strong></p>
@@ -12,7 +12,7 @@
   <img src="/data/screenshots/card.png" alt="Card Page"/>
 </p>
 
-Flash Cards is a simple flash cards app.
+Learn using spaced repetition. Create cards with a question and answer, and practice with them.
 
 ## Database layout
 
@@ -27,13 +27,8 @@ Flash Cards is a simple flash cards app.
 
 deck_id: uuid created on initialisation
 
-## CI Build (Not recommended)
-
-If you want to quickly test FlashCards you can grab the latest CI build [here](https://nightly.link/fkinoshita/FlashCards/workflows/flatpak/main).
-Then you need to unzip the archive's content and install the application with the command `flatpak install flashcards.flatpak`.
-
 ## Code of conduct
 
-Flash Cards follows the GNOME project [Code of Conduct](./code-of-conduct.md). All
+Memorado follows the GNOME project [Code of Conduct](./code-of-conduct.md). All
 communications in project spaces, such as the issue tracker are expected to follow it.
 

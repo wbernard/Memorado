@@ -2,7 +2,7 @@
 
 from gi.repository import Adw, Gtk
 
-@Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/card_view.ui')
+@Gtk.Template(resource_path='/im/bernard/Memorado/ui/card_view.ui')
 class CardView(Adw.NavigationPage):
     __gtype_name__ = 'CardView'
 

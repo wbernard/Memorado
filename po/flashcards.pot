@@ -66,15 +66,15 @@ msgid "translator-credits"
 msgstr ""
 
 #. Translators: Application name. Do NOT translate or localize.
-#: data/io.github.fkinoshita.FlashCards.desktop.in.in:4
-msgid "FlashCards"
+#: data/im.bernard.Memorado.desktop.in.in:4
+msgid "Memorado"
 msgstr ""
 
-#: data/io.github.fkinoshita.FlashCards.desktop.in.in:5
+#: data/im.bernard.Memorado.desktop.in.in:5
 msgid "A flash cards app for GNOME"
 msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/io.github.fkinoshita.FlashCards.desktop.in.in:13
-msgid "flashcards;flash;cards;learn;improve;"
+#: data/im.bernard.Memorado.desktop.in.in:13
+msgid "memorado;flash;cards;learn;improve;"
 msgstr ""

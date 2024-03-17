@@ -2,7 +2,7 @@
 
 from gi.repository import Adw, Gtk
 
-@Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/deck_view.ui')
+@Gtk.Template(resource_path='/im/bernard/Memorado/ui/deck_view.ui')
 class DeckView(Adw.NavigationPage):
     __gtype_name__ = 'DeckView'
 

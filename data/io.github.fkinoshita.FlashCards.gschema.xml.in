@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="flashcards">
-	<schema id="io.github.fkinoshita.FlashCards" path="/io/github/fkinoshita/FlashCards/">
-	</schema>
-</schemalist>

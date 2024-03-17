@@ -57,7 +57,7 @@ class Deck(GObject.Object):
         else Path.home() / ".local" / "share"
         )
 
-        self.decks_dir = self.data_dir / "flashcards" / "decks"
+        self.decks_dir = self.data_dir / "memorado" / "decks"
 
 
     def save(self):
@@ -121,7 +121,7 @@ class Deck(GObject.Object):
         random.shuffle(self.card_order);
 
 
-@Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/window.ui')
+@Gtk.Template(resource_path='/im/bernard/Memorado/ui/window.ui')
 class Window(Adw.ApplicationWindow):
     __gtype_name__ = 'Window'
 
@@ -169,7 +169,7 @@ class Window(Adw.ApplicationWindow):
         if "XDG_DATA_HOME" in os.environ
         else Path.home() / ".local" / "share")
 
-        self.decks_dir = data_dir / "flashcards" / "decks"
+        self.decks_dir = data_dir / "memorado" / "decks"
 
         # Tabellen erstellen
         self.db_nutzen("""CREATE TABLE if not exists cards (
@@ -474,7 +474,7 @@ class Window(Adw.ApplicationWindow):
         if "XDG_DATA_HOME" in os.environ
         else Path.home() / ".local" / "share")
 
-        self.decks_dir = data_dir / "flashcards" / "decks"
+        self.decks_dir = data_dir / "memorado" / "decks"
 
         #self.decks = []
 
