@@ -596,6 +596,13 @@ class Window(Adw.ApplicationWindow):
             None
             )
 
+        toast = Adw.Toast(
+            title = "Export successful",
+            timeout = 3,
+        )
+
+        self.toast_overlay.add_toast(toast);
+
     def on_replace_contents(self, file, result, unused):
         file.copy_finish(result)
 
@@ -629,14 +636,18 @@ class Window(Adw.ApplicationWindow):
         ex_cards = c.fetchall()
 
         # Nachschauen ob importiertes deck schon vorhanden ist und nur neue hinzufügen
+        nonduplicate_decks = 0
         for deck in imp_decks:
             if not deck in ex_decks:
+                nonduplicate_decks += 1
                 c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
 
+        nonduplicate_cards = 0
         for card in new_cards:
             if not card in ex_cards:
+                nonduplicate_cards += 1
                 c.execute("""INSERT INTO cards VALUES (
                 :deck_id, :front, :back )""",
                 {'deck_id': card[0], 'front': card[1], 'back': card[2]})
@@ -646,3 +657,28 @@ class Window(Adw.ApplicationWindow):
 
         self._load_decks()
         self.navigation_view.replace_with_tags(["list_view"])
+
+        cards_string = "cards"
+        if nonduplicate_cards == 1:
+            cards_string = "card"
+
+        decks_string = "decks"
+        if nonduplicate_decks == 1:
+            decks_string = "deck"
+
+        toast_title = "Imported " + str(nonduplicate_cards) + " " + cards_string + " from " + str(nonduplicate_decks) + " " + decks_string
+
+        if nonduplicate_cards == 0:
+            if nonduplicate_decks == 1:
+                toast_title = "Imported one empty deck"
+            elif nonduplicate_decks == 0:
+                toast_title = "Imported nothing, all cards are duplicates"
+            else:
+                toast_title = "Imported " + str(nonduplicate_decks) + " empty decks"
+
+        toast = Adw.Toast(
+            title = toast_title,
+            timeout = 3,
+        )
+
+        self.toast_overlay.add_toast(toast);
