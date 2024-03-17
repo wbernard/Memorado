@@ -64,7 +64,7 @@ class Deck(GObject.Object):
 
         cards = []
 
-        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor() # eine cursor instanz erstellen
 
         ## Nachschauen ob deck.id in decks existiert
@@ -105,7 +105,7 @@ class Deck(GObject.Object):
 
     def delete_from_db(self):
 
-        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor() # eine cursor instanz erstellen"
         c.execute("""DELETE FROM cards
                     WHERE deck_id = :deck_id""",
@@ -180,7 +180,7 @@ class Window(Adw.ApplicationWindow):
 
     def db_nutzen(self, befehl):
 
-        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor() # eine cursor instanz erstellen
         c.execute(befehl) # befehl wird ausgeführt
         out = c.fetchall()
@@ -583,7 +583,7 @@ class Window(Adw.ApplicationWindow):
 
     def on_export_dialog_response(self, dialog, response):
         file = dialog.save_finish(response)
-        deckspath = self.decks_dir/"karteibox.db"
+        deckspath = self.decks_dir / "database.db"
         sourcefile = Gio.File.new_for_path(str(deckspath))
         sourcefile.copy_async(
             file,
@@ -626,7 +626,7 @@ class Window(Adw.ApplicationWindow):
         conn.close()
 
         # Vereine die bestehende Datenbank mit der neuen
-        conn = sqlite3.connect(self.decks_dir / 'karteibox.db')
+        conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
