@@ -4,10 +4,10 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">FlashCards</name>
+  <name xml:lang="en">Memorado</name>
   <shortdesc xml:lang="en">Memorize anything</shortdesc>
-  <homepage rdf:resource="https://github.com/fkinoshita/FlashCards" />
-  <bug-database rdf:resource="https://github.com/fkinoshita/FlashCards/issues"/>
+  <homepage rdf:resource="https://github.com/wbernard/Memorado" />
+  <bug-database rdf:resource="https://github.com/wbernard/Memorado/issues"/>
 
   <programming-language>Python</programming-language>
   <platform>GTK 4</platform>

@@ -1,1 +1,1 @@
-i18n.gettext('flashcards', preset: 'glib')
+i18n.gettext('memorado', preset: 'glib')

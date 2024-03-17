@@ -2,7 +2,7 @@
 
 from gi.repository import Gtk
 
-@Gtk.Template(resource_path='/io/github/fkinoshita/FlashCards/ui/card_edit.ui')
+@Gtk.Template(resource_path='/im/bernard/Memorado/ui/card_edit.ui')
 class CardEdit(Gtk.Box):
     __gtype_name__ = 'CardEdit'
 

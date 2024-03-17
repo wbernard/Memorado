@@ -1,5 +1,5 @@
 project(
-  'flashcards',
+  'memorado',
   version: '0.1.0',
   meson_version: '>= 0.62.0',
   license: 'GPL-3.0-or-later',
@@ -10,10 +10,10 @@ python = import('python')
 gnome = import('gnome')
 
 
-project_id = 'io.github.fkinoshita.FlashCards'
-project_name = 'FlashCards'
-package_url = 'https://github.com/fkinoshita/FlashCards'
-issue_url = 'https://github.com/fkinoshita/FlashCards/issues/new'
+project_id = 'im.bernard.Memorado'
+project_name = 'Memorado'
+package_url = 'https://github.com/wbernard/Memorado'
+issue_url = 'https://github.com/wbernard/Memorado/issues/new'
 copyright = '© 2023 Felipe Kinoshita.'
 contributors = '\n'.join([
   'Felipe Kinoshita https://fkinoshita.gitlab.io',

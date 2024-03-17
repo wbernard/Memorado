@@ -10,7 +10,7 @@ class Application(Adw.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='io.github.fkinoshita.FlashCards',
+        super().__init__(application_id='im.bernard.Memorado',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('close', lambda *_: self.props.active_window.close(), ['<primary>w'])
@@ -34,7 +34,7 @@ class Application(Adw.Application):
     def on_about_action(self, widget, _):
         """Callback for the app.about action."""
         builder = Gtk.Builder.new_from_resource(
-            "/io/github/fkinoshita/FlashCards/about_dialog.ui"
+            "/im/bernard/Memorado/about_dialog.ui"
         )
         about_dialog = builder.get_object("about_dialog")
         about_dialog.set_transient_for(self.props.active_window)

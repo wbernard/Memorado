@@ -5,7 +5,7 @@ from pathlib import Path
 
 from gi.repository import Gio
 
-schema = Gio.Settings.new("io.github.fkinoshita.FlashCards")
+schema = Gio.Settings.new("im.bernard.Memorado")
 
 data_dir = (
     Path(os.getenv("XDG_DATA_HOME"))
@@ -13,5 +13,5 @@ data_dir = (
     else Path.home() / ".local" / "share"
 )
 
-decks_dir = data_dir / "flashcards" / "decks"
+decks_dir = data_dir / "memorado" / "decks"
 

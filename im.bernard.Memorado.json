@@ -1,9 +1,9 @@
 {
-    "id" : "io.github.fkinoshita.FlashCards",
+    "id" : "im.bernard.Memorado",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
-    "command" : "flashcards",
+    "command" : "memorado",
     "finish-args" : [
         "--share=ipc",
         "--socket=fallback-x11",
@@ -34,14 +34,14 @@
         	]
         },
         {
-            "name" : "flashcards",
+            "name" : "memorado",
             "builddir" : true,
             "buildsystem" : "meson",
             "config-opts" : ["-Dprofile=development"],
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/fkinoshita/FlashCards.git",
+                    "url" : "https://github.com/wbernard/Memorado.git",
                     "branch" : "main"
                 }
             ]

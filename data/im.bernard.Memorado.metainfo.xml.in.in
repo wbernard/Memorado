@@ -4,7 +4,7 @@
 	<id>@APPID@</id>
   <launchable type="desktop-id">@APPID@.desktop</launchable>
   <name translatable="no">@NAME@</name>
-  <developer_name translatable="no">Felipe Kinoshita</developer_name>
+  <developer_name translatable="no">@NAME@ Developers</developer_name>
   <update_contact>fkinoshita@gnome.org</update_contact>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
@@ -29,24 +29,23 @@
   </recommends>
   <url type="homepage">@PACKAGE_URL@</url>
   <url type="bugtracker">@ISSUE_URL@</url>
-  <url type="donation">https://ko-fi.com/fkinoshita</url>
   <screenshots>
     <screenshot type="default">
       <caption>List of decks</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/decks.png
+        https://raw.githubusercontent.com/wbernard/Memorado/main/data/screenshots/decks.png
       </image>
     </screenshot>
     <screenshot>
       <caption>Edit cards in a deck</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/edit-deck.png
+        https://raw.githubusercontent.com/wbernard/Memorado/main/data/screenshots/edit-deck.png
       </image>
     </screenshot>
     <screenshot>
       <caption>Practice with cards</caption>
       <image>
-        https://raw.githubusercontent.com/fkinoshita/FlashCards/main/data/screenshots/practice.png
+        https://raw.githubusercontent.com/wbernard/Memorado/main/data/screenshots/practice.png
       </image>
     </screenshot>
   </screenshots>

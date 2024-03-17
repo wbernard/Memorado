@@ -28,7 +28,7 @@ jobs:
         platforms: arm64
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
       with:
-        bundle: flashcards.flatpak
-        manifest-path: io.github.fkinoshita.FlashCards.json
+        bundle: memorado.flatpak
+        manifest-path: im.bernard.Memorado.json
         cache-key: flatpak-builder-${{ github.sha }}
         arch: ${{ matrix.arch }}
