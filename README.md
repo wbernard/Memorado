@@ -7,9 +7,9 @@
 <p align="center"><strong>Memorize anything</strong></p>
 
 <p align="center">
-  <img src="/data/screenshots/preview.png" alt="Preview"/>
-  <img src="/data/screenshots/list.png" alt="Decks List"/>
-  <img src="/data/screenshots/card.png" alt="Card Page"/>
+  <img src="/data/screenshots/decks.png" alt="List of decks"/>
+  <img src="/data/screenshots/edit-deck.png" alt="Edit cards in a deck"/>
+  <img src="/data/screenshots/practice.png" alt="Practice with cards"/>
 </p>
 
 Learn using spaced repetition. Create cards with a question and answer, and practice with them.
