@@ -34,11 +34,23 @@
   <maintainer>
     <foaf:Person>
       <foaf:name>Walter Bernard</foaf:name>
-      <foaf:mbox rdf:resource="mailto:berwal50@gmail.com" />
+      <foaf:mbox rdf:resource="mailto:apps@bernard.im" />
       <foaf:account>
         <foaf:OnlineAccount>
           <foaf:accountServiceHomepage rdf:resource="https://github.com"/>
           <foaf:accountName>wbernard</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>"
+    </foaf:Person>
+  </maintainer>
+    <maintainer>
+    <foaf:Person>
+      <foaf:name>Valentin Bernard</foaf:name>
+      <foaf:mbox rdf:resource="mailto:apps@bernard.im" />
+      <foaf:account>
+        <foaf:OnlineAccount>
+          <foaf:accountServiceHomepage rdf:resource="https://github.com"/>
+          <foaf:accountName>valeb</foaf:accountName>
         </foaf:OnlineAccount>
       </foaf:account>"
     </foaf:Person>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- Copyright 2023 Felipe Kinoshita -->
 <component type="desktop">
 	<id>@APPID@</id>
   <launchable type="desktop-id">@APPID@.desktop</launchable>
   <name translatable="no">@NAME@</name>
-  <developer_name translatable="no">@NAME@ Developers</developer_name>
-  <update_contact>fkinoshita@gnome.org</update_contact>
+  <developer_name translatable="no">The @NAME@ Developers</developer_name>
+  <update_contact>apps@bernard.im</update_contact>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
   <summary>Memorize anything</summary>
@@ -49,6 +48,13 @@
       </image>
     </screenshot>
   </screenshots>
+  <releases>
+    <release version="0.1" date="2024-03-18">
+      <description>
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
   <content_rating type="oars-1.1" />
   <branding>
     <color type="primary" scheme_preference="light">#fdbedb</color>

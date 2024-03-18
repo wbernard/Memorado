@@ -1,6 +1,6 @@
 project(
   'memorado',
-  version: '0.1.0',
+  version: '0.1',
   meson_version: '>= 0.62.0',
   license: 'GPL-3.0-or-later',
 )
@@ -14,11 +14,12 @@ project_id = 'im.bernard.Memorado'
 project_name = 'Memorado'
 package_url = 'https://github.com/wbernard/Memorado'
 issue_url = 'https://github.com/wbernard/Memorado/issues/new'
-copyright = '© 2023 Felipe Kinoshita.'
+copyright = '© 2023 Felipe Kinoshita \n© 2024 Memorado developers'
 contributors = '\n'.join([
   'Felipe Kinoshita https://fkinoshita.gitlab.io',
   'Walter Bernard https://walter.bernard.im',
   'Valentin Bernard',
+  'Tobias Bernard https://tobiasbernard.com',
 ])
 designers = '\n'.join([
   'Tobias Bernard https://tobiasbernard.com',
