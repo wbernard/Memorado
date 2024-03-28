@@ -55,4 +55,16 @@
       </foaf:account>"
     </foaf:Person>
   </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Tobias Bernard</foaf:name>
+      <foaf:mbox rdf:resource="mailto:apps@bernard.im" />
+      <foaf:account>
+        <foaf:OnlineAccount>
+          <foaf:accountServiceHomepage rdf:resource="https://github.com"/>
+          <foaf:accountName>bertob</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>"
+    </foaf:Person>
+  </maintainer>
 </Project>
