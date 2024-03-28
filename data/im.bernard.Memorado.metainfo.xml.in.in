@@ -26,8 +26,9 @@
     <control>pointing</control>
     <control>touch</control>
   </recommends>
-  <url type="homepage">@PACKAGE_URL@</url>
+  <url type="homepage">https://bernard.im/memorado</url>
   <url type="bugtracker">@ISSUE_URL@</url>
+  <url type="vcs-browser">@PACKAGE_URL@</url>
   <screenshots>
     <screenshot type="default">
       <caption>List of decks</caption>
