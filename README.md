@@ -27,6 +27,11 @@ Learn using spaced repetition. Create cards with a question and answer, and prac
 
 deck_id: uuid created on initialisation
 
+## Translations
+
+- Open Build Terminal
+- `ninja memorado-pot`
+
 ## Code of conduct
 
 Memorado follows the GNOME project [Code of Conduct](./code-of-conduct.md). All
