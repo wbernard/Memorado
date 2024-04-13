@@ -41,9 +41,8 @@
             "config-opts" : ["-Dprofile=development"],
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/wbernard/Memorado.git",
-                    "branch" : "main"
+                    "type" : "dir",
+                    "path" : "."
                 }
             ]
         }
