@@ -36,6 +36,7 @@
         {
             "name" : "memorado",
             "builddir" : true,
+            "run-tests" : true,
             "buildsystem" : "meson",
             "config-opts" : ["-Dprofile=development"],
             "sources" : [
