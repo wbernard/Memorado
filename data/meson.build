@@ -85,6 +85,7 @@ metainfo_conf.set('GETTEXT_PACKAGE', meson.project_name())
 metainfo_conf.set('NAME', project_name)
 metainfo_conf.set('PACKAGE_URL', package_url)
 metainfo_conf.set('ISSUE_URL', issue_url)
+metainfo_conf.set('TRANSLATE_URL', translate_url)
 metainfo = i18n.merge_file(
   input: configure_file(
     input: files('@0@.metainfo.xml.in.in'.format(project_id)),
