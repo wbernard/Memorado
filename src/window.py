@@ -42,7 +42,7 @@ class Deck(GObject.Object):
     current_index = GObject.Property(type=int)
     card_order = []
 
-    def __init__(self, name = _(''), **kargs):
+    def __init__(self, name = '', **kargs):
         super().__init__(**kargs)
 
         self.id = str(uuid.uuid4().hex)
