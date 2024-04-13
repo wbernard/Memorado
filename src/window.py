@@ -598,7 +598,7 @@ class Window(Adw.ApplicationWindow):
             )
 
         toast = Adw.Toast(
-            title = "Export successful",
+            title = _("Export successful"),
             timeout = 3,
         )
 
@@ -671,11 +671,11 @@ class Window(Adw.ApplicationWindow):
 
         if nonduplicate_cards == 0:
             if nonduplicate_decks == 1:
-                toast_title = "Imported one empty deck"
+                toast_title = _("Imported one empty deck")
             elif nonduplicate_decks == 0:
-                toast_title = "Imported nothing, all cards are duplicates"
+                toast_title = _("Imported nothing, all cards are duplicates")
             else:
-                toast_title = "Imported " + str(nonduplicate_decks) + " empty decks"
+                toast_title = _("Imported {0} empty decks").format(str(nonduplicate_decks))
 
         toast = Adw.Toast(
             title = toast_title,
