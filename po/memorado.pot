@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the memorado package.
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/window.py:45
+#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: memorado\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-28 19:32+0100\n"
+"POT-Creation-Date: 2024-04-13 16:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
-#: data/im.bernard.Memorado.metainfo.xml.in.in:10
+#: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
 msgstr ""
 
@@ -38,33 +38,29 @@ msgstr ""
 msgid "memorado;flash;cards;learn;improve;"
 msgstr ""
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:13
+#: data/im.bernard.Memorado.metainfo.xml.in.in:16
 msgid ""
 "Learn using spaced repetition. Create cards with a question and answer, and "
 "practice with them."
 msgstr ""
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:16
+#: data/im.bernard.Memorado.metainfo.xml.in.in:19
 msgid ""
 "Great for learning new languages, memorizing terms and definitions, or "
 "anything else you want to get better at. Create or import decks, practice "
 "them, or export to share them with friends."
 msgstr ""
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:34
+#: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
 msgstr ""
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:40
+#: data/im.bernard.Memorado.metainfo.xml.in.in:44
 msgid "Edit cards in a deck"
 msgstr ""
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:46
+#: data/im.bernard.Memorado.metainfo.xml.in.in:50
 msgid "Practice with cards"
-msgstr ""
-
-#: data/im.bernard.Memorado.metainfo.xml.in.in:55
-msgid "Initial release"
 msgstr ""
 
 #: data/ui/card_new_view.blp:13
@@ -99,7 +95,7 @@ msgstr ""
 msgid "Show Answer"
 msgstr ""
 
-#: data/ui/deck_view.blp:12 src/window.py:515
+#: data/ui/deck_view.blp:12 src/window.py:516
 msgid "Edit Deck"
 msgstr ""
 
@@ -206,7 +202,23 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#. # wenn ein neues deck erstellt wird, wird der Name New Dek als Titel der Karte gesetzt
-#: src/window.py:513
+#: src/window.py:514
 msgid "New Deck"
+msgstr ""
+
+#: src/window.py:601
+msgid "Export successful"
+msgstr ""
+
+#: src/window.py:674
+msgid "Imported one empty deck"
+msgstr ""
+
+#: src/window.py:676
+msgid "Imported nothing, all cards are duplicates"
+msgstr ""
+
+#: src/window.py:678
+#, python-brace-format
+msgid "Imported {0} empty decks"
 msgstr ""
