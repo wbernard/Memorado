@@ -1,0 +1,225 @@
+# Turkish translation for Memorado.
+# Copyright (C) 2024 Memorado's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Memorado package.
+#
+# Sabri Ünal <yakushabb@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-13 16:50+0300\n"
+"PO-Revision-Date: 2024-04-13 16:55+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"Language-Team: Turkish <takim@gnome.org.tr>\n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/im.bernard.Memorado.metainfo.xml.in.in:13
+msgid "Memorize anything"
+msgstr "Her şeyi ezberleyin"
+
+#. Add your name to the translator credits list
+#: data/about_dialog.ui.in:10
+msgid "translator-credits"
+msgstr "Sabri Ünal <yakushabb@gmail.com>"
+
+#. Translators: Memorado is the app name, do not translate
+#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+msgid "Memorado"
+msgstr "Memorado"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/im.bernard.Memorado.desktop.in.in:13
+msgid "memorado;flash;cards;learn;improve;"
+msgstr "memorado;flash;kart;öğren;dil;eğitim;"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:16
+msgid ""
+"Learn using spaced repetition. Create cards with a question and answer, and "
+"practice with them."
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:19
+msgid ""
+"Great for learning new languages, memorizing terms and definitions, or "
+"anything else you want to get better at. Create or import decks, practice "
+"them, or export to share them with friends."
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:38
+msgid "List of decks"
+msgstr "Deste listesi"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:44
+msgid "Edit cards in a deck"
+msgstr "Destedeki kartları düzenle"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:50
+msgid "Practice with cards"
+msgstr "Kartlarla pratik yap"
+
+#: data/ui/card_new_view.blp:13
+msgid "New Card"
+msgstr "Yeni Kart"
+
+#: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
+msgid "Front Side"
+msgstr "Ön Taraf"
+
+#: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
+msgid "Insert the front side here..."
+msgstr "Ön taraf buraya ekle"
+
+#: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
+msgid "Back Side"
+msgstr "Arka Taraf"
+
+#: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
+msgid "Insert the back side here..."
+msgstr "Arka tarafı buraya ekle"
+
+#: data/ui/card_new_view.blp:107
+msgid "Add"
+msgstr "Ekle"
+
+#: data/ui/card_row.blp:38 data/ui/card_view.blp:63
+msgid "Edit Card"
+msgstr "Kartı Düzenle"
+
+#: data/ui/card_view.blp:75
+msgid "Show Answer"
+msgstr "Cevabı Göster"
+
+#: data/ui/deck_view.blp:12 src/window.py:516
+msgid "Edit Deck"
+msgstr "Desteyi Düzenle"
+
+#: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
+msgid "Cancel Selection"
+msgstr "Seçimi İptal Et"
+
+#: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
+msgid "Cancel"
+msgstr "İptal"
+
+#: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
+msgid "Delete Selection"
+msgstr "Seçimi Sil"
+
+#: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
+msgid "Selection Mode"
+msgstr "Seçim Kipi"
+
+#: data/ui/deck_view.blp:85
+msgid "Edit Deck Avatar"
+msgstr "Deste Avatarını Düzenle"
+
+#: data/ui/deck_view.blp:95
+msgid "Deck Name"
+msgstr "Deste Adı"
+
+#: data/ui/deck_view.blp:109
+msgid "No Cards"
+msgstr "Kart Yok"
+
+#: data/ui/deck_view.blp:110
+msgid "This deck is empty"
+msgstr "Bu deste boş"
+
+#: data/ui/deck_view.blp:136
+msgid "Add Card"
+msgstr "Kart Ekle"
+
+#: data/ui/list_view.blp:12
+msgid "Decks"
+msgstr "Desteler"
+
+#: data/ui/list_view.blp:32 data/ui/welcome.blp:17
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: data/ui/list_view.blp:83 data/ui/welcome.blp:37
+msgid "Add Deck"
+msgstr "Deste Ekle"
+
+#: data/ui/list_view.blp:96
+msgid "_Import Decks"
+msgstr "Desteleri İçe _Aktar"
+
+#: data/ui/list_view.blp:101
+msgid "_Export Decks"
+msgstr "Desteleri _Dışa Aktar"
+
+#: data/ui/list_view.blp:110 data/ui/welcome.blp:57
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavye Kısayolları"
+
+#: data/ui/list_view.blp:115 data/ui/welcome.blp:62
+msgid "_About Memorado"
+msgstr "Memorado _Hakkında"
+
+#: data/ui/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Genel"
+
+#: data/ui/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Kısayolları Göster"
+
+#: data/ui/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çık"
+
+#: data/ui/welcome.blp:25
+msgid "Add some decks and start memorizing"
+msgstr "Birkaç deste ekleyip ezberlemeye başlayın"
+
+#: data/ui/welcome.blp:43
+msgid "Import…"
+msgstr "İçe Aktar…"
+
+#: data/ui/card_edit.blp:13
+msgid "Card"
+msgstr "Kart"
+
+#: data/ui/card_edit.blp:107
+msgid "Save"
+msgstr "Kaydet"
+
+#: src/window.py:333
+msgid "Next"
+msgstr "Sonraki"
+
+#: src/window.py:333
+msgid "Done"
+msgstr "Bitti"
+
+#: src/window.py:514
+msgid "New Deck"
+msgstr "Yeni Deste"
+
+#: src/window.py:601
+msgid "Export successful"
+msgstr "Dışa aktarıldı"
+
+#: src/window.py:674
+msgid "Imported one empty deck"
+msgstr "Bir boş deste içe aktarıldı"
+
+#: src/window.py:676
+msgid "Imported nothing, all cards are duplicates"
+msgstr "Hiçbir şey içe aktarılmadı, tüm kartlar zaten var"
+
+#: src/window.py:678
+#, python-brace-format
+msgid "Imported {0} empty decks"
+msgstr "{0} boş deste içe aktarıldı"
