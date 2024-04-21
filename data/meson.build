@@ -85,25 +85,27 @@ metainfo_conf.set('GETTEXT_PACKAGE', meson.project_name())
 metainfo_conf.set('NAME', project_name)
 metainfo_conf.set('PACKAGE_URL', package_url)
 metainfo_conf.set('ISSUE_URL', issue_url)
+metainfo_conf.set('TRANSLATE_URL', translate_url)
 metainfo = i18n.merge_file(
   input: configure_file(
     input: files('@0@.metainfo.xml.in.in'.format(project_id)),
     output: '@0@.metainfo.xml.in'.format(project_id),
     configuration: metainfo_conf
   ),
-  output: '@0@.metainfo.xml'.format(project_id),
+  output: '@0@.metainfo.xml'.format(application_id),
   install: true,
   install_dir: join_paths(join_paths('share'), 'metainfo'),
   po_dir: join_paths(meson.project_source_root(), 'po')
 )
 
 # Validating the metainfo file
-appstreamcli = find_program('appstream-util', required: false)
+appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
   test (
     'Validate metainfo file',
     appstreamcli,
-    args: ['validate-relax', '--nonet', join_paths(meson.current_build_dir (), application_id + '.metainfo.xml')]
+    args: ['validate', '--nonet', '--explain', metainfo],
+    workdir: meson.current_build_dir()
   )
 endif
 
