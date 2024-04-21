@@ -14,6 +14,7 @@ project_id = 'im.bernard.Memorado'
 project_name = 'Memorado'
 package_url = 'https://github.com/wbernard/Memorado'
 issue_url = 'https://github.com/wbernard/Memorado/issues/new'
+translate_url = 'https://github.com/wbernard/Memorado/tree/main/po'
 copyright = '© 2023 Felipe Kinoshita \n© 2024 Memorado developers'
 contributors = '\n'.join([
   'Felipe Kinoshita https://fkinoshita.gitlab.io',
