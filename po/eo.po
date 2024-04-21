@@ -80,19 +80,19 @@ msgstr "Nova karto"
 
 #: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
 msgid "Front Side"
-msgstr "Anatŭa faco"
+msgstr "Antaŭa faco"
 
 #: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
 msgid "Insert the front side here..."
-msgstr "Enmetu la autaŭan facon ĉi tie…"
+msgstr "Enmetu la antaŭan facon ĉi tie…"
 
 #: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
 msgid "Back Side"
-msgstr "Malautaŭa faco"
+msgstr "Malantaŭa faco"
 
 #: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
 msgid "Insert the back side here..."
-msgstr "Enmetu la malautaŭan facon ĉi tie…"
+msgstr "Enmetu la malantaŭan facon ĉi tie…"
 
 #: data/ui/card_new_view.blp:107
 msgid "Add"
@@ -144,7 +144,7 @@ msgstr "Tiu kartaro estas malplena"
 
 #: data/ui/deck_view.blp:136
 msgid "Add Card"
-msgstr "Aldoni karto"
+msgstr "Aldoni karton"
 
 #: data/ui/list_view.blp:12
 msgid "Decks"
@@ -191,7 +191,7 @@ msgstr "Ĉesi"
 
 #: data/ui/welcome.blp:25
 msgid "Add some decks and start memorizing"
-msgstr "A"
+msgstr "Aldonu kelkajn kartarojn kaj komencu memori"
 
 #: data/ui/welcome.blp:43
 msgid "Import…"
