@@ -1,29 +1,27 @@
-# SOME DESCRIPTIVE TITLE.
+# GERMAN TRANSLATION.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the memorado package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# FULL NAME <EMAIL@ADDRESS>, 2024.
+# This file is distributed under the same license as the PACKAGE package.
 # Walter <apps@bernard.im>, 2024.
 #
-#: src/window.py:45
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-28 19:32+0100\n"
-"PO-Revision-Date: 2024-03-28 22:09+0100\n"
+"POT-Creation-Date: 2024-04-13 16:50+0300\n"
+"PO-Revision-Date: 2024-04-21 16:50+0300\n"
 "Last-Translator: Walter <apps@bernard.im>\n"
-"Language-Team: Esperanto <apps@bernard.im>\n"
-"Language: eo\n"
+"Language-Team: German <apps@bernard.im>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 46.0\n"
 
 #: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
-#: data/im.bernard.Memorado.metainfo.xml.in.in:10
+#: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
-msgstr "Memoru ĉion"
+msgstr "Merke dir alles"
 
 #. Add your name to the translator credits list
 #: data/about_dialog.ui.in:10
@@ -38,184 +36,180 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/im.bernard.Memorado.desktop.in.in:13
 msgid "memorado;flash;cards;learn;improve;"
-msgstr "memorado;kartoj;kartaro;lerni;plibonigi;"
+msgstr "memorado;kartei;karteikarte;lernen;sich verbessern;"
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:13
+#: data/im.bernard.Memorado.metainfo.xml.in.in:16
 msgid ""
 "Learn using spaced repetition. Create cards with a question and answer, and "
 "practice with them."
 msgstr ""
-"Lernu per interspacigita ripetado. Kreu kartojn kun demando kaj respondo kaj "
-"ekzerciĝu per ĝi."
+"Lerne durch dauerndes Wiederholen. Erstelle Kateikarten mit Frage und Antwort, und "
+"übe damit."
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:16
+#: data/im.bernard.Memorado.metainfo.xml.in.in:19
 msgid ""
 "Great for learning new languages, memorizing terms and definitions, or "
 "anything else you want to get better at. Create or import decks, practice "
 "them, or export to share them with friends."
 msgstr ""
-"Bonega por lerni novajn lingvojn, parkergi terminojn kaj difinojn, aŭ ion "
-"alian, pri kio vi volas pliboniĝi. Kreu aŭ importu kartarojn, praktiku ilin, "
-"aŭ ekzerciĝu por kunhavigi ilin kun amikoj."
+"Sehr geeignet um neue Sprachen zu lernen, Begriffe und Definitionen auswendig zu lernen. "
+"oder um sonstige Kenntnisse zu verbessern. Erstelle oder importiere Karteien "
+"übe damit oder exportiere sie um sie mit Freunden zu teilen."
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:34
+#: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
-msgstr "Listo de kartaroj"
+msgstr "Lste der Karteien"
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:40
+#: data/im.bernard.Memorado.metainfo.xml.in.in:44
 msgid "Edit cards in a deck"
-msgstr "Redaktu kartojn en kartaro"
+msgstr "Bearbeite die Karten in einer Kartei"
 
-#: data/im.bernard.Memorado.metainfo.xml.in.in:46
+#: data/im.bernard.Memorado.metainfo.xml.in.in:50
 msgid "Practice with cards"
-msgstr "Ekzerciĝu kun kartojn"
-
-#: data/im.bernard.Memorado.metainfo.xml.in.in:55
-msgid "Initial release"
-msgstr "Komenca liberigo"
+msgstr "Übe mit Karteikarten"
 
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
-msgstr "Nova karto"
+msgstr "Neue Karteikarte"
 
 #: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
 msgid "Front Side"
-msgstr "Antaŭa faco"
+msgstr "Vorderseite"
 
 #: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
 msgid "Insert the front side here..."
-msgstr "Enmetu la antaŭan facon ĉi tie … "
+msgstr "Füge hier die Vorderseite ein ..."
 
 #: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
 msgid "Back Side"
-msgstr "Malantaŭa faco"
+msgstr "Rückseite"
 
 #: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
 msgid "Insert the back side here..."
-msgstr "Enmetu la malantaŭan facon ĉi tie…"
+msgstr "Füge hier die Rückseite ein"
 
 #: data/ui/card_new_view.blp:107
 msgid "Add"
-msgstr "Aldoni"
+msgstr "Hinzufügen"
 
 #: data/ui/card_row.blp:38 data/ui/card_view.blp:63
 msgid "Edit Card"
-msgstr "Redakti karton"
+msgstr "Bearbeite Karte"
 
 #: data/ui/card_view.blp:75
 msgid "Show Answer"
-msgstr "Montri respondon"
+msgstr "Zeige die Antwort"
 
-#: data/ui/deck_view.blp:12 src/window.py:515
+#: data/ui/deck_view.blp:12 src/window.py:516
 msgid "Edit Deck"
-msgstr "Redakti kartaron"
+msgstr "Barbeite Kartei"
 
 #: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
 msgid "Cancel Selection"
-msgstr "Nuligi elektaĵon"
+msgstr "Annulliere Auswahl"
 
 #: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
 msgid "Cancel"
-msgstr "Nuligi"
+msgstr "Lösche"
 
 #: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
 msgid "Delete Selection"
-msgstr "Forigi elektaĵon"
+msgstr "Lösche Auswahl"
 
 #: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
 msgid "Selection Mode"
-msgstr "Elektaĵa reĝimo"
+msgstr "Auswahlmodus"
 
 #: data/ui/deck_view.blp:85
 msgid "Edit Deck Avatar"
-msgstr "Redakti karatara avataron"
+msgstr "Bearbeite Kartei-Avatar"
 
 #: data/ui/deck_view.blp:95
 msgid "Deck Name"
-msgstr "Nomo de kartaro"
+msgstr "Kartei Name"
 
 #: data/ui/deck_view.blp:109
 msgid "No Cards"
-msgstr "Neniuj kartoj"
+msgstr "Keine Karteikarten"
 
 #: data/ui/deck_view.blp:110
 msgid "This deck is empty"
-msgstr "Tiu kartaro estas malplena"
+msgstr "Diese Kartei ist leer"
 
 #: data/ui/deck_view.blp:136
 msgid "Add Card"
-msgstr "Aldoni karton"
+msgstr "Füge Karten hinzu"
 
 #: data/ui/list_view.blp:12
 msgid "Decks"
-msgstr "Kartaroj"
+msgstr "Karteien"
 
 #: data/ui/list_view.blp:32 data/ui/welcome.blp:17
 msgid "Main Menu"
-msgstr "Ĉefa menuo"
+msgstr "Hauptmenü"
 
 #: data/ui/list_view.blp:83 data/ui/welcome.blp:37
 msgid "Add Deck"
-msgstr "Aldoni kartaron"
+msgstr "Füge Kartei hinzu"
 
 #: data/ui/list_view.blp:96
 msgid "Import Decks"
-msgstr "_Importi kartarojn"
+msgstr "Importiere Karteien"
 
 #: data/ui/list_view.blp:101
 msgid "Export Decks"
-msgstr "_Eksporti kartarojn"
+msgstr "Exportiere Karteien"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
 msgid "Keyboard Shortcuts"
-msgstr "_Fulmoklavoj"
+msgstr "Tastenkürzel"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
 msgid "About Memorado"
-msgstr "_Pri Memorado"
+msgstr "Über Memorado"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Generalaĵojn"
+msgstr "Allgemeines"
 
 #: data/ui/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Montri fulmoklavojn"
+msgstr "Zeige Tastenkürzel"
 
 #: data/ui/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Ĉesi"
+msgstr "Abbrechen"
 
 #: data/ui/welcome.blp:25
 msgid "Add some decks and start memorizing"
-msgstr "Aldonu kelkajn kartarojn kaj komencu memori"
+msgstr "Füge Karteien hinzu und beginne zu lernen"
 
 #: data/ui/welcome.blp:43
 msgid "Import…"
-msgstr "Importi…"
+msgstr "Importieren ..."
 
 #: data/ui/card_edit.blp:13
 msgid "Card"
-msgstr "Karto"
+msgstr "Karte"
 
 #: data/ui/card_edit.blp:107
 msgid "Save"
-msgstr "Konservi"
+msgstr "Speichern"
 
 #: src/window.py:333
 msgid "Next"
-msgstr "Sekva"
+msgstr "Nächste"
 
 #: src/window.py:333
 msgid "Done"
-msgstr "Kompleta"
+msgstr "Erledigt"
 
 #: src/window.py:514
 msgid "New Deck"
-msgstr "Nova Kartaro"
+msgstr "Neue Kartei"
 
 #: src/window.py:601
 msgid "Export successful"
@@ -223,13 +217,13 @@ msgstr "Export erfolgreich"
 
 #: src/window.py:674
 msgid "Imported one empty deck"
-msgstr "Unu malplena kartaro importita"
+msgstr "Eine leere Kartei importiert"
 
 #: src/window.py:676
 msgid "Imported nothing, all cards are duplicates"
-msgstr "Nenion importita, ĉiuj kartoj estas duplikatoj"
+msgstr "Nichts importiert, alle Karten sind Duplikate"
 
 #: src/window.py:678
 #, python-brace-format
 msgid "Imported {0} empty decks"
-msgstr "Importitaj {0} malplenaj kartaroj"
+msgstr "{0} leere Karteien importiert"

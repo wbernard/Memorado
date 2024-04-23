@@ -21,7 +21,7 @@ template $Welcome : Adw.NavigationPage {
     }
 
     content: Adw.StatusPage status_page {
-      title: ("Memorado");
+      title:_("Memorado");
       description: _("Add some decks and start memorizing");
       hexpand: true;
       vexpand: true;
@@ -54,12 +54,12 @@ menu primary_menu {
   section {
 
     item {
-      label: _("_Keyboard Shortcuts");
+      label: _("Keyboard Shortcuts");
       action: "win.show-help-overlay";
     }
 
     item {
-      label: _("_About Memorado");
+      label: _("About Memorado");
       action: "app.about";
     }
 
