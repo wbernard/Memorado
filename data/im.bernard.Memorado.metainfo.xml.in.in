@@ -54,6 +54,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2" date="2024-05-03">
+      <description translate="no">
+        <p>Add translations for Dutch, Esperanto, German, Italian and Turkish.</p>
+      </description>
+    </release>
     <release version="0.1" date="2024-03-20">
       <description translate="no">
         <p>Initial release</p>
