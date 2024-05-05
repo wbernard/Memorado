@@ -102,7 +102,7 @@ msgstr "Zeige die Antwort"
 
 #: data/ui/deck_view.blp:12 src/window.py:516
 msgid "Edit Deck"
-msgstr "Barbeite Kartei"
+msgstr "Bearbeite Kartei"
 
 #: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
 msgid "Cancel Selection"
@@ -110,11 +110,11 @@ msgstr "Annulliere Auswahl"
 
 #: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
 msgid "Cancel"
-msgstr "Lösche"
+msgstr "Abbrechen"
 
 #: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
 msgid "Delete Selection"
-msgstr "Lösche Auswahl"
+msgstr "Auswahl löschen"
 
 #: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
 msgid "Selection Mode"
