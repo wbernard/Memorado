@@ -37,8 +37,7 @@ class Application(Adw.Application):
             "/im/bernard/Memorado/about_dialog.ui"
         )
         about_dialog = builder.get_object("about_dialog")
-        about_dialog.set_transient_for(self.props.active_window)
-        about_dialog.present()
+        about_dialog.present(self.get_active_window())
 
 
     def create_action(self, name, callback, shortcuts=None):
