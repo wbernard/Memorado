@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 16:50+0300\n"
-"PO-Revision-Date: 2024-05-13 13:30+0530\n"
+"POT-Creation-Date: 2024-05-17 11:22+0530\n"
+"PO-Revision-Date: 2024-05-17 11:27+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -154,20 +154,20 @@ msgid "Add Deck"
 msgstr "गड्डी जोड़ें"
 
 #: data/ui/list_view.blp:96
-msgid "_Import Decks"
-msgstr "गड्डियां आयात करें (_I)"
+msgid "Import Decks"
+msgstr "गड्डियां आयात करें"
 
 #: data/ui/list_view.blp:101
-msgid "_Export Decks"
-msgstr "गड्डियां निर्यात करें (_E)"
+msgid "Export Decks"
+msgstr "गड्डियां निर्यात करें"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
-msgid "_Keyboard Shortcuts"
-msgstr "कीबोर्ड शॉर्टकट (_K)"
+msgid "Keyboard Shortcuts"
+msgstr "कीबोर्ड शॉर्टकट"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
-msgid "_About Memorado"
-msgstr "Memorado के बारे में (_A)"
+msgid "About Memorado"
+msgstr "Memorado के बारे में"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
