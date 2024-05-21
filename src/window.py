@@ -525,10 +525,10 @@ class Window(Adw.ApplicationWindow):
 
 
     def _show_card_edit_dialog(self, card):
-        dialog = Adw.Window(transient_for=self,
-                            modal=True)
+        dialog = Adw.Dialog()
         dialog.set_size_request(300, 300)
-        dialog.set_default_size(360, 480)
+        dialog.set_content_height(480)
+        dialog.set_content_width(360)
 
         trigger = Gtk.ShortcutTrigger.parse_string("Escape");
         close_action = Gtk.CallbackAction().new(lambda dialog, _: dialog.close())
@@ -547,16 +547,16 @@ class Window(Adw.ApplicationWindow):
 
         card_edit.save_card_button.connect('clicked', self.__on_save_card_button_clicked, dialog, card)
 
-        dialog.set_content(view)
+        dialog.set_child(view)
 
-        dialog.present()
+        dialog.present(self)
 
     def _new_card_dialog(self, card):
 
-        dialog = Adw.Window(transient_for=self,
-                            modal=True)
+        dialog = Adw.Dialog()
         dialog.set_size_request(300, 300)
-        dialog.set_default_size(360, 480)
+        dialog.set_content_height(480)
+        dialog.set_content_width(360)
 
         trigger = Gtk.ShortcutTrigger.parse_string("Escape");
         close_action = Gtk.CallbackAction().new(lambda dialog, _: dialog.close())
@@ -575,9 +575,9 @@ class Window(Adw.ApplicationWindow):
 
         card_new_view.create_card_button.connect('clicked', self.__on_create_card_button_clicked, dialog, card)
 
-        dialog.set_content(view)
+        dialog.set_child(view)
 
-        dialog.present()
+        dialog.present(self)
 
     def on_export_clicked(self):
         self.export_dialog.save(parent = self, callback = self.on_export_dialog_response, cancellable = None)
