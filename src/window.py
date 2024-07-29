@@ -630,15 +630,15 @@ class Window(Adw.ApplicationWindow):
         c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
-        imp_decks = c.fetchall()
+        imported_decks = c.fetchall()
         befehl = "SELECT * FROM " + 'cards' + ";"
         c.execute(befehl)
-        imp_cards = c.fetchall()
+        imported_cards = c.fetchall()
         conn.close()
 
-        self.merge_databases(imp_decks, imp_cards)
+        self.merge_databases(imported_decks, imported_cards)
 
-    def merge_databases(self, imp_decks, imp_cards):
+    def merge_databases(self, imported_decks, imported_cards):
         # Vereine die bestehende Datenbank mit der neuen
         conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor()
@@ -651,7 +651,7 @@ class Window(Adw.ApplicationWindow):
 
         # Nachschauen ob importiertes deck schon vorhanden ist und nur neue hinzufügen
         nonduplicate_decks = 0
-        for deck in imp_decks:
+        for deck in imported_decks:
             if not deck in existing_decks:
                 nonduplicate_decks += 1
                 c.execute("""INSERT INTO decks VALUES (
@@ -659,7 +659,7 @@ class Window(Adw.ApplicationWindow):
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
 
         nonduplicate_cards = 0
-        for card in imp_cards:
+        for card in imported_cards:
             if not card in existing_cards:
                 nonduplicate_cards += 1
                 c.execute("""INSERT INTO cards VALUES (
@@ -700,42 +700,25 @@ class Window(Adw.ApplicationWindow):
 
     def import_anki2_file(self, file):
 
-        # TODO: add anki support
+        imported_deck_name = "Imported Deck"
+        imported_deck_id = '%030x' % random.randrange(16**32)
+        imported_deck_icon = '🤖'
 
-        imp_deck_name = "Imported Deck"
-        imp_deck_id = '%030x' % random.randrange(16**32)
-        imp_deck_icon = '🤖'
-
-        imp_deck = [imp_deck_id,imp_deck_name,imp_deck_icon]
-        imp_decks = []
-        imp_decks.append(imp_deck)
-        print (imp_decks)
+        imported_decks = [[imported_deck_id,imported_deck_name,imported_deck_icon]]
 
         ## Filter imported database content
         conn = sqlite3.connect(file.get_path())
         c = conn.cursor()
 
-        imp_cards = []
-        card = []
-        # zeilen von anki2 datei werden eingelesen'
+        imported_cards = []
+        # zeilen von anki2 datei werden eingelesen
         for row in c.execute("select * from notes"):
                 string = row[6].replace("<br>", '')
                 split = string.split('')
                 front = split[0]
                 back = split[1]
-                card = [imp_deck_id, front, back]
-                imp_cards.append(card)
-
-        print (imp_cards)
+                card = [imported_deck_id, front, back]
+                imported_cards.append(card)
         conn.close()   # Verbindung schließen
 
-        self.tabel_erstel('imported.db')  # die datenbank wird erstellt
-        # die importierten daten werden in einer datenbank gespeichert
-        conn = sqlite3.connect(self.decks_dir / 'imported.db')
-        c = conn.cursor()
-        c.executemany("insert into decks values (?,?,?)", imp_decks)
-        c.executemany("insert into cards values (?,?,?)", imp_cards)
-        conn.commit()
-        conn.close()
-
-        self.merge_databases(imp_decks, imp_cards)
+        self.merge_databases(imported_decks, imported_cards)
