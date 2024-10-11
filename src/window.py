@@ -138,8 +138,8 @@ class Window(Adw.ApplicationWindow):
         self.decks_name_model = Gio.ListStore.new(Deck)  # nur die Namen der Karteien
         self.es = None
 
-        self.tabel_erstel()
-        self._load_decks()
+        self.tabel_erstel('database.db')
+        self._load_decks('database.db')
 
         self.welcome_page = Welcome()
         self.list_view = ListView()
@@ -162,7 +162,7 @@ class Window(Adw.ApplicationWindow):
         self.export_dialog = Gtk.FileDialog(title="Export as File", initial_name="database.db")
         self.import_dialog = Gtk.FileDialog(title="Import Database")
 
-    def tabel_erstel(self):
+    def tabel_erstel(self, dateiname):
         # Pfad zur Datenbank
         data_dir = (
         Path(os.getenv("XDG_DATA_HOME"))
@@ -173,14 +173,14 @@ class Window(Adw.ApplicationWindow):
 
         # Tabellen erstellen
         self.db_nutzen("""CREATE TABLE if not exists cards (
-                              deck_id TEXT, front TEXT, back TEXT)""")
+                              deck_id TEXT, front TEXT, back TEXT)""", dateiname)
         self.db_nutzen("""CREATE TABLE if not exists decks (deck_id TEXT,
                   name TEXT,
-                  icon TEXT)""")
+                  icon TEXT)""", dateiname)
 
-    def db_nutzen(self, befehl):
+    def db_nutzen(self, befehl, dateiname):
 
-        conn = sqlite3.connect(self.decks_dir / 'database.db')
+        conn = sqlite3.connect(self.decks_dir / dateiname)
         c = conn.cursor() # eine cursor instanz erstellen
         c.execute(befehl) # befehl wird ausgeführt
         out = c.fetchall()
@@ -467,7 +467,7 @@ class Window(Adw.ApplicationWindow):
 
         self.deck_view.emoji_chooser.connect('emoji-picked', self.__on_emoji_picked)
 
-    def _load_decks(self):
+    def _load_decks(self, dateiname):
 
         data_dir = (
         Path(os.getenv("XDG_DATA_HOME"))
@@ -479,10 +479,10 @@ class Window(Adw.ApplicationWindow):
         #self.decks = []
 
         ## eine Liste der decks erstellen
-        self.decks = self.db_nutzen("SELECT * FROM " + 'decks' + ";") # enthält id, name und icon aller decks
+        self.decks = self.db_nutzen("SELECT * FROM " + 'decks' + ";", dateiname) # enthält id, name und icon aller decks
 
         ## eine Liste der cards erstellen
-        self.all_cards = self.db_nutzen("SELECT * FROM " + 'cards' + ";") # enthält id, front und back aller karten
+        self.all_cards = self.db_nutzen("SELECT * FROM " + 'cards' + ";", dateiname) # enthält id, front und back aller karten
 
         self.decks_model.remove_all()
         ## für jedes deck eine Kartenliste erstellen
@@ -615,39 +615,52 @@ class Window(Adw.ApplicationWindow):
     def on_import_dialog_response(self, dialog, response):
         file = dialog.open_finish(response)
 
+        filename, file_extension = os.path.splitext(file)
+        if file_extension == ".db":
+            self.import_db_file(file)
+        elif file_extension == ".anki2":
+            self.import_anki2_file(file)
+        else:
+            print("Extension", file_extension, "not supported")
+
+    def import_db_file(self, file):
+
         # Lese gegebene datenbank mit der normalen databank lese logik
         conn = sqlite3.connect(file.get_path())
         c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
-        imp_decks = c.fetchall()
+        imported_decks = c.fetchall()
         befehl = "SELECT * FROM " + 'cards' + ";"
         c.execute(befehl)
-        new_cards = c.fetchall()
+        imported_cards = c.fetchall()
         conn.close()
 
+        self.merge_databases(imported_decks, imported_cards)
+
+    def merge_databases(self, imported_decks, imported_cards):
         # Vereine die bestehende Datenbank mit der neuen
         conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
-        ex_decks = c.fetchall()
+        existing_decks = c.fetchall()
         befehl = "SELECT * FROM " + 'cards' + ";"
         c.execute(befehl) # befehl wird ausgeführt
-        ex_cards = c.fetchall()
+        existing_cards = c.fetchall()
 
         # Nachschauen ob importiertes deck schon vorhanden ist und nur neue hinzufügen
         nonduplicate_decks = 0
-        for deck in imp_decks:
-            if not deck in ex_decks:
+        for deck in imported_decks:
+            if not deck in existing_decks:
                 nonduplicate_decks += 1
                 c.execute("""INSERT INTO decks VALUES (
                 :deck_id, :name, :icon )""",
                 {'deck_id': deck[0], 'name': deck[1], 'icon': deck[2]})
 
         nonduplicate_cards = 0
-        for card in new_cards:
-            if not card in ex_cards:
+        for card in imported_cards:
+            if not card in existing_cards:
                 nonduplicate_cards += 1
                 c.execute("""INSERT INTO cards VALUES (
                 :deck_id, :front, :back )""",
@@ -656,9 +669,10 @@ class Window(Adw.ApplicationWindow):
         conn.commit()
         conn.close()   # Verbindung schließen
 
-        self._load_decks()
+        self._load_decks('database.db')
         self.navigation_view.replace_with_tags(["list_view"])
 
+        # Adw.Toast notification
         cards_string = "cards"
         if nonduplicate_cards == 1:
             cards_string = "card"
@@ -683,3 +697,28 @@ class Window(Adw.ApplicationWindow):
         )
 
         self.toast_overlay.add_toast(toast);
+
+    def import_anki2_file(self, file):
+
+        imported_deck_name = "Imported Deck"
+        imported_deck_id = '%030x' % random.randrange(16**32)
+        imported_deck_icon = '🤖'
+
+        imported_decks = [[imported_deck_id,imported_deck_name,imported_deck_icon]]
+
+        ## Filter imported database content
+        conn = sqlite3.connect(file.get_path())
+        c = conn.cursor()
+
+        imported_cards = []
+        # zeilen von anki2 datei werden eingelesen
+        for row in c.execute("select * from notes"):
+                string = row[6].replace("<br>", '')
+                split = string.split('')
+                front = split[0]
+                back = split[1]
+                card = [imported_deck_id, front, back]
+                imported_cards.append(card)
+        conn.close()   # Verbindung schließen
+
+        self.merge_databases(imported_decks, imported_cards)
