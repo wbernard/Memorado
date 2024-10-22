@@ -34,11 +34,16 @@ class CardEdit(Gtk.Box):
     def __on_front_side_changed(self, buffer):
         (start, end) = buffer.get_bounds()
         text = buffer.get_text(start, end, False)
-        self.card.front = text    # Frontseite der Karte
 
-        self.front_placeholder.set_visible(len(text) < 1)
+        if(text[-1] == "\t"):
+            print("input is tab: ", text[-1] == "\t")
+        else:
+            self.card.front = text    # Frontseite der Karte
+            self.front_placeholder.set_visible(len(text) < 1)
+            self.window.deck_view.cards_list.bind_model(self.window.current_deck.cards_model, self.window.cards_list_create_row)
 
-        self.window.deck_view.cards_list.bind_model(self.window.current_deck.cards_model, self.window.cards_list_create_row)
+        # Funktioniert nicht, weil der tab character trotzdem eingefügt wird
+        # Muss früher im Prozess abgefangen werden
 
 
     def __on_back_side_changed(self, buffer):
@@ -49,4 +54,10 @@ class CardEdit(Gtk.Box):
         self.back_placeholder.set_visible(len(text) < 1)
 
         self.window.deck_view.cards_list.bind_model(self.window.current_deck.cards_model, self.window.cards_list_create_row)
+
+    # def do_insert_text(self, text, len, position_iter):
+    #     if text == "\t":
+    #         print("Tab, don't insert, switch focus")
+    #     else:
+    #         print("insert charaters normally")
 
