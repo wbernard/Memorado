@@ -36,15 +36,16 @@ template $CardEdit : Gtk.Box {
           styles ["card", "text-box"]
 
           Gtk.ScrolledWindow {
-            margin-top: 12;
-            margin-bottom: 12;
-            margin-start: 12;
-            margin-end: 12;
 
             styles ["scrolled-window"]
 
             Gtk.Overlay {
               child: Gtk.TextView front_side_view {
+                top-margin: 12;
+                bottom-margin: 12;
+                left-margin: 12;
+                right-margin: 12;
+
                 wrap-mode: word_char;
                 hexpand: true;
                 vexpand: true;
@@ -56,6 +57,8 @@ template $CardEdit : Gtk.Box {
                 label: _("Insert the front side here...");
                 halign: start;
                 valign: start;
+                margin-top: 12;
+                margin-start: 12;
                 sensitive: false;
               }
             }
@@ -74,15 +77,16 @@ template $CardEdit : Gtk.Box {
           styles ["card", "text-box"]
 
           Gtk.ScrolledWindow {
-            margin-top: 12;
-            margin-bottom: 12;
-            margin-start: 12;
-            margin-end: 12;
 
             styles ["scrolled-window"]
 
             Gtk.Overlay {
               child: Gtk.TextView back_side_view {
+                top-margin: 12;
+                bottom-margin: 12;
+                left-margin: 12;
+                right-margin: 12;
+
                 wrap-mode: word_char;
                 hexpand: true;
                 vexpand: true;
@@ -94,6 +98,8 @@ template $CardEdit : Gtk.Box {
                 label: _("Insert the back side here...");
                 halign: start;
                 valign: start;
+                margin-top: 12;
+                margin-start: 12;
                 sensitive: false;
               }
             }
