@@ -35,11 +35,12 @@ template $CardNewView : Gtk.Box {
 
           styles ["card", "text-box"]
 
-          Gtk.ScrolledWindow {
+          Gtk.Overlay {
 
-            styles ["scrolled-window"]
+            Gtk.ScrolledWindow {
 
-            Gtk.Overlay {
+              styles ["scrolled-window"]
+
               child: Gtk.TextView front_side_view {
                 top-margin: 12;
                 bottom-margin: 12;
@@ -51,16 +52,17 @@ template $CardNewView : Gtk.Box {
                 vexpand: true;
               };
 
-              [overlay]
-              Gtk.Label front_placeholder {
-                visible: false;
-                label: _("Insert the front side here...");
-                halign: start;
-                valign: start;
-                margin-top: 12;
-                margin-start: 12;
-                sensitive: false;
-              }
+            }
+
+            [overlay]
+            Gtk.Label front_placeholder {
+              visible: false;
+              label: _("Insert the front side here...");
+              halign: start;
+              valign: start;
+              margin-top: 12;
+              margin-start: 12;
+              sensitive: false;
             }
           }
         }
@@ -76,11 +78,12 @@ template $CardNewView : Gtk.Box {
 
           styles ["card", "text-box"]
 
-          Gtk.ScrolledWindow {
+          Gtk.Overlay {
 
-            styles ["scrolled-window"]
+            Gtk.ScrolledWindow {
 
-            Gtk.Overlay {
+              styles ["scrolled-window"]
+
               child: Gtk.TextView back_side_view {
                 top-margin: 12;
                 bottom-margin: 12;
@@ -92,16 +95,17 @@ template $CardNewView : Gtk.Box {
                 vexpand: true;
               };
 
-              [overlay]
-              Gtk.Label back_placeholder {
-                visible: false;
-                label: _("Insert the back side here...");
-                halign: start;
-                valign: start;
-                margin-top: 12;
-                margin-start: 12;
-                sensitive: false;
-              }
+            }
+
+            [overlay]
+            Gtk.Label back_placeholder {
+              visible: false;
+              label: _("Insert the back side here...");
+              halign: start;
+              valign: start;
+              margin-top: 12;
+              margin-start: 12;
+              sensitive: false;
             }
           }
         }
