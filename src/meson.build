@@ -10,7 +10,7 @@ configure_file(
   input: 'const.py.in',
   output: 'const.py',
   configuration: const,
-  install_dir: get_option('bindir'),
+  install_dir: moduledir,
   install: true
 )
 

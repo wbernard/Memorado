@@ -19,7 +19,7 @@ from .deck_row import DeckRow
 from .card_row import CardRow
 from .card_edit import CardEdit
 
-import const
+from .const import PROFILE
 
 from . import shared
 
@@ -131,7 +131,7 @@ class Window(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        if const.PROFILE == 'Devel':
+        if PROFILE == 'Devel':
             self.add_css_class('devel')
 
         self.decks_model = Gio.ListStore.new(Deck)  # da sind die Karteien samt Karten drin
