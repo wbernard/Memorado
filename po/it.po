@@ -151,20 +151,20 @@ msgid "Add Deck"
 msgstr "Aggiungi mazzo"
 
 #: data/ui/list_view.blp:96
-msgid "_Import Decks"
-msgstr "_Importa mazzi"
+msgid "Import Decks"
+msgstr "Importa mazzi"
 
 #: data/ui/list_view.blp:101
-msgid "_Export Decks"
-msgstr "_Esporta mazzi"
+msgid "Export Decks"
+msgstr "Esporta mazzi"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
-msgid "_Keyboard Shortcuts"
-msgstr "_Scorciatoie da tastiera"
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
-msgid "_About Memorado"
-msgstr "_Informazioni su Memorado"
+msgid "About Memorado"
+msgstr "Informazioni su Memorado"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
