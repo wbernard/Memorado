@@ -30,13 +30,17 @@ class CardNewView(Gtk.Box):
         self.front_side_view.get_buffer().connect('changed', self.__on_front_side_changed)
         self.back_side_view.get_buffer().connect('changed', self.__on_back_side_changed)
 
+        self.create_card_button.set_sensitive(False)
+
 
     def __on_front_side_changed(self, buffer):
         (start, end) = buffer.get_bounds()
         text = buffer.get_text(start, end, False)
         self.card.front = text    # Frontseite der Karte
 
-        self.front_placeholder.set_visible(len(text) < 1)
+        empty = len(text) < 1
+        self.front_placeholder.set_visible(empty)
+        self.create_card_button.set_sensitive(not empty)
 
         self.window.deck_view.cards_list.bind_model(self.window.current_deck.cards_model, self.window.cards_list_create_row)
 
