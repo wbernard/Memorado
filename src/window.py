@@ -438,6 +438,7 @@ class Window(Adw.ApplicationWindow):
             if found:
                 self.current_deck.cards_model.remove(position)
                 self.current_deck.save()
+                self.decks_model.emit('items-changed', 0, 0, 0)
 
         self.deck_view.set_selection_mode(False)
 
