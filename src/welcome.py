@@ -2,7 +2,7 @@
 
 from gi.repository import Adw, Gtk
 
-import const
+from .const import APP_ID
 
 @Gtk.Template(resource_path='/im/bernard/Memorado/ui/welcome.ui')
 class Welcome(Adw.NavigationPage):
@@ -15,5 +15,4 @@ class Welcome(Adw.NavigationPage):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         
-        self.status_page.set_icon_name(const.APP_ID)
-
+        self.status_page.set_icon_name(APP_ID)
