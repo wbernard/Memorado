@@ -445,6 +445,15 @@ class Window(Adw.ApplicationWindow):
         if self.current_deck.cards_model.props.n_items < 1:
             self.deck_view.selection_mode_button.set_visible(False)
 
+    def __on_card_delete_button_on_dialog_clicked(self, button, dialog, card):
+        found, position = self.current_deck.cards_model.find(card)
+        if found:
+            self.current_deck.cards_model.remove(position)
+            self.current_deck.save()
+            self.decks_model.emit('items-changed', 0, 0, 0)
+
+        dialog.close()
+
 
     def _setup_signals(self):
         self.decks_model.connect('items-changed', lambda *_: self.list_view.decks.bind_model(self.decks_model, self.__decks_create_row))
@@ -541,6 +550,14 @@ class Window(Adw.ApplicationWindow):
         top = Adw.HeaderBar()
         title = Adw.WindowTitle()
         top.set_title_widget(title)
+
+        delete_button = Gtk.Button()
+        delete_button.set_icon_name("user-trash-symbolic")
+        delete_tooltip = _("Delete Card")
+        delete_button.set_tooltip_text(delete_tooltip)
+        delete_button.connect('clicked', self.__on_card_delete_button_on_dialog_clicked, dialog, card)
+        top.pack_start(delete_button)
+
         view.add_top_bar(top)
 
         card_edit = CardEdit(self, card)
