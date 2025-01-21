@@ -748,14 +748,18 @@ class Window(Adw.ApplicationWindow):
         c = conn.cursor()
 
         imported_cards = []
+        formatting = [("br", '\r'), ("<div>", ''), ("</div>", ''), ("&nbsp", ' '), ("<\u000d />", "\r")]
         # zeilen von anki2 datei werden eingelesen
         for row in c.execute("select * from notes"):
-                string = row[6].replace("<br>", '')
-                split = string.split('')
-                front = split[0]
-                back = split[1]
-                card = [imported_deck_id, front, back]
-                imported_cards.append(card)
+            string = row[6]
+            for (pattern, replacement) in formatting:
+                string = string.replace(pattern, replacement)
+            split = string.split('')
+            front = split[0]
+            back = split[1]
+            card = [imported_deck_id, front, back]
+            imported_cards.append(card)
         conn.close()   # Verbindung schließen
 
         self.merge_databases(imported_decks, imported_cards)
+
