@@ -159,8 +159,8 @@ class Window(Adw.ApplicationWindow):
             self.navigation_view.replace_with_tags(["list_view"])
 
 
-        self.export_dialog = Gtk.FileDialog(title="Export as File", initial_name="database.db")
-        self.import_dialog = Gtk.FileDialog(title="Import Database")
+        self.export_dialog = Gtk.FileDialog(title=_("Export as File"), initial_name="database.db")
+        self.import_dialog = Gtk.FileDialog(title=_("Import Database"))
 
         file_filters = Gio.ListStore.new(Gtk.FileFilter)
         # file filter for sqlite databases, e.g. `.db` or `.anki2`
