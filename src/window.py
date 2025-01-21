@@ -162,6 +162,20 @@ class Window(Adw.ApplicationWindow):
         self.export_dialog = Gtk.FileDialog(title="Export as File", initial_name="database.db")
         self.import_dialog = Gtk.FileDialog(title="Import Database")
 
+        file_filters = Gio.ListStore.new(Gtk.FileFilter)
+        # file filter for sqlite databases, e.g. `.db` or `.anki2`
+        sql_file_filter = Gtk.FileFilter.new()
+        sql_file_filter.set_name(_("Supported files"))
+        sql_file_filter.add_mime_type("application/vnd.sqlite3")
+        file_filters.append(sql_file_filter)
+
+        all_file_filter = Gtk.FileFilter.new()
+        all_file_filter.set_name(_("All files"))
+        all_file_filter.add_pattern("*")
+        file_filters.append(all_file_filter)
+
+        self.import_dialog.set_filters(file_filters)
+
     def tabel_erstel(self, dateiname):
         # Pfad zur Datenbank
         data_dir = (
