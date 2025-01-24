@@ -8,10 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 16:50+0300\n"
+"POT-Creation-Date: 2025-01-24 15:34+0100\n"
 "PO-Revision-Date: 2024-04-13 16:55+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
-"Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language-Team: \n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -72,19 +71,19 @@ msgstr "Yeni Kart"
 msgid "Front Side"
 msgstr "Ön Taraf"
 
-#: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
 msgid "Insert the front side here..."
 msgstr "Ön taraf buraya ekle"
 
-#: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
 msgid "Back Side"
 msgstr "Arka Taraf"
 
-#: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
 msgid "Insert the back side here..."
 msgstr "Arka tarafı buraya ekle"
 
-#: data/ui/card_new_view.blp:107
+#: data/ui/card_new_view.blp:119
 msgid "Add"
 msgstr "Ekle"
 
@@ -96,7 +95,7 @@ msgstr "Kartı Düzenle"
 msgid "Show Answer"
 msgstr "Cevabı Göster"
 
-#: data/ui/deck_view.blp:12 src/window.py:516
+#: data/ui/deck_view.blp:12 src/window.py:528
 msgid "Edit Deck"
 msgstr "Desteyi Düzenle"
 
@@ -149,19 +148,23 @@ msgid "Add Deck"
 msgstr "Deste Ekle"
 
 #: data/ui/list_view.blp:96
-msgid "_Import Decks"
+#, fuzzy
+msgid "Import Decks"
 msgstr "Desteleri İçe _Aktar"
 
 #: data/ui/list_view.blp:101
-msgid "_Export Decks"
+#, fuzzy
+msgid "Export Decks"
 msgstr "Desteleri _Dışa Aktar"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
-msgid "_Keyboard Shortcuts"
+#, fuzzy
+msgid "Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
-msgid "_About Memorado"
+#, fuzzy
+msgid "About Memorado"
 msgstr "Memorado _Hakkında"
 
 #: data/ui/gtk/help-overlay.ui:11
@@ -191,35 +194,49 @@ msgstr "İçe Aktar…"
 msgid "Card"
 msgstr "Kart"
 
-#: data/ui/card_edit.blp:107
+#: data/ui/card_edit.blp:119
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/window.py:333
+#: src/window.py:161
+msgid "Export as File"
+msgstr ""
+
+#: src/window.py:162
+#, fuzzy
+msgid "Import Database"
+msgstr ""
+
+#: src/window.py:335
 msgid "Next"
 msgstr "Sonraki"
 
-#: src/window.py:333
+#: src/window.py:335
 msgid "Done"
 msgstr "Bitti"
 
-#: src/window.py:514
+#: src/window.py:526
 msgid "New Deck"
 msgstr "Yeni Deste"
 
-#: src/window.py:601
+#: src/window.py:558
+#, fuzzy
+msgid "Delete Card"
+msgstr ""
+
+#: src/window.py:621
 msgid "Export successful"
 msgstr "Dışa aktarıldı"
 
-#: src/window.py:674
+#: src/window.py:708
 msgid "Imported one empty deck"
 msgstr "Bir boş deste içe aktarıldı"
 
-#: src/window.py:676
+#: src/window.py:710
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Hiçbir şey içe aktarılmadı, tüm kartlar zaten var"
 
-#: src/window.py:678
+#: src/window.py:712
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "{0} boş deste içe aktarıldı"

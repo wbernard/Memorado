@@ -27,6 +27,18 @@ Learn using spaced repetition. Create cards with a question and answer, and prac
 
 deck_id: uuid created on initialisation
 
+## Translations
+
+Update the `.pot` file when strings in the app change:
+
+- Open a "Build terminal" in Builder from the + menu in the top left
+- Run `ninja memorado-pot`
+
+Update the individual `.po` files with new strings:
+
+- Open a "Build terminal" in Builder from the + menu in the top left
+- Run `ninja memorado-update-pot`
+
 ## Code of conduct
 
 Memorado follows the GNOME project [Code of Conduct](./code-of-conduct.md). All

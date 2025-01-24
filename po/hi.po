@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-17 11:22+0530\n"
+"POT-Creation-Date: 2025-01-24 15:34+0100\n"
 "PO-Revision-Date: 2024-05-17 11:27+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -77,19 +77,19 @@ msgstr "नया कार्ड"
 msgid "Front Side"
 msgstr "सामने का भाग"
 
-#: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
 msgid "Insert the front side here..."
 msgstr "यहां सामने का भाग डालें..."
 
-#: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
 msgid "Back Side"
 msgstr "पिछला भाग"
 
-#: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
 msgid "Insert the back side here..."
 msgstr "यहां पिछला भाग डालें..."
 
-#: data/ui/card_new_view.blp:107
+#: data/ui/card_new_view.blp:119
 msgid "Add"
 msgstr "जोड़ें"
 
@@ -101,7 +101,7 @@ msgstr "कार्ड संपादित करें"
 msgid "Show Answer"
 msgstr "उत्तर दिखाएं"
 
-#: data/ui/deck_view.blp:12 src/window.py:516
+#: data/ui/deck_view.blp:12 src/window.py:528
 msgid "Edit Deck"
 msgstr "गड्डी संपादित करें"
 
@@ -196,35 +196,50 @@ msgstr "आयात…"
 msgid "Card"
 msgstr "कार्ड"
 
-#: data/ui/card_edit.blp:107
+#: data/ui/card_edit.blp:119
 msgid "Save"
 msgstr "सहेजें"
 
-#: src/window.py:333
+#: src/window.py:161
+#, fuzzy
+msgid "Export as File"
+msgstr ""
+
+#: src/window.py:162
+#, fuzzy
+msgid "Import Database"
+msgstr ""
+
+#: src/window.py:335
 msgid "Next"
 msgstr "अगला"
 
-#: src/window.py:333
+#: src/window.py:335
 msgid "Done"
 msgstr "संपन्न"
 
-#: src/window.py:514
+#: src/window.py:526
 msgid "New Deck"
 msgstr "नई गड्डी"
 
-#: src/window.py:601
+#: src/window.py:558
+#, fuzzy
+msgid "Delete Card"
+msgstr ""
+
+#: src/window.py:621
 msgid "Export successful"
 msgstr "निर्यात सफल"
 
-#: src/window.py:674
+#: src/window.py:708
 msgid "Imported one empty deck"
 msgstr "एक खाली गड्डी आयात की गई"
 
-#: src/window.py:676
+#: src/window.py:710
 msgid "Imported nothing, all cards are duplicates"
 msgstr "कुछ भी आयातित नहीं, सभी कार्ड डुप्लीकेट हैं"
 
-#: src/window.py:678
+#: src/window.py:712
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "{0} खाली गड्डियां आयातित"

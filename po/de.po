@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 16:50+0300\n"
+"POT-Creation-Date: 2025-01-24 15:34+0100\n"
 "PO-Revision-Date: 2024-04-21 16:50+0300\n"
 "Last-Translator: Walter <apps@bernard.im>\n"
 "Language-Team: German <apps@bernard.im>\n"
@@ -43,8 +43,8 @@ msgid ""
 "Learn using spaced repetition. Create cards with a question and answer, and "
 "practice with them."
 msgstr ""
-"Lerne durch dauerndes Wiederholen. Erstelle Kateikarten mit Frage und Antwort, und "
-"übe damit."
+"Lerne durch dauerndes Wiederholen. Erstelle Kateikarten mit Frage und "
+"Antwort, und übe damit."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:19
 msgid ""
@@ -52,9 +52,10 @@ msgid ""
 "anything else you want to get better at. Create or import decks, practice "
 "them, or export to share them with friends."
 msgstr ""
-"Sehr geeignet um neue Sprachen zu lernen, Begriffe und Definitionen auswendig zu lernen. "
-"oder um sonstige Kenntnisse zu verbessern. Erstelle oder importiere Karteien "
-"übe damit oder exportiere sie um sie mit Freunden zu teilen."
+"Sehr geeignet um neue Sprachen zu lernen, Begriffe und Definitionen "
+"auswendig zu lernen. oder um sonstige Kenntnisse zu verbessern. Erstelle "
+"oder importiere Karteien übe damit oder exportiere sie um sie mit Freunden "
+"zu teilen."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
@@ -76,19 +77,19 @@ msgstr "Neue Karteikarte"
 msgid "Front Side"
 msgstr "Vorderseite"
 
-#: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
 msgid "Insert the front side here..."
 msgstr "Füge hier die Vorderseite ein ..."
 
-#: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
 msgid "Back Side"
 msgstr "Rückseite"
 
-#: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
 msgid "Insert the back side here..."
 msgstr "Füge hier die Rückseite ein"
 
-#: data/ui/card_new_view.blp:107
+#: data/ui/card_new_view.blp:119
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -100,7 +101,7 @@ msgstr "Bearbeite Karte"
 msgid "Show Answer"
 msgstr "Zeige die Antwort"
 
-#: data/ui/deck_view.blp:12 src/window.py:516
+#: data/ui/deck_view.blp:12 src/window.py:528
 msgid "Edit Deck"
 msgstr "Bearbeite Kartei"
 
@@ -195,35 +196,50 @@ msgstr "Importieren ..."
 msgid "Card"
 msgstr "Karte"
 
-#: data/ui/card_edit.blp:107
+#: data/ui/card_edit.blp:119
 msgid "Save"
 msgstr "Speichern"
 
-#: src/window.py:333
+#: src/window.py:161
+#, fuzzy
+msgid "Export as File"
+msgstr "Exportiere als Datei"
+
+#: src/window.py:162
+#, fuzzy
+msgid "Import Database"
+msgstr "Importiere Datenbank"
+
+#: src/window.py:335
 msgid "Next"
 msgstr "Nächste"
 
-#: src/window.py:333
+#: src/window.py:335
 msgid "Done"
 msgstr "Erledigt"
 
-#: src/window.py:514
+#: src/window.py:526
 msgid "New Deck"
 msgstr "Neue Kartei"
 
-#: src/window.py:601
+#: src/window.py:558
+#, fuzzy
+msgid "Delete Card"
+msgstr "Karte löschen"
+
+#: src/window.py:621
 msgid "Export successful"
 msgstr "Export erfolgreich"
 
-#: src/window.py:674
+#: src/window.py:708
 msgid "Imported one empty deck"
 msgstr "Eine leere Kartei importiert"
 
-#: src/window.py:676
+#: src/window.py:710
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Nichts importiert, alle Karten sind Duplikate"
 
-#: src/window.py:678
+#: src/window.py:712
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "{0} leere Karteien importiert"
