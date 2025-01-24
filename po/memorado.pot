@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the memorado package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 16:50+0300\n"
+"POT-Creation-Date: 2025-01-24 15:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
@@ -70,19 +70,19 @@ msgstr ""
 msgid "Front Side"
 msgstr ""
 
-#: data/ui/card_new_view.blp:56 data/ui/card_edit.blp:56
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
 msgid "Insert the front side here..."
 msgstr ""
 
-#: data/ui/card_new_view.blp:67 data/ui/card_edit.blp:67
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
 msgid "Back Side"
 msgstr ""
 
-#: data/ui/card_new_view.blp:94 data/ui/card_edit.blp:94
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
 msgid "Insert the back side here..."
 msgstr ""
 
-#: data/ui/card_new_view.blp:107
+#: data/ui/card_new_view.blp:119
 msgid "Add"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Show Answer"
 msgstr ""
 
-#: data/ui/deck_view.blp:12 src/window.py:516
+#: data/ui/deck_view.blp:12 src/window.py:528
 msgid "Edit Deck"
 msgstr ""
 
@@ -147,19 +147,19 @@ msgid "Add Deck"
 msgstr ""
 
 #: data/ui/list_view.blp:96
-msgid "_Import Decks"
+msgid "Import Decks"
 msgstr ""
 
 #: data/ui/list_view.blp:101
-msgid "_Export Decks"
+msgid "Export Decks"
 msgstr ""
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
-msgid "_Keyboard Shortcuts"
+msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
-msgid "_About Memorado"
+msgid "About Memorado"
 msgstr ""
 
 #: data/ui/gtk/help-overlay.ui:11
@@ -189,35 +189,47 @@ msgstr ""
 msgid "Card"
 msgstr ""
 
-#: data/ui/card_edit.blp:107
+#: data/ui/card_edit.blp:119
 msgid "Save"
 msgstr ""
 
-#: src/window.py:333
+#: src/window.py:161
+msgid "Export as File"
+msgstr ""
+
+#: src/window.py:162
+msgid "Import Database"
+msgstr ""
+
+#: src/window.py:335
 msgid "Next"
 msgstr ""
 
-#: src/window.py:333
+#: src/window.py:335
 msgid "Done"
 msgstr ""
 
-#: src/window.py:514
+#: src/window.py:526
 msgid "New Deck"
 msgstr ""
 
-#: src/window.py:601
+#: src/window.py:558
+msgid "Delete Card"
+msgstr ""
+
+#: src/window.py:621
 msgid "Export successful"
 msgstr ""
 
-#: src/window.py:674
+#: src/window.py:708
 msgid "Imported one empty deck"
 msgstr ""
 
-#: src/window.py:676
+#: src/window.py:710
 msgid "Imported nothing, all cards are duplicates"
 msgstr ""
 
-#: src/window.py:678
+#: src/window.py:712
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr ""
