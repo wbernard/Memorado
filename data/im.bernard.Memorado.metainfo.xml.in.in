@@ -54,6 +54,13 @@
     </screenshot>
   </screenshots>
   <releases>
+
+    <release version="0.5" date="2025-01-25">
+      <description translate="no">
+        <p>Fix tabbing between fields, improved card editor, Brazilian Portuguese translation.</p>
+      </description>
+    </release>
+
     <release version="0.4" date="2024-10-11">
       <description translate="no">
         <p>Add support for importing .anki2 files.</p>
