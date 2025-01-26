@@ -1,14 +1,14 @@
 # ITALIAN TRANSLATION.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Albano Battistella <albanobattistella@gmail.com>, 2024.
+# Albano Battistella <albanobattistella@gmail.com>, 2024,2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-24 15:34+0100\n"
-"PO-Revision-Date: 2024-05-09 20:00+0100\n"
+"PO-Revision-Date: 2025-01-26 17:00+0100\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -198,14 +198,12 @@ msgid "Save"
 msgstr "Salva"
 
 #: src/window.py:161
-#, fuzzy
 msgid "Export as File"
-msgstr "Esporta come file"
+msgstr "Esporta come File"
 
 #: src/window.py:162
-#, fuzzy
 msgid "Import Database"
-msgstr "Importa banca dati"
+msgstr "Importa Banca Dati"
 
 #: src/window.py:335
 msgid "Next"
@@ -220,7 +218,6 @@ msgid "New Deck"
 msgstr "Nuovo mazzo"
 
 #: src/window.py:558
-#, fuzzy
 msgid "Delete Card"
 msgstr "Elimina carta"
 
