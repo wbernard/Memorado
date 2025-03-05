@@ -623,9 +623,7 @@ class Window(Adw.ApplicationWindow):
             GLib.PRIORITY_DEFAULT,
             None,
             None,
-            None,
-            self.on_replace_contents,
-            None
+            self.on_copy_cb,
             )
 
         toast = Adw.Toast(
@@ -635,7 +633,7 @@ class Window(Adw.ApplicationWindow):
 
         self.toast_overlay.add_toast(toast);
 
-    def on_replace_contents(self, file, result, unused):
+    def on_copy_cb(self, file, result):
         file.copy_finish(result)
 
 
