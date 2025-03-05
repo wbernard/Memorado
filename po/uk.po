@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the memorado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr "Project-Id-Version: memorado\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-24 15:27+0100\n"
+"PO-Revision-Date: 2025-01-24 17:42+0200\n"
+"Last-Translator: Andrii Serbovets <serbovets.translation@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2"
+"X-Generator: OmegaT 6.0.1\n"
+
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/im.bernard.Memorado.metainfo.xml.in.in:13
+msgid "Memorize anything"
+msgstr "Запам'ятовуйте що завгодно"
+
+#. Add your name to the translator credits list
+#: data/about_dialog.ui.in:10
+msgid "translator-credits"
+msgstr "Андрій Сербовець <serbovets.translation@gmail.com>"
+
+#. Translators: Memorado is the app name, do not translate
+#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+msgid "Memorado"
+msgstr "Memorado"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/im.bernard.Memorado.desktop.in.in:13
+msgid "memorado;flash;cards;learn;improve;"
+msgstr "memorado;flash;cards;learn;improve;пам'ять;тренування;навчання;картки;освіта;"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:16
+msgid ""
+"Learn using spaced repetition. Create cards with a question and answer, and "
+"practice with them."
+msgstr "Цей застосунок створений для навчання за методом розподіленого повторення: за допомогою створених у ньому карток із запитаннями й відповідями можна перевіряти засвоєння навчального матеріалу."
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:19
+msgid ""
+"Great for learning new languages, memorizing terms and definitions, or "
+"anything else you want to get better at. Create or import decks, practice "
+"them, or export to share them with friends."
+msgstr "Він стане в пригоді під час вивчення мов, термінів та їхніх визначень і будь-якої іншої інформації, яку треба тривалий час тримати у пам'яті. Тут можна створювати набори карток, імпортувати отримані від когось набори, експортувати набори, якщо треба їх комусь передати, і, звісно, вчитися!"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:38
+msgid "List of decks"
+msgstr "Перелік наборів"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:44
+msgid "Edit cards in a deck"
+msgstr "Змінити картки в наборі"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:50
+msgid "Practice with cards"
+msgstr "Навчайтеся за допомогою карток"
+
+#: data/ui/card_new_view.blp:13
+msgid "New Card"
+msgstr "Нова картка"
+
+#: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
+msgid "Front Side"
+msgstr "Лицева сторона"
+
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
+msgid "Insert the front side here..."
+msgstr "Впишіть, що має бути на лицевій стороні…"
+
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
+msgid "Back Side"
+msgstr "Зворотна сторона"
+
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
+msgid "Insert the back side here..."
+msgstr "Впишіть, що має бути на зворотній стороні…"
+
+#: data/ui/card_new_view.blp:119
+msgid "Add"
+msgstr "Додати"
+
+#: data/ui/card_row.blp:38 data/ui/card_view.blp:63
+msgid "Edit Card"
+msgstr "Змінити картку"
+
+#: data/ui/card_view.blp:75
+msgid "Show Answer"
+msgstr "Показати відповідь"
+
+#: data/ui/deck_view.blp:12 src/window.py:528
+msgid "Edit Deck"
+msgstr "Змінити набір"
+
+#: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
+msgid "Cancel Selection"
+msgstr "Скасувати вибір"
+
+#: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
+msgid "Delete Selection"
+msgstr "Видалити вибрані"
+
+#: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
+msgid "Selection Mode"
+msgstr "Режим вибору"
+
+#: data/ui/deck_view.blp:85
+msgid "Edit Deck Avatar"
+msgstr "Змінити значок набору"
+
+#: data/ui/deck_view.blp:95
+msgid "Deck Name"
+msgstr "Назва набору"
+
+#: data/ui/deck_view.blp:109
+msgid "No Cards"
+msgstr "Тут немає карток"
+
+#: data/ui/deck_view.blp:110
+msgid "This deck is empty"
+msgstr "Цей набір порожній"
+
+#: data/ui/deck_view.blp:136
+msgid "Add Card"
+msgstr "Додати картку"
+
+#: data/ui/list_view.blp:12
+msgid "Decks"
+msgstr "Набори карток"
+
+#: data/ui/list_view.blp:32 data/ui/welcome.blp:17
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#: data/ui/list_view.blp:83 data/ui/welcome.blp:37
+msgid "Add Deck"
+msgstr "Додати набір"
+
+#: data/ui/list_view.blp:96
+msgid "Import Decks"
+msgstr "Імпортувати набори"
+
+#: data/ui/list_view.blp:101
+msgid "Export Decks"
+msgstr "Експортувати набори"
+
+#: data/ui/list_view.blp:110 data/ui/welcome.blp:57
+msgid "Keyboard Shortcuts"
+msgstr "Сполучення клавіш"
+
+#: data/ui/list_view.blp:115 data/ui/welcome.blp:62
+msgid "About Memorado"
+msgstr "Про Memorado"
+
+#: data/ui/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Загальні"
+
+#: data/ui/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показати сполучення клавіш"
+
+#: data/ui/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Вийти"
+
+#: data/ui/welcome.blp:25
+msgid "Add some decks and start memorizing"
+msgstr "Створюйте набори карток і починайте тренувати пам'ять"
+
+#: data/ui/welcome.blp:43
+msgid "Import…"
+msgstr "Імпортувати…"
+
+#: data/ui/card_edit.blp:13
+msgid "Card"
+msgstr "Картка"
+
+#: data/ui/card_edit.blp:119
+msgid "Save"
+msgstr "Зберегти"
+
+#: src/window.py:161
+msgid "Export as File"
+msgstr "Експортувати у файл"
+
+#: src/window.py:162
+msgid "Import Database"
+msgstr "Імпортувати з бази даних"
+
+#: src/window.py:335
+msgid "Next"
+msgstr "Далі"
+
+#: src/window.py:335
+msgid "Done"
+msgstr "Завершити"
+
+#: src/window.py:526
+msgid "New Deck"
+msgstr "Новий набір"
+
+#: src/window.py:558
+msgid "Delete Card"
+msgstr "Видалити картку"
+
+#: src/window.py:621
+msgid "Export successful"
+msgstr "Експортування завершено"
+
+#: src/window.py:708
+msgid "Imported one empty deck"
+msgstr "Імпортовано один пустий набір"
+
+#: src/window.py:710
+msgid "Imported nothing, all cards are duplicates"
+msgstr "Не імпортовано нічого, усі картки збігаються з наявними"
+
+#: src/window.py:712
+#, python-brace-format
+msgid "Imported {0} empty decks"
+msgstr "Імпортовано {0} пустих наборів"
