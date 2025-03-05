@@ -660,10 +660,10 @@ class Window(Adw.ApplicationWindow):
         else:
             print("Extension", file_extension, "not supported")
 
-    def import_db_file(self, file):
+    def import_db_file(self, file_path):
 
         # Lese gegebene datenbank mit der normalen databank lese logik
-        conn = sqlite3.connect(file.get_path())
+        conn = sqlite3.connect(file_path)
         c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
