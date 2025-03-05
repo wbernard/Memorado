@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-24 15:34+0100\n"
-"PO-Revision-Date: 2025-01-26 17:00+0100\n"
+"PO-Revision-Date: 2025-03-05 20:00+0100\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -199,11 +199,11 @@ msgstr "Salva"
 
 #: src/window.py:161
 msgid "Export as File"
-msgstr "Esporta come File"
+msgstr "Esporta come file"
 
 #: src/window.py:162
 msgid "Import Database"
-msgstr "Importa Banca Dati"
+msgstr "Importa banca dati"
 
 #: src/window.py:335
 msgid "Next"
