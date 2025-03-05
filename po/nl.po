@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 08:29-0300\n"
+"POT-Creation-Date: 2025-01-24 15:34+0100\n"
 "PO-Revision-Date: 2024-03-28 17:41+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -17,6 +17,158 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
+
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/im.bernard.Memorado.metainfo.xml.in.in:13
+msgid "Memorize anything"
+msgstr "Onthoud alles"
+
+#. Add your name to the translator credits list
+#: data/about_dialog.ui.in:10
+msgid "translator-credits"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
+#. Translators: Memorado is the app name, do not translate
+#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+msgid "Memorado"
+msgstr "Memorado"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/im.bernard.Memorado.desktop.in.in:13
+msgid "memorado;flash;cards;learn;improve;"
+msgstr "memorado;geheugen;kaarten;leren;verbeteren;"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:16
+msgid ""
+"Learn using spaced repetition. Create cards with a question and answer, and "
+"practice with them."
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:19
+msgid ""
+"Great for learning new languages, memorizing terms and definitions, or "
+"anything else you want to get better at. Create or import decks, practice "
+"them, or export to share them with friends."
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:38
+msgid "List of decks"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:44
+msgid "Edit cards in a deck"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:50
+msgid "Practice with cards"
+msgstr ""
+
+#: data/ui/card_new_view.blp:13
+msgid "New Card"
+msgstr ""
+
+#: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
+msgid "Front Side"
+msgstr ""
+
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
+msgid "Insert the front side here..."
+msgstr ""
+
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
+msgid "Back Side"
+msgstr ""
+
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
+msgid "Insert the back side here..."
+msgstr ""
+
+#: data/ui/card_new_view.blp:119
+msgid "Add"
+msgstr ""
+
+#: data/ui/card_row.blp:38 data/ui/card_view.blp:63
+msgid "Edit Card"
+msgstr "Kaart bewerken"
+
+#: data/ui/card_view.blp:75
+msgid "Show Answer"
+msgstr "Antwoord tonen"
+
+#: data/ui/deck_view.blp:12 src/window.py:528
+msgid "Edit Deck"
+msgstr "Kaartenset bewerken"
+
+#: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
+msgid "Cancel Selection"
+msgstr ""
+
+#: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
+msgid "Cancel"
+msgstr ""
+
+#: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
+msgid "Delete Selection"
+msgstr ""
+
+#: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
+msgid "Selection Mode"
+msgstr ""
+
+#: data/ui/deck_view.blp:85
+#, fuzzy
+msgid "Edit Deck Avatar"
+msgstr "Kaartenset bewerken"
+
+#: data/ui/deck_view.blp:95
+msgid "Deck Name"
+msgstr ""
+
+#: data/ui/deck_view.blp:109
+msgid "No Cards"
+msgstr ""
+
+#: data/ui/deck_view.blp:110
+msgid "This deck is empty"
+msgstr ""
+
+#: data/ui/deck_view.blp:136
+#, fuzzy
+msgid "Add Card"
+msgstr "Kaart bewerken"
+
+#: data/ui/list_view.blp:12
+msgid "Decks"
+msgstr ""
+
+#: data/ui/list_view.blp:32 data/ui/welcome.blp:17
+msgid "Main Menu"
+msgstr ""
+
+#: data/ui/list_view.blp:83 data/ui/welcome.blp:37
+#, fuzzy
+msgid "Add Deck"
+msgstr "Kaartenset bewerken"
+
+#: data/ui/list_view.blp:96
+#, fuzzy
+msgid "Import Decks"
+msgstr "Kaartenset aanmaken"
+
+#: data/ui/list_view.blp:101
+#, fuzzy
+msgid "Export Decks"
+msgstr "Kaartenset bewerken"
+
+#: data/ui/list_view.blp:110 data/ui/welcome.blp:57
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen tonen"
+
+#: data/ui/list_view.blp:115 data/ui/welcome.blp:62
+#, fuzzy
+msgid "About Memorado"
+msgstr "Memorado"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -33,49 +185,65 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/window.py:214 src/window.py:235
+#: data/ui/welcome.blp:25
+msgid "Add some decks and start memorizing"
+msgstr ""
+
+#: data/ui/welcome.blp:43
+msgid "Import…"
+msgstr ""
+
+#: data/ui/card_edit.blp:13
+#, fuzzy
+msgid "Card"
+msgstr "Kaart bewerken"
+
+#: data/ui/card_edit.blp:119
+msgid "Save"
+msgstr ""
+
+#: src/window.py:161
+msgid "Export as File"
+msgstr ""
+
+#: src/window.py:162
+msgid "Import Database"
+msgstr ""
+
+#: src/window.py:335
 msgid "Next"
 msgstr "Volgende"
 
-#: src/window.py:214 src/window.py:238
+#: src/window.py:335
 msgid "Done"
 msgstr "Klaar"
 
-#: src/window.py:217
-msgid "Show Answer"
-msgstr "Antwoord tonen"
-
-#: src/window.py:282
-msgid "Create Deck"
+#: src/window.py:526
+#, fuzzy
+msgid "New Deck"
 msgstr "Kaartenset aanmaken"
 
-#: src/window.py:284
-msgid "Edit Deck"
-msgstr "Kaartenset bewerken"
+#: src/window.py:558
+#, fuzzy
+msgid "Delete Card"
+msgstr ""
 
-#: src/window.py:306
-msgid "Edit Card"
-msgstr "Kaart bewerken"
+#: src/window.py:621
+msgid "Export successful"
+msgstr ""
 
-#: data/about_dialog.ui.in:6
-msgid "Memorize anything"
-msgstr "Onthoud alles"
+#: src/window.py:708
+msgid "Imported one empty deck"
+msgstr ""
 
-#. Add your name to the translator credits list
-#: data/about_dialog.ui.in:10
-msgid "translator-credits"
-msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+#: src/window.py:710
+msgid "Imported nothing, all cards are duplicates"
+msgstr ""
 
-#. Translators: Application name. Do NOT translate or localize.
-#: data/im.bernard.Memorado.desktop.in.in:4
-msgid "Memorado"
-msgstr "Memorado"
+#: src/window.py:712
+#, python-brace-format
+msgid "Imported {0} empty decks"
+msgstr ""
 
-#: data/im.bernard.Memorado.desktop.in.in:5
-msgid "A flash cards app for GNOME"
-msgstr "Een geheugenkaarttoepassing voor GNOME"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/im.bernard.Memorado.desktop.in.in:13
-msgid "memorado;flash;cards;learn;improve;"
-msgstr "memorado;geheugen;kaarten;leren;verbeteren;"
+#~ msgid "A flash cards app for GNOME"
+#~ msgstr "Een geheugenkaarttoepassing voor GNOME"

@@ -158,7 +158,6 @@ class Window(Adw.ApplicationWindow):
         if self.decks_model.props.n_items > 0:   # wenn es keine Karteien gibt
             self.navigation_view.replace_with_tags(["list_view"])
 
-
         self.export_dialog = Gtk.FileDialog(title=_("Export as File"), initial_name="database.db")
         self.import_dialog = Gtk.FileDialog(title=_("Import Database"))
 

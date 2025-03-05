@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-13 11:49-0300\n"
+"POT-Creation-Date: 2025-01-24 15:34+0100\n"
 "PO-Revision-Date: 2025-01-13 11:57-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Gtranslator 47.1\n"
 
-#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:4
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
 #: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
 msgstr "Memorize qualquer coisa"
@@ -29,12 +29,12 @@ msgid "translator-credits"
 msgstr "Rafael Fontenelle <rafaelff@gnome.org>"
 
 #. Translators: Memorado is the app name, do not translate
-#: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
+#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
 msgid "Memorado"
 msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/im.bernard.Memorado.desktop.in.in:12
+#: data/im.bernard.Memorado.desktop.in.in:13
 msgid "memorado;flash;cards;learn;improve;"
 msgstr "memorado;flashcards;ficha;memorização;cartões;aprender;melhorar;"
 
@@ -100,7 +100,7 @@ msgstr "Edita ficha"
 msgid "Show Answer"
 msgstr "Mostrar resposta"
 
-#: data/ui/deck_view.blp:12 src/window.py:526
+#: data/ui/deck_view.blp:12 src/window.py:528
 msgid "Edit Deck"
 msgstr "Editar deck"
 
@@ -199,35 +199,45 @@ msgstr "Ficha"
 msgid "Save"
 msgstr "Salvar"
 
-#: src/window.py:333
+#: src/window.py:161
+#, fuzzy
+msgid "Export as File"
+msgstr "Exportar como arquivo"
+
+#: src/window.py:162
+#, fuzzy
+msgid "Import Database"
+msgstr "Importar banco de dados"
+
+#: src/window.py:335
 msgid "Next"
 msgstr "Próximo"
 
-#: src/window.py:333
+#: src/window.py:335
 msgid "Done"
 msgstr "Concluído"
 
-#: src/window.py:524
+#: src/window.py:526
 msgid "New Deck"
 msgstr "Novo deck"
 
-#: src/window.py:556
+#: src/window.py:558
 msgid "Delete Card"
 msgstr "Excluir ficha"
 
-#: src/window.py:619
+#: src/window.py:621
 msgid "Export successful"
 msgstr "Exportação feita com sucesso"
 
-#: src/window.py:706
+#: src/window.py:708
 msgid "Imported one empty deck"
 msgstr "Importado um deck vazio"
 
-#: src/window.py:708
+#: src/window.py:710
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Nada importado, todas as fichas são duplicadas"
 
-#: src/window.py:710
+#: src/window.py:712
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "Importados {0} decks vazios"
