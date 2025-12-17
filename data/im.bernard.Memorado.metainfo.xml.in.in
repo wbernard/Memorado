@@ -95,4 +95,11 @@
     <kudo>HighContrast</kudo>
     <kudo>ModernToolkit</kudo>
   </kudos>
+    <keywords>
+        <keyword>flashcards</keyword>
+        <keyword>memorization</keyword>
+        <keyword>spaced repetition</keyword>
+        <keyword>learning tool</keyword>
+        <keyword>vocabulary builder</keyword>
+    </keywords>
 </component>
