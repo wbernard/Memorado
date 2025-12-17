@@ -381,7 +381,14 @@ class Window(Adw.ApplicationWindow):
 
     def __on_card_edit_button_changed(self, button):
         self._go_to_deck(False)
-        self._show_card_edit_dialog(self.current_deck.cards_model[self.current_deck.current_index])
+
+        # Use the Nth element in the randomized list, rather than the raw index
+        card_index = self.current_deck.card_order[self.current_deck.current_index]
+
+        # Reset the index to 0 since we're dropping out of the card flow
+        self.current_deck.current_index = 0
+
+        self._show_card_edit_dialog(self.current_deck.cards_model[card_index])
 
 
     def __on_emoji_picked(self, emoji_chooser, emoji_text):
