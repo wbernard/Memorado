@@ -1,6 +1,6 @@
 project(
   'memorado',
-  version: '0.5',
+  version: '0.6',
   meson_version: '>= 0.62.0',
   license: 'GPL-3.0-or-later',
 )
