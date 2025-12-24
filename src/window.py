@@ -5,6 +5,7 @@ import json
 import uuid
 import sqlite3
 import random
+import zipfile
 
 
 from gi.repository import Adw, Gtk, Gio, GObject, GLib
@@ -166,6 +167,7 @@ class Window(Adw.ApplicationWindow):
         sql_file_filter = Gtk.FileFilter.new()
         sql_file_filter.set_name(_("Supported files"))
         sql_file_filter.add_mime_type("application/vnd.sqlite3")
+        sql_file_filter.add_pattern("*.apkg")
         file_filters.append(sql_file_filter)
 
         all_file_filter = Gtk.FileFilter.new()
@@ -653,16 +655,20 @@ class Window(Adw.ApplicationWindow):
 
         filename, file_extension = os.path.splitext(file)
         if file_extension == ".db":
-            self.import_db_file(file)
+            self.import_db_file(file.get_path())
         elif file_extension == ".anki2":
-            self.import_anki2_file(file)
+            self.import_anki2_file(file.get_path())
+        elif file_extension == ".apkg":
+            with zipfile.ZipFile(file, 'r') as archive:
+                anki_file = archive.extract("collection.anki2", pwd=GLib.get_tmp_dir())
+                self.import_anki2_file(anki_file)
         else:
             print("Extension", file_extension, "not supported")
 
-    def import_db_file(self, file):
+    def import_db_file(self, file_path):
 
         # Lese gegebene datenbank mit der normalen databank lese logik
-        conn = sqlite3.connect(file.get_path())
+        conn = sqlite3.connect(file_path)
         c = conn.cursor()
         befehl = "SELECT * FROM " + 'decks' + ";"
         c.execute(befehl)
@@ -734,7 +740,7 @@ class Window(Adw.ApplicationWindow):
 
         self.toast_overlay.add_toast(toast);
 
-    def import_anki2_file(self, file):
+    def import_anki2_file(self, file_path):
 
         imported_deck_name = "Imported Deck"
         imported_deck_id = '%030x' % random.randrange(16**32)
@@ -743,7 +749,7 @@ class Window(Adw.ApplicationWindow):
         imported_decks = [[imported_deck_id,imported_deck_name,imported_deck_icon]]
 
         ## Filter imported database content
-        conn = sqlite3.connect(file.get_path())
+        conn = sqlite3.connect(file_path)
         c = conn.cursor()
 
         imported_cards = []
