@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the memorado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: memorado\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-24 15:34+0100\n"
+"PO-Revision-Date: 2026-02-03 13:39+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/im.bernard.Memorado.metainfo.xml.in.in:13
+msgid "Memorize anything"
+msgstr "Tout mémoriser"
+
+#. Add your name to the translator credits list
+#: data/about_dialog.ui.in:10
+msgid "translator-credits"
+msgstr "Yoav Rheims <yoavrheims@gmail.com>"
+
+#. Translators: Memorado is the app name, do not translate
+#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+msgid "Memorado"
+msgstr "Memorado"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/im.bernard.Memorado.desktop.in.in:13
+msgid "memorado;flash;cards;learn;improve;"
+msgstr "memorado;flashcards;cartes;apprendre;améliorer;"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:16
+msgid ""
+"Learn using spaced repetition. Create cards with a question and answer, and "
+"practice with them."
+msgstr ""
+"Apprenez grâce à la répétition espacée. Créez des cartes avec une question "
+"et une réponse, et entraînez-vous avec elles."
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:19
+msgid ""
+"Great for learning new languages, memorizing terms and definitions, or "
+"anything else you want to get better at. Create or import decks, practice "
+"them, or export to share them with friends."
+msgstr ""
+"Idéal pour apprendre de nouvelles langues, mémoriser des termes et des "
+"définitions, ou tout autre contenu que vous souhaitez mieux maîtriser. "
+"Créez ou importez des paquets de cartes, entraînez-vous avec eux, ou "
+"exportez-les pour les partager avec des amis."
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:38
+msgid "List of decks"
+msgstr "Liste des paquets de cartes"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:44
+msgid "Edit cards in a deck"
+msgstr "Modifier les cartes d'un paquet"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:50
+msgid "Practice with cards"
+msgstr "S'entraîner avec des cartes"
+
+#: data/ui/card_new_view.blp:13
+msgid "New Card"
+msgstr "Nouvelle carte"
+
+#: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
+msgid "Front Side"
+msgstr "Face avant"
+
+#: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
+msgid "Insert the front side here..."
+msgstr "Insérez la face avant ici..."
+
+#: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
+msgid "Back Side"
+msgstr "Face arrière"
+
+#: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
+msgid "Insert the back side here..."
+msgstr "Insérez la face arrière ici..."
+
+#: data/ui/card_new_view.blp:119
+msgid "Add"
+msgstr "Ajouter"
+
+#: data/ui/card_row.blp:38 data/ui/card_view.blp:63
+msgid "Edit Card"
+msgstr "Éditer la carte"
+
+#: data/ui/card_view.blp:75
+msgid "Show Answer"
+msgstr "Afficher la réponse"
+
+#: data/ui/deck_view.blp:12 src/window.py:528
+msgid "Edit Deck"
+msgstr "Modifier le paquet"
+
+#: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
+msgid "Cancel Selection"
+msgstr "Annuler la sélection"
+
+#: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
+msgid "Cancel"
+msgstr "Annuler"
+
+#: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
+msgid "Delete Selection"
+msgstr "Supprimer la sélection"
+
+#: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
+msgid "Selection Mode"
+msgstr "Mode de sélection"
+
+#: data/ui/deck_view.blp:85
+msgid "Edit Deck Avatar"
+msgstr "Modifier l'avatar du paquet"
+
+#: data/ui/deck_view.blp:95
+msgid "Deck Name"
+msgstr "Nom du paquet"
+
+#: data/ui/deck_view.blp:109
+msgid "No Cards"
+msgstr "Pas de cartes"
+
+#: data/ui/deck_view.blp:110
+msgid "This deck is empty"
+msgstr "Ce paquet est vide"
+
+#: data/ui/deck_view.blp:136
+msgid "Add Card"
+msgstr "Ajouter une carte"
+
+#: data/ui/list_view.blp:12
+msgid "Decks"
+msgstr "Paquets"
+
+#: data/ui/list_view.blp:32 data/ui/welcome.blp:17
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: data/ui/list_view.blp:83 data/ui/welcome.blp:37
+msgid "Add Deck"
+msgstr "Ajouter un paquet"
+
+#: data/ui/list_view.blp:96
+msgid "Import Decks"
+msgstr "Importer des paquets"
+
+#: data/ui/list_view.blp:101
+msgid "Export Decks"
+msgstr "Exporter des paquets"
+
+#: data/ui/list_view.blp:110 data/ui/welcome.blp:57
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+#: data/ui/list_view.blp:115 data/ui/welcome.blp:62
+msgid "About Memorado"
+msgstr "À propos de Memorado"
+
+#: data/ui/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Général"
+
+#: data/ui/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Afficher les raccourcis"
+
+#: data/ui/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitter"
+
+#: data/ui/welcome.blp:25
+msgid "Add some decks and start memorizing"
+msgstr "Ajoutez des paquets et commencez à mémoriser"
+
+#: data/ui/welcome.blp:43
+msgid "Import…"
+msgstr "Importer..."
+
+#: data/ui/card_edit.blp:13
+msgid "Card"
+msgstr "Carte"
+
+#: data/ui/card_edit.blp:119
+msgid "Save"
+msgstr "Enregistrer"
+
+#: src/window.py:161
+msgid "Export as File"
+msgstr "Exporter en tant que fichier"
+
+#: src/window.py:162
+msgid "Import Database"
+msgstr "Importer la base de données"
+
+#: src/window.py:335
+msgid "Next"
+msgstr "Suivant"
+
+#: src/window.py:335
+msgid "Done"
+msgstr "Terminé"
+
+#: src/window.py:526
+msgid "New Deck"
+msgstr "Nouveau paquet"
+
+#: src/window.py:558
+msgid "Delete Card"
+msgstr "Supprimer la carte"
+
+#: src/window.py:621
+msgid "Export successful"
+msgstr "Exportation réussie"
+
+#: src/window.py:708
+msgid "Imported one empty deck"
+msgstr "Un paquet vide importé"
+
+#: src/window.py:710
+msgid "Imported nothing, all cards are duplicates"
+msgstr "Aucune importation, toutes les cartes sont des doublons"
+
+#: src/window.py:712
+#, python-brace-format
+msgid "Imported {0} empty decks"
+msgstr "{0} paquets vides importés"
