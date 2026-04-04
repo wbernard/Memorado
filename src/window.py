@@ -62,8 +62,6 @@ class Deck(GObject.Object):
 
     def save(self):
 
-        cards = []
-
         conn = sqlite3.connect(self.decks_dir / 'database.db')
         c = conn.cursor() # eine cursor instanz erstellen
 
@@ -94,11 +92,6 @@ class Deck(GObject.Object):
             c.execute("""INSERT INTO cards VALUES (
                 :deck_id, :front, :back )""",
                 {'deck_id': self.id, 'front': crd.front, 'back': crd.back })
-            card = {
-                'front': crd.front,
-                'back': crd.back,
-            }
-            cards.append(card)
 
         conn.commit()
         conn.close()   # Verbindung schließen
@@ -135,8 +128,6 @@ class Window(Adw.ApplicationWindow):
             self.add_css_class('devel')
 
         self.decks_model = Gio.ListStore.new(Deck)  # da sind die Karteien samt Karten drin
-        self.decks_name_model = Gio.ListStore.new(Deck)  # nur die Namen der Karteien
-        self.es = None
 
         self.tabel_erstel('database.db')
         self._load_decks('database.db')
