@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-24 15:34+0100\n"
-"PO-Revision-Date: 2026-08-13 16:00+0900\n"
+"PO-Revision-Date: 2026-08-14 12:19+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -21,17 +21,17 @@ msgstr ""
 #: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
 #: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
-msgstr ""
+msgstr "すべてを覚えよう"
 
 #. Add your name to the translator credits list
 #: data/about_dialog.ui.in:10
 msgid "translator-credits"
-msgstr ""
+msgstr "camegone, 2026"
 
 #. Translators: Memorado is the app name, do not translate
 #: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
 msgid "Memorado"
-msgstr ""
+msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/im.bernard.Memorado.desktop.in.in:13
@@ -43,6 +43,8 @@ msgid ""
 "Learn using spaced repetition. Create cards with a question and answer, and "
 "practice with them."
 msgstr ""
+"間隔反復を使った学習をしましょう。問題と答えが書かれたカードを作成し、その"
+"カードを暗記しましょう。"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:19
 msgid ""
@@ -50,187 +52,191 @@ msgid ""
 "anything else you want to get better at. Create or import decks, practice "
 "them, or export to share them with friends."
 msgstr ""
+"新たな言語を学ぶとき、専門用語とその意味を覚えるとき、またはその他のものを暗"
+"記したいときに役立ちます。デッキの作成やインポート、暗記、またはエクスポート"
+"して友達と共有しましょう。"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
-msgstr ""
+msgstr "デッキ一覧"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:44
 msgid "Edit cards in a deck"
-msgstr ""
+msgstr "デッキ内のカードを編集"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:50
 msgid "Practice with cards"
-msgstr ""
+msgstr "カードを覚える"
 
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
-msgstr ""
+msgstr "新しいカード"
 
 #: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
 msgid "Front Side"
-msgstr ""
+msgstr "表面"
 
 #: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
 msgid "Insert the front side here..."
-msgstr ""
+msgstr "ここに表面の内容を入力..."
 
 #: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
 msgid "Back Side"
-msgstr ""
+msgstr "裏面"
 
 #: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
 msgid "Insert the back side here..."
-msgstr ""
+msgstr "ここに裏面の内容を入力..."
 
 #: data/ui/card_new_view.blp:119
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: data/ui/card_row.blp:38 data/ui/card_view.blp:63
 msgid "Edit Card"
-msgstr ""
+msgstr "カードを編集"
 
 #: data/ui/card_view.blp:75
 msgid "Show Answer"
-msgstr ""
+msgstr "答えを表示"
 
 #: data/ui/deck_view.blp:12 src/window.py:528
 msgid "Edit Deck"
-msgstr ""
+msgstr "デッキを編集"
 
 #: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
 msgid "Cancel Selection"
-msgstr ""
+msgstr "選択を解除"
 
 #: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
 msgid "Delete Selection"
-msgstr ""
+msgstr "選択したものを削除"
 
 #: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
 msgid "Selection Mode"
-msgstr ""
+msgstr "選択モード"
 
 #: data/ui/deck_view.blp:85
 msgid "Edit Deck Avatar"
-msgstr ""
+msgstr "デッキのアイコンを編集"
 
 #: data/ui/deck_view.blp:95
 msgid "Deck Name"
-msgstr ""
+msgstr "デッキ名"
 
 #: data/ui/deck_view.blp:109
 msgid "No Cards"
-msgstr ""
+msgstr "カードがありません"
 
 #: data/ui/deck_view.blp:110
 msgid "This deck is empty"
-msgstr ""
+msgstr "このデッキは空です"
 
 #: data/ui/deck_view.blp:136
 msgid "Add Card"
-msgstr ""
+msgstr "カードを追加"
 
 #: data/ui/list_view.blp:12
 msgid "Decks"
-msgstr ""
+msgstr "デッキ"
 
 #: data/ui/list_view.blp:32 data/ui/welcome.blp:17
 msgid "Main Menu"
-msgstr ""
+msgstr "メインメニュー"
 
 #: data/ui/list_view.blp:83 data/ui/welcome.blp:37
 msgid "Add Deck"
-msgstr ""
+msgstr "デッキを追加"
 
 #: data/ui/list_view.blp:96
 msgid "Import Decks"
-msgstr ""
+msgstr "デッキをインポート"
 
 #: data/ui/list_view.blp:101
 msgid "Export Decks"
-msgstr ""
+msgstr "デッキをエクスポート"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "キーボードショートカット"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
 msgid "About Memorado"
-msgstr ""
+msgstr "Memorado について"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: data/ui/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "ショートカットを表示"
 
 #: data/ui/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "アプリを終了"
 
 #: data/ui/welcome.blp:25
 msgid "Add some decks and start memorizing"
-msgstr ""
+msgstr "デッキを追加して暗記を始めよう"
 
 #: data/ui/welcome.blp:43
 msgid "Import…"
-msgstr ""
+msgstr "インポート…"
 
 #: data/ui/card_edit.blp:13
 msgid "Card"
-msgstr ""
+msgstr "カード"
 
 #: data/ui/card_edit.blp:119
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: src/window.py:161
 msgid "Export as File"
-msgstr ""
+msgstr "ファイルにエクスポート"
 
 #: src/window.py:162
 msgid "Import Database"
-msgstr ""
+msgstr "データベースをインポート"
 
 #: src/window.py:335
 msgid "Next"
-msgstr ""
+msgstr "次へ"
 
 #: src/window.py:335
 msgid "Done"
-msgstr ""
+msgstr "完了"
 
 #: src/window.py:526
 msgid "New Deck"
-msgstr ""
+msgstr "新しいデッキ"
 
 #: src/window.py:558
 msgid "Delete Card"
-msgstr ""
+msgstr "カードを削除"
 
 #: src/window.py:621
 msgid "Export successful"
-msgstr ""
+msgstr "エクスポートに成功しました"
 
 #: src/window.py:708
 msgid "Imported one empty deck"
-msgstr ""
+msgstr "1 つの空のデッキがインポートされました"
 
 #: src/window.py:710
 msgid "Imported nothing, all cards are duplicates"
 msgstr ""
+"すべてのカードがすでに存在しているため、何もインポートされませんでした"
 
 #: src/window.py:712
 #, python-brace-format
 msgid "Imported {0} empty decks"
-msgstr ""
+msgstr "{0} つの空のデッキをインポートしました"
