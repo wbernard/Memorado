@@ -55,6 +55,12 @@
   </screenshots>
   <releases>
 
+    <release version="0.8" date="2026-11-22">
+      <description translate="no">
+        <p>Japanese and French translations. Support .anki21 and .apkg files.</p>
+      </description>
+    </release>
+
     <release version="0.7" date="2026-04-04">
       <description translate="no">
         <p>Better handling for longer text on cards.</p>
