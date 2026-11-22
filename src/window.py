@@ -663,7 +663,7 @@ class Window(Adw.ApplicationWindow):
             self.import_anki2_file(file.get_path())
         elif file_extension == ".apkg":
             with zipfile.ZipFile(file, 'r') as archive:
-                anki_file = archive.extract("collection.anki2", pwd=GLib.get_tmp_dir())
+                anki_file = archive.extract("collection.anki2", path=GLib.get_tmp_dir())
                 self.import_anki2_file(anki_file)
         else:
             print("Extension", file_extension, "not supported")
