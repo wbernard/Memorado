@@ -656,6 +656,13 @@ class Window(Adw.ApplicationWindow):
     def on_import_dialog_response(self, dialog, response):
         file = dialog.open_finish(response)
 
+        try:
+            self.import_file(file)
+        except Exception as e:
+            print("Could not import", file.get_path(), ":", e)
+            self.toast_overlay.add_toast(Adw.Toast(title=_("Import failed"), timeout=3))
+
+    def import_file(self, file):
         filename, file_extension = os.path.splitext(file)
         if file_extension == ".db":
             self.import_db_file(file.get_path())
@@ -667,7 +674,7 @@ class Window(Adw.ApplicationWindow):
                 anki_file = archive.extract(file, path=GLib.get_tmp_dir())
                 self.import_anki2_file(anki_file)
         else:
-            print("Extension", file_extension, "not supported")
+            raise ValueError("Extension " + file_extension + " not supported")
 
     def import_db_file(self, file_path):
 
