@@ -29,7 +29,7 @@ msgstr "Albano Battistella <albanobattistella@gmail.com>"
 #. Translators: Memorado is the app name, do not translate
 #: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
 msgid "Memorado"
-msgstr ""
+msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/im.bernard.Memorado.desktop.in.in:12
@@ -220,22 +220,20 @@ msgid "Save"
 msgstr "Salva"
 
 #: src/window.py:153
-#, fuzzy
 msgid "Export as File"
 msgstr "Esporta come file"
 
 #: src/window.py:154
-#, fuzzy
 msgid "Import Database"
 msgstr "Importa banca dati"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "File supportati"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "Tutti i file"
 
 #: src/window.py:345
 msgid "Next"
@@ -250,7 +248,6 @@ msgid "New Deck"
 msgstr "Nuovo mazzo"
 
 #: src/window.py:581
-#, fuzzy
 msgid "Delete Card"
 msgstr "Elimina carta"
 
@@ -259,9 +256,8 @@ msgid "Export successful"
 msgstr "Esportazione riuscita"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "Esporta come file"
+msgstr "Importazione non riuscita"
 
 #: src/window.py:741
 msgid "Imported one empty deck"

@@ -232,11 +232,11 @@ msgstr "Importer la base de données"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "Fichiers pris en charge"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "Tous les fichiers"
 
 #: src/window.py:345
 msgid "Next"
@@ -259,9 +259,8 @@ msgid "Export successful"
 msgstr "Exportation réussie"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "Exporter en tant que fichier"
+msgstr "Échec de l'importation"
 
 #: src/window.py:741
 msgid "Imported one empty deck"

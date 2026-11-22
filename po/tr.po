@@ -43,6 +43,8 @@ msgid ""
 "Learn using spaced repetition. Create cards with a question and answer, and "
 "practice with them."
 msgstr ""
+"Aralıklı tekrar yöntemiyle öğrenin. Soru ve cevaptan oluşan kartlar "
+"oluşturun ve onlarla pratik yapın."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:19
 msgid ""
@@ -50,6 +52,9 @@ msgid ""
 "anything else you want to get better at. Create or import decks, practice "
 "them, or export to share them with friends."
 msgstr ""
+"Yeni diller öğrenmek, terimleri ve tanımları ezberlemek ya da gelişmek "
+"istediğiniz başka her şey için harika. Desteler oluşturun veya içe aktarın, "
+"onlarla pratik yapın ya da arkadaşlarınızla paylaşmak için dışa aktarın."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
@@ -170,24 +175,20 @@ msgid "Add Deck"
 msgstr "Deste Ekle"
 
 #: data/ui/list_view.blp:96
-#, fuzzy
 msgid "Import Decks"
-msgstr "Desteleri İçe _Aktar"
+msgstr "Desteleri İçe Aktar"
 
 #: data/ui/list_view.blp:101
-#, fuzzy
 msgid "Export Decks"
-msgstr "Desteleri _Dışa Aktar"
+msgstr "Desteleri Dışa Aktar"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
-#, fuzzy
 msgid "Keyboard Shortcuts"
-msgstr "_Klavye Kısayolları"
+msgstr "Klavye Kısayolları"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
-#, fuzzy
 msgid "About Memorado"
-msgstr "Memorado _Hakkında"
+msgstr "Memorado Hakkında"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -222,19 +223,19 @@ msgstr "Kaydet"
 
 #: src/window.py:153
 msgid "Export as File"
-msgstr ""
+msgstr "Dosya Olarak Dışa Aktar"
 
 #: src/window.py:154
 msgid "Import Database"
-msgstr ""
+msgstr "Veri Tabanını İçe Aktar"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "Desteklenen dosyalar"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "Tüm dosyalar"
 
 #: src/window.py:345
 msgid "Next"
@@ -250,16 +251,15 @@ msgstr "Yeni Deste"
 
 #: src/window.py:581
 msgid "Delete Card"
-msgstr ""
+msgstr "Kartı Sil"
 
 #: src/window.py:642
 msgid "Export successful"
 msgstr "Dışa aktarıldı"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "Desteleri İçe _Aktar"
+msgstr "İçe aktarma başarısız"
 
 #: src/window.py:741
 msgid "Imported one empty deck"

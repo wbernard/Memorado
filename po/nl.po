@@ -43,6 +43,8 @@ msgid ""
 "Learn using spaced repetition. Create cards with a question and answer, and "
 "practice with them."
 msgstr ""
+"Leer met behulp van gespreide herhaling. Maak kaarten met een vraag en een "
+"antwoord en oefen ermee."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:19
 msgid ""
@@ -50,18 +52,21 @@ msgid ""
 "anything else you want to get better at. Create or import decks, practice "
 "them, or export to share them with friends."
 msgstr ""
+"Ideaal om nieuwe talen te leren, termen en definities te onthouden of om "
+"beter te worden in iets anders. Maak of importeer kaartensets, oefen ermee "
+"of exporteer ze om ze met vrienden te delen."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
-msgstr ""
+msgstr "Lijst met kaartensets"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:44
 msgid "Edit cards in a deck"
-msgstr ""
+msgstr "Kaarten in een kaartenset bewerken"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:50
 msgid "Practice with cards"
-msgstr ""
+msgstr "Oefenen met kaarten"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:111
 msgid "flashcards"
@@ -86,27 +91,27 @@ msgstr ""
 
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
-msgstr ""
+msgstr "Nieuwe kaart"
 
 #: data/ui/card_new_view.blp:29 data/ui/card_edit.blp:29
 msgid "Front Side"
-msgstr ""
+msgstr "Voorkant"
 
 #: data/ui/card_new_view.blp:61 data/ui/card_edit.blp:61
 msgid "Insert the front side here..."
-msgstr ""
+msgstr "Voer hier de voorkant in..."
 
 #: data/ui/card_new_view.blp:73 data/ui/card_edit.blp:73
 msgid "Back Side"
-msgstr ""
+msgstr "Achterkant"
 
 #: data/ui/card_new_view.blp:105 data/ui/card_edit.blp:105
 msgid "Insert the back side here..."
-msgstr ""
+msgstr "Voer hier de achterkant in..."
 
 #: data/ui/card_new_view.blp:119
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 #: data/ui/card_row.blp:38 data/ui/card_view.blp:63
 msgid "Edit Card"
@@ -122,74 +127,67 @@ msgstr "Kaartenset bewerken"
 
 #: data/ui/deck_view.blp:18 data/ui/list_view.blp:18
 msgid "Cancel Selection"
-msgstr ""
+msgstr "Selectie annuleren"
 
 #: data/ui/deck_view.blp:19 data/ui/list_view.blp:19
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: data/ui/deck_view.blp:25 data/ui/list_view.blp:25
 msgid "Delete Selection"
-msgstr ""
+msgstr "Selectie verwijderen"
 
 #: data/ui/deck_view.blp:32 data/ui/list_view.blp:39
 msgid "Selection Mode"
-msgstr ""
+msgstr "Selectiemodus"
 
 #: data/ui/deck_view.blp:85
-#, fuzzy
 msgid "Edit Deck Avatar"
-msgstr "Kaartenset bewerken"
+msgstr "Avatar van kaartenset bewerken"
 
 #: data/ui/deck_view.blp:95
 msgid "Deck Name"
-msgstr ""
+msgstr "Naam van kaartenset"
 
 #: data/ui/deck_view.blp:109
 msgid "No Cards"
-msgstr ""
+msgstr "Geen kaarten"
 
 #: data/ui/deck_view.blp:110
 msgid "This deck is empty"
-msgstr ""
+msgstr "Deze kaartenset is leeg"
 
 #: data/ui/deck_view.blp:136
-#, fuzzy
 msgid "Add Card"
-msgstr "Kaart bewerken"
+msgstr "Kaart toevoegen"
 
 #: data/ui/list_view.blp:12
 msgid "Decks"
-msgstr ""
+msgstr "Kaartensets"
 
 #: data/ui/list_view.blp:32 data/ui/welcome.blp:17
 msgid "Main Menu"
-msgstr ""
+msgstr "Hoofdmenu"
 
 #: data/ui/list_view.blp:83 data/ui/welcome.blp:37
-#, fuzzy
 msgid "Add Deck"
-msgstr "Kaartenset bewerken"
+msgstr "Kaartenset toevoegen"
 
 #: data/ui/list_view.blp:96
-#, fuzzy
 msgid "Import Decks"
-msgstr "Kaartenset aanmaken"
+msgstr "Kaartensets importeren"
 
 #: data/ui/list_view.blp:101
-#, fuzzy
 msgid "Export Decks"
-msgstr "Kaartenset bewerken"
+msgstr "Kaartensets exporteren"
 
 #: data/ui/list_view.blp:110 data/ui/welcome.blp:57
-#, fuzzy
 msgid "Keyboard Shortcuts"
-msgstr "Sneltoetsen tonen"
+msgstr "Sneltoetsen"
 
 #: data/ui/list_view.blp:115 data/ui/welcome.blp:62
-#, fuzzy
 msgid "About Memorado"
-msgstr "Memorado"
+msgstr "Over Memorado"
 
 #: data/ui/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -208,36 +206,35 @@ msgstr "Afsluiten"
 
 #: data/ui/welcome.blp:25
 msgid "Add some decks and start memorizing"
-msgstr ""
+msgstr "Voeg kaartensets toe en begin met onthouden"
 
 #: data/ui/welcome.blp:43
 msgid "Import…"
-msgstr ""
+msgstr "Importeren…"
 
 #: data/ui/card_edit.blp:13
-#, fuzzy
 msgid "Card"
-msgstr "Kaart bewerken"
+msgstr "Kaart"
 
 #: data/ui/card_edit.blp:119
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: src/window.py:153
 msgid "Export as File"
-msgstr ""
+msgstr "Exporteren als bestand"
 
 #: src/window.py:154
 msgid "Import Database"
-msgstr ""
+msgstr "Database importeren"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "Ondersteunde bestanden"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "Alle bestanden"
 
 #: src/window.py:345
 msgid "Next"
@@ -248,35 +245,33 @@ msgid "Done"
 msgstr "Klaar"
 
 #: src/window.py:549
-#, fuzzy
 msgid "New Deck"
-msgstr "Kaartenset aanmaken"
+msgstr "Nieuwe kaartenset"
 
 #: src/window.py:581
 msgid "Delete Card"
-msgstr ""
+msgstr "Kaart verwijderen"
 
 #: src/window.py:642
 msgid "Export successful"
-msgstr ""
+msgstr "Exporteren gelukt"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "Kaartenset aanmaken"
+msgstr "Importeren mislukt"
 
 #: src/window.py:741
 msgid "Imported one empty deck"
-msgstr ""
+msgstr "Eén lege kaartenset geïmporteerd"
 
 #: src/window.py:743
 msgid "Imported nothing, all cards are duplicates"
-msgstr ""
+msgstr "Niets geïmporteerd, alle kaarten bestaan al"
 
 #: src/window.py:745
 #, python-brace-format
 msgid "Imported {0} empty decks"
-msgstr ""
+msgstr "{0} lege kaartensets geïmporteerd"
 
 #~ msgid "A flash cards app for GNOME"
 #~ msgstr "Een geheugenkaarttoepassing voor GNOME"

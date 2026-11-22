@@ -234,11 +234,11 @@ msgstr "Імпортувати з бази даних"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "Підтримувані файли"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "Усі файли"
 
 #: src/window.py:345
 msgid "Next"
@@ -261,9 +261,8 @@ msgid "Export successful"
 msgstr "Експортування завершено"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "Експортувати у файл"
+msgstr "Не вдалося імпортувати"
 
 #: src/window.py:741
 msgid "Imported one empty deck"

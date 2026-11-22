@@ -36,7 +36,7 @@ msgstr "Memorado"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/im.bernard.Memorado.desktop.in.in:12
 msgid "memorado;flash;cards;learn;improve;"
-msgstr ""
+msgstr "memorado;flash;cards;フラッシュカード;単語帳;暗記;学習;"
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:16
 msgid ""
@@ -231,11 +231,11 @@ msgstr "データベースをインポート"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "対応ファイル"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "すべてのファイル"
 
 #: src/window.py:345
 msgid "Next"
@@ -258,9 +258,8 @@ msgid "Export successful"
 msgstr "エクスポートに成功しました"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "ファイルにエクスポート"
+msgstr "インポートに失敗しました"
 
 #: src/window.py:741
 msgid "Imported one empty deck"

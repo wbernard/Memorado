@@ -224,19 +224,19 @@ msgstr "सहेजें"
 
 #: src/window.py:153
 msgid "Export as File"
-msgstr ""
+msgstr "फ़ाइल के रूप में निर्यात करें"
 
 #: src/window.py:154
 msgid "Import Database"
-msgstr ""
+msgstr "डेटाबेस आयात करें"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "समर्थित फ़ाइलें"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "सभी फ़ाइलें"
 
 #: src/window.py:345
 msgid "Next"
@@ -252,16 +252,15 @@ msgstr "नई गड्डी"
 
 #: src/window.py:581
 msgid "Delete Card"
-msgstr ""
+msgstr "कार्ड मिटाएं"
 
 #: src/window.py:642
 msgid "Export successful"
 msgstr "निर्यात सफल"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "गड्डियां आयात करें"
+msgstr "आयात विफल"
 
 #: src/window.py:741
 msgid "Imported one empty deck"

@@ -26,12 +26,12 @@ msgstr "Merke dir alles"
 #. Add your name to the translator credits list
 #: data/about_dialog.ui.in:10
 msgid "translator-credits"
-msgstr ""
+msgstr "The Memorado Developers <apps@bernard.im>"
 
 #. Translators: Memorado is the app name, do not translate
 #: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
 msgid "Memorado"
-msgstr ""
+msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/im.bernard.Memorado.desktop.in.in:12
@@ -223,22 +223,20 @@ msgid "Save"
 msgstr "Speichern"
 
 #: src/window.py:153
-#, fuzzy
 msgid "Export as File"
 msgstr "Exportiere als Datei"
 
 #: src/window.py:154
-#, fuzzy
 msgid "Import Database"
 msgstr "Importiere Datenbank"
 
 #: src/window.py:159
 msgid "Supported files"
-msgstr ""
+msgstr "Unterstützte Dateien"
 
 #: src/window.py:165
 msgid "All files"
-msgstr ""
+msgstr "Alle Dateien"
 
 #: src/window.py:345
 msgid "Next"
@@ -253,7 +251,6 @@ msgid "New Deck"
 msgstr "Neue Kartei"
 
 #: src/window.py:581
-#, fuzzy
 msgid "Delete Card"
 msgstr "Karte löschen"
 
@@ -262,9 +259,8 @@ msgid "Export successful"
 msgstr "Export erfolgreich"
 
 #: src/window.py:663
-#, fuzzy
 msgid "Import failed"
-msgstr "Exportiere als Datei"
+msgstr "Import fehlgeschlagen"
 
 #: src/window.py:741
 msgid "Imported one empty deck"
