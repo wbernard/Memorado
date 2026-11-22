@@ -95,7 +95,7 @@ msgstr "Ajouter"
 
 #: data/ui/card_row.blp:38 data/ui/card_view.blp:63
 msgid "Edit Card"
-msgstr "Éditer la carte"
+msgstr "Modifier la carte"
 
 #: data/ui/card_view.blp:75
 msgid "Show Answer"
@@ -190,7 +190,7 @@ msgstr "Ajoutez des paquets et commencez à mémoriser"
 
 #: data/ui/welcome.blp:43
 msgid "Import…"
-msgstr "Importer..."
+msgstr "Importer…"
 
 #: data/ui/card_edit.blp:13
 msgid "Card"
