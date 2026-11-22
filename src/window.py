@@ -659,11 +659,12 @@ class Window(Adw.ApplicationWindow):
         filename, file_extension = os.path.splitext(file)
         if file_extension == ".db":
             self.import_db_file(file.get_path())
-        elif file_extension == ".anki2":
+        elif file_extension in (".anki2", ".anki21"):
             self.import_anki2_file(file.get_path())
         elif file_extension == ".apkg":
             with zipfile.ZipFile(file, 'r') as archive:
-                anki_file = archive.extract("collection.anki2", path=GLib.get_tmp_dir())
+                file = "collection.anki21" if "collection.anki21" in archive.namelist() else "collection.anki2"
+                anki_file = archive.extract(file, path=GLib.get_tmp_dir())
                 self.import_anki2_file(anki_file)
         else:
             print("Extension", file_extension, "not supported")
