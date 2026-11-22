@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-24 15:34+0100\n"
+"POT-Creation-Date: 2026-11-22 17:17+0100\n"
 "PO-Revision-Date: 2024-03-28 22:09+0100\n"
 "Last-Translator: Walter <apps@bernard.im>\n"
 "Language-Team: Esperanto <apps@bernard.im>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 46.0\n"
 
-#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:4
 #: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
 msgstr "Memoru ĉion"
@@ -30,12 +30,12 @@ msgid "translator-credits"
 msgstr ""
 
 #. Translators: Memorado is the app name, do not translate
-#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+#: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
 msgid "Memorado"
 msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/im.bernard.Memorado.desktop.in.in:13
+#: data/im.bernard.Memorado.desktop.in.in:12
 msgid "memorado;flash;cards;learn;improve;"
 msgstr "memorado;kartoj;kartaro;lerni;plibonigi;"
 
@@ -69,6 +69,28 @@ msgstr "Redaktu kartojn en kartaro"
 msgid "Practice with cards"
 msgstr "Ekzerciĝu kun kartojn"
 
+#: data/im.bernard.Memorado.metainfo.xml.in.in:111
+msgid "flashcards"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:112
+#, fuzzy
+msgid "memorization"
+msgstr "Memoru ĉion"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:113
+#, fuzzy
+msgid "spaced repetition"
+msgstr "Nuligi elektaĵon"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:114
+msgid "learning tool"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:115
+msgid "vocabulary builder"
+msgstr ""
+
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
 msgstr "Nova karto"
@@ -101,7 +123,7 @@ msgstr "Redakti karton"
 msgid "Show Answer"
 msgstr "Montri respondon"
 
-#: data/ui/deck_view.blp:12 src/window.py:528
+#: data/ui/deck_view.blp:12 src/window.py:551
 msgid "Edit Deck"
 msgstr "Redakti kartaron"
 
@@ -200,46 +222,59 @@ msgstr "Karto"
 msgid "Save"
 msgstr "Konservi"
 
-#: src/window.py:161
+#: src/window.py:153
 #, fuzzy
 msgid "Export as File"
 msgstr "Eksporti kiel dosiero"
 
-#: src/window.py:162
+#: src/window.py:154
 #, fuzzy
 msgid "Import Database"
 msgstr "Importi datumbazo"
 
-#: src/window.py:335
+#: src/window.py:159
+msgid "Supported files"
+msgstr ""
+
+#: src/window.py:165
+msgid "All files"
+msgstr ""
+
+#: src/window.py:345
 msgid "Next"
 msgstr "Sekva"
 
-#: src/window.py:335
+#: src/window.py:345
 msgid "Done"
 msgstr "Kompleta"
 
-#: src/window.py:526
+#: src/window.py:549
 msgid "New Deck"
 msgstr "Nova Kartaro"
 
-#: src/window.py:558
+#: src/window.py:581
 #, fuzzy
 msgid "Delete Card"
 msgstr "Forigi karton"
 
-#: src/window.py:621
+#: src/window.py:642
 msgid "Export successful"
 msgstr "Export erfolgreich"
 
-#: src/window.py:708
+#: src/window.py:663
+#, fuzzy
+msgid "Import failed"
+msgstr "Eksporti kiel dosiero"
+
+#: src/window.py:741
 msgid "Imported one empty deck"
 msgstr "Unu malplena kartaro importita"
 
-#: src/window.py:710
+#: src/window.py:743
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Nenion importita, ĉiuj kartoj estas duplikatoj"
 
-#: src/window.py:712
+#: src/window.py:745
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "Importitaj {0} malplenaj kartaroj"

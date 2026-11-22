@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-24 15:34+0100\n"
+"POT-Creation-Date: 2026-11-22 17:17+0100\n"
 "PO-Revision-Date: 2025-01-13 11:57-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Generator: Gtranslator 47.1\n"
 
-#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:4
 #: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
 msgstr "Memorize qualquer coisa"
@@ -29,12 +29,12 @@ msgid "translator-credits"
 msgstr "Rafael Fontenelle <rafaelff@gnome.org>"
 
 #. Translators: Memorado is the app name, do not translate
-#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+#: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
 msgid "Memorado"
 msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/im.bernard.Memorado.desktop.in.in:13
+#: data/im.bernard.Memorado.desktop.in.in:12
 msgid "memorado;flash;cards;learn;improve;"
 msgstr "memorado;flashcards;ficha;memorização;cartões;aprender;melhorar;"
 
@@ -68,6 +68,28 @@ msgstr "Editar fichas em um deck"
 msgid "Practice with cards"
 msgstr "Praticar com fichas"
 
+#: data/im.bernard.Memorado.metainfo.xml.in.in:111
+msgid "flashcards"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:112
+#, fuzzy
+msgid "memorization"
+msgstr "Memorize qualquer coisa"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:113
+#, fuzzy
+msgid "spaced repetition"
+msgstr "Cancela seleção"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:114
+msgid "learning tool"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:115
+msgid "vocabulary builder"
+msgstr ""
+
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
 msgstr "Nova ficha"
@@ -100,7 +122,7 @@ msgstr "Edita ficha"
 msgid "Show Answer"
 msgstr "Mostrar resposta"
 
-#: data/ui/deck_view.blp:12 src/window.py:528
+#: data/ui/deck_view.blp:12 src/window.py:551
 msgid "Edit Deck"
 msgstr "Editar deck"
 
@@ -199,45 +221,58 @@ msgstr "Ficha"
 msgid "Save"
 msgstr "Salvar"
 
-#: src/window.py:161
+#: src/window.py:153
 #, fuzzy
 msgid "Export as File"
 msgstr "Exportar como arquivo"
 
-#: src/window.py:162
+#: src/window.py:154
 #, fuzzy
 msgid "Import Database"
 msgstr "Importar banco de dados"
 
-#: src/window.py:335
+#: src/window.py:159
+msgid "Supported files"
+msgstr ""
+
+#: src/window.py:165
+msgid "All files"
+msgstr ""
+
+#: src/window.py:345
 msgid "Next"
 msgstr "Próximo"
 
-#: src/window.py:335
+#: src/window.py:345
 msgid "Done"
 msgstr "Concluído"
 
-#: src/window.py:526
+#: src/window.py:549
 msgid "New Deck"
 msgstr "Novo deck"
 
-#: src/window.py:558
+#: src/window.py:581
 msgid "Delete Card"
 msgstr "Excluir ficha"
 
-#: src/window.py:621
+#: src/window.py:642
 msgid "Export successful"
 msgstr "Exportação feita com sucesso"
 
-#: src/window.py:708
+#: src/window.py:663
+#, fuzzy
+msgid "Import failed"
+msgstr "Exportar como arquivo"
+
+#: src/window.py:741
 msgid "Imported one empty deck"
 msgstr "Importado um deck vazio"
 
-#: src/window.py:710
+#: src/window.py:743
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Nada importado, todas as fichas são duplicadas"
 
-#: src/window.py:712
+#: src/window.py:745
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "Importados {0} decks vazios"

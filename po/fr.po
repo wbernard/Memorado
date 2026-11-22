@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-24 15:34+0100\n"
+"POT-Creation-Date: 2026-11-22 17:17+0100\n"
 "PO-Revision-Date: 2026-02-03 13:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.8\n"
 
-#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:4
 #: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
 msgstr "Tout mémoriser"
@@ -29,12 +29,12 @@ msgid "translator-credits"
 msgstr "Yoav Rheims <yoavrheims@gmail.com>"
 
 #. Translators: Memorado is the app name, do not translate
-#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+#: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
 msgid "Memorado"
 msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/im.bernard.Memorado.desktop.in.in:13
+#: data/im.bernard.Memorado.desktop.in.in:12
 msgid "memorado;flash;cards;learn;improve;"
 msgstr "memorado;flashcards;cartes;apprendre;améliorer;"
 
@@ -53,9 +53,9 @@ msgid ""
 "them, or export to share them with friends."
 msgstr ""
 "Idéal pour apprendre de nouvelles langues, mémoriser des termes et des "
-"définitions, ou tout autre contenu que vous souhaitez mieux maîtriser. "
-"Créez ou importez des paquets de cartes, entraînez-vous avec eux, ou "
-"exportez-les pour les partager avec des amis."
+"définitions, ou tout autre contenu que vous souhaitez mieux maîtriser. Créez "
+"ou importez des paquets de cartes, entraînez-vous avec eux, ou exportez-les "
+"pour les partager avec des amis."
 
 #: data/im.bernard.Memorado.metainfo.xml.in.in:38
 msgid "List of decks"
@@ -68,6 +68,28 @@ msgstr "Modifier les cartes d'un paquet"
 #: data/im.bernard.Memorado.metainfo.xml.in.in:50
 msgid "Practice with cards"
 msgstr "S'entraîner avec des cartes"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:111
+msgid "flashcards"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:112
+#, fuzzy
+msgid "memorization"
+msgstr "Tout mémoriser"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:113
+#, fuzzy
+msgid "spaced repetition"
+msgstr "Annuler la sélection"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:114
+msgid "learning tool"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:115
+msgid "vocabulary builder"
+msgstr ""
 
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
@@ -101,7 +123,7 @@ msgstr "Modifier la carte"
 msgid "Show Answer"
 msgstr "Afficher la réponse"
 
-#: data/ui/deck_view.blp:12 src/window.py:528
+#: data/ui/deck_view.blp:12 src/window.py:551
 msgid "Edit Deck"
 msgstr "Modifier le paquet"
 
@@ -200,43 +222,56 @@ msgstr "Carte"
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/window.py:161
+#: src/window.py:153
 msgid "Export as File"
 msgstr "Exporter en tant que fichier"
 
-#: src/window.py:162
+#: src/window.py:154
 msgid "Import Database"
 msgstr "Importer la base de données"
 
-#: src/window.py:335
+#: src/window.py:159
+msgid "Supported files"
+msgstr ""
+
+#: src/window.py:165
+msgid "All files"
+msgstr ""
+
+#: src/window.py:345
 msgid "Next"
 msgstr "Suivant"
 
-#: src/window.py:335
+#: src/window.py:345
 msgid "Done"
 msgstr "Terminé"
 
-#: src/window.py:526
+#: src/window.py:549
 msgid "New Deck"
 msgstr "Nouveau paquet"
 
-#: src/window.py:558
+#: src/window.py:581
 msgid "Delete Card"
 msgstr "Supprimer la carte"
 
-#: src/window.py:621
+#: src/window.py:642
 msgid "Export successful"
 msgstr "Exportation réussie"
 
-#: src/window.py:708
+#: src/window.py:663
+#, fuzzy
+msgid "Import failed"
+msgstr "Exporter en tant que fichier"
+
+#: src/window.py:741
 msgid "Imported one empty deck"
 msgstr "Un paquet vide importé"
 
-#: src/window.py:710
+#: src/window.py:743
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Aucune importation, toutes les cartes sont des doublons"
 
-#: src/window.py:712
+#: src/window.py:745
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "{0} paquets vides importés"

@@ -37,7 +37,7 @@ Update the `.pot` file when strings in the app change:
 Update the individual `.po` files with new strings:
 
 - Open a "Build terminal" in Builder from the + menu in the top left
-- Run `ninja memorado-update-pot`
+- Run `ninja memorado-update-po`
 
 ## Code of conduct
 

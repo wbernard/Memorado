@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: memorado\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-24 15:34+0100\n"
+"POT-Creation-Date: 2026-11-22 17:17+0100\n"
 "PO-Revision-Date: 2024-04-13 16:55+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:5
+#: data/about_dialog.ui.in:6 data/im.bernard.Memorado.desktop.in.in:4
 #: data/im.bernard.Memorado.metainfo.xml.in.in:13
 msgid "Memorize anything"
 msgstr "Her şeyi ezberleyin"
@@ -29,12 +29,12 @@ msgid "translator-credits"
 msgstr "Sabri Ünal <yakushabb@gmail.com>"
 
 #. Translators: Memorado is the app name, do not translate
-#: data/im.bernard.Memorado.desktop.in.in:4 data/ui/welcome.blp:24
+#: data/im.bernard.Memorado.desktop.in.in:3 data/ui/welcome.blp:24
 msgid "Memorado"
 msgstr "Memorado"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/im.bernard.Memorado.desktop.in.in:13
+#: data/im.bernard.Memorado.desktop.in.in:12
 msgid "memorado;flash;cards;learn;improve;"
 msgstr "memorado;flash;kart;öğren;dil;eğitim;"
 
@@ -62,6 +62,28 @@ msgstr "Destedeki kartları düzenle"
 #: data/im.bernard.Memorado.metainfo.xml.in.in:50
 msgid "Practice with cards"
 msgstr "Kartlarla pratik yap"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:111
+msgid "flashcards"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:112
+#, fuzzy
+msgid "memorization"
+msgstr "Her şeyi ezberleyin"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:113
+#, fuzzy
+msgid "spaced repetition"
+msgstr "Seçimi İptal Et"
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:114
+msgid "learning tool"
+msgstr ""
+
+#: data/im.bernard.Memorado.metainfo.xml.in.in:115
+msgid "vocabulary builder"
+msgstr ""
 
 #: data/ui/card_new_view.blp:13
 msgid "New Card"
@@ -95,7 +117,7 @@ msgstr "Kartı Düzenle"
 msgid "Show Answer"
 msgstr "Cevabı Göster"
 
-#: data/ui/deck_view.blp:12 src/window.py:528
+#: data/ui/deck_view.blp:12 src/window.py:551
 msgid "Edit Deck"
 msgstr "Desteyi Düzenle"
 
@@ -198,45 +220,56 @@ msgstr "Kart"
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/window.py:161
+#: src/window.py:153
 msgid "Export as File"
 msgstr ""
 
-#: src/window.py:162
-#, fuzzy
+#: src/window.py:154
 msgid "Import Database"
 msgstr ""
 
-#: src/window.py:335
+#: src/window.py:159
+msgid "Supported files"
+msgstr ""
+
+#: src/window.py:165
+msgid "All files"
+msgstr ""
+
+#: src/window.py:345
 msgid "Next"
 msgstr "Sonraki"
 
-#: src/window.py:335
+#: src/window.py:345
 msgid "Done"
 msgstr "Bitti"
 
-#: src/window.py:526
+#: src/window.py:549
 msgid "New Deck"
 msgstr "Yeni Deste"
 
-#: src/window.py:558
-#, fuzzy
+#: src/window.py:581
 msgid "Delete Card"
 msgstr ""
 
-#: src/window.py:621
+#: src/window.py:642
 msgid "Export successful"
 msgstr "Dışa aktarıldı"
 
-#: src/window.py:708
+#: src/window.py:663
+#, fuzzy
+msgid "Import failed"
+msgstr "Desteleri İçe _Aktar"
+
+#: src/window.py:741
 msgid "Imported one empty deck"
 msgstr "Bir boş deste içe aktarıldı"
 
-#: src/window.py:710
+#: src/window.py:743
 msgid "Imported nothing, all cards are duplicates"
 msgstr "Hiçbir şey içe aktarılmadı, tüm kartlar zaten var"
 
-#: src/window.py:712
+#: src/window.py:745
 #, python-brace-format
 msgid "Imported {0} empty decks"
 msgstr "{0} boş deste içe aktarıldı"
